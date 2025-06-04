@@ -1,6 +1,6 @@
 import Link from "next/link";
 import logo from "../../../public/assets/img/logo-2.png";
-import servicesData from "@/components/data/services-data";
+import servicesData from "@/components/data/formationsPrincipales";
 import Social from "@/components/data/social";
 
 const FooterThree = () => {

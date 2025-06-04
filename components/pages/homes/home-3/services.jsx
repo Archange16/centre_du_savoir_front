@@ -1,4 +1,4 @@
-import servicesData from '@/components/data/services-data';
+import servicesData from '@/components/data/formationsPrincipales';
 import Link from 'next/link';
 
 const ServicesThree = () => {

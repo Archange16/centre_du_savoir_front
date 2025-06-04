@@ -11,15 +11,15 @@ const BannerFour = () => {
                         <div className="col-xl-6 col-lg-6">
                             <div className="banner__four-content">
                                 <span className="subtitle-two">Innovating The Future</span>
-                                <h2>Transforming Ideas into Reality</h2>
-                                <p>Showcases the company's ability to bring innovative concepts to life. Indicates a broader focus beyond just technical.</p>
+                                <h2>Transformez votre avenir avec des formations professionnelles certifiantes !</h2>
+                                <p>Apprenez à votre rythme, en ligne ou en hybride, avec des formations adaptées à vos besoins.</p>
                                 <div className="banner__four-content-bottom">
-                                    <Link href="/contact" className="btn-two">Apply Today<i className="fas fa-arrow-right"></i></Link>
+                                    <Link href="/contact" className="btn-two">Découvrez nos formations<i className="fas fa-arrow-right"></i></Link>
                                     <div className="banner__four-content-call">
                                         <i className="flaticon-telephone-call"></i>
                                         <div className="banner__four-content-call-right">
-                                            <span>Make a call</span>
-                                            <Link href="tel:(307)%20555-0133">(307) 555-0133</Link>
+                                            <span>Étudions votre projet</span>
+                                            <Link href="tel:+212780223487">+212 780-223487</Link>
                                         </div>
                                     </div>
                                 </div>

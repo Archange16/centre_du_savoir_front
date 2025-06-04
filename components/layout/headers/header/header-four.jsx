@@ -29,13 +29,13 @@ const HeaderFour = ({variant}) => {
                 <div className="row">
                     <div className="col-xl-7 col-md-7">
                         <div className="top__bar-left">
-                            <span><i className="fas fa-clock"></i>Working Hours : 10AM - 08PM</span>
-                            <Link href="mailto:info@example.com"><i className="fas fa-envelope"></i>info@example.com</Link>
+                            <span><i className="fas fa-clock"></i>HAY ESAADA immeuble 136 Porte 1 ÉTAGE 3</span>
+                            <Link href="mailto:contact@centreprofessionneldusavoir.com"><i className="fas fa-envelope"></i>contact@centreprofessionneldusavoir.com</Link>
                         </div>
                     </div>
                     <div className="col-xl-5 col-md-5">
                         <div className="top__bar-right">
-                            <Link href="#">Browse Our Success Stories</Link>
+                            <Link href="tel:+212780223487">+212 780-223487</Link>
                         </div>
                     </div>
                 </div>

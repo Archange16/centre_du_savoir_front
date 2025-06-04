@@ -37,31 +37,31 @@ const AboutMain = () => {
                     <div className="col-xl-6 col-lg-7 col-md-9">
                         <div className="about__one-content">
                             <span className="subtitle-one">À propos de nous</span>
-                            <h2>Des solutions numériques adaptées à vos besoins</h2>
+                            <h2>Pourquoi choisir le Centre Professionnel du Savoir ?</h2>
                             <p>
-                                Nous accompagnons les entreprises, startups et particuliers dans leur transformation digitale
-                                grâce à des solutions sur mesure : développement web et mobile, design graphique, marketing
-                                digital, IA, maintenance et conseil IT.
+                                Le Centre Professionnel du Savoir est votre partenaire de confiance pour une formation professionnelle de qualité, spécialement orientée vers les métiers du génie civil.
+                                Nous vous offrons des formations 100 % en ligne, interactives, accessibles à tout moment et conçues pour répondre aux exigences actuelles du marché de l’emploi.
+                                Grâce à notre approche pédagogique innovante, vous progressez à votre rythme tout en acquérant des compétences concrètes et certifiantes pour faire évoluer votre carrière.
                             </p>
                             <div className="about__one-content-service">
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Sites web & applications</span>
+                                    <span>Certifications reconnues au niveau national et international.</span>
                                 </div>
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Solutions IA & automatisation</span>
+                                    <span>Plateforme intuitive et accessible 24/7, où que vous soyez.</span>
                                 </div>
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Design & communication visuelle</span>
+                                    <span>Formateurs experts issus du terrain avec une solide expérience professionnelle.</span>
                                 </div>
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Conseil & stratégie digitale</span>
+                                    <span>Programmes adaptés à l’évolution du marché et aux besoins des employeurs.</span>
                                 </div>
                             </div>
-                            <Link href="/about" className="btn-one">En savoir plus <i className="fas fa-arrow-right"></i></Link>
+                            <Link href="/about" className="btn-one">Demande d'admission <i className="fas fa-arrow-right"></i></Link>
                         </div>
                     </div>
                 </div>

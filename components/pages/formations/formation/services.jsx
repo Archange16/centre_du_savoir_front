@@ -1,59 +1,60 @@
-import { useEffect, useState } from 'react';
-import { fetchFormations } from '@/services/apiFormation';
 import Link from 'next/link';
+import servicesData from '@/components/data/formationsPrincipales';
 import image2 from '../../../../public/assets/img/service/service-details.png';
 
-const ServicesMain =() => {
-    const [servicesData, setServicesData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    
-    useEffect(() => {
-    const loadServices = async () => {
-      try {
-        const services = await fetchFormations();
-        setServicesData(services);
-      } catch (error) {
-        console.error('Erreur de chargement:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadServices();
-  }, []);
-
-  if (loading) return <p>Chargement...</p>;
+const ServicesMain = () => {
+    // Regroupement des services par catégorie
+    const groupedServices = servicesData?.reduce((acc, service) => {
+        const { categorie = 'Autres' } = service; // valeur par défaut
+        if (!acc[categorie]) {
+            acc[categorie] = [];
+        }
+        acc[categorie].push(service);
+        return acc;
+    }, {}) || {};
 
     return (
-        <>
-	    <div className="services__two section-padding">
-                <div className="container">
-                <div className="row gy-4 justify-content-center">
-                        {servicesData?.slice(0, 8).map((data, id) => {
-							const words = data.titre.split(' ');
-							const firstAndSecondWord = words.slice(0, 5).join(' ');
-                            return (
-                                <div className="col-xl-4 col-lg-4 col-md-6" key={id}>
-                                    <div className="services__five-single-service">
-                                         <img src={image2.src} alt="image" />
-                                            <p className="classLigne"><i className="fas fa-laptop justify-content-between"></i> | 100% en ligne</p>
-                                            <div className="blog__two-single-blog-content-top">
-                                                <span><i className="far fa-user"></i>{data.duree_heures} Heures</span>
-                                                <span><i className="far fa-comment-dots"></i>{data.prix} Dhs</span>
+        <div className="services__two section-padding">
+            <div className="container">
+                <div className="row gy-4">
+                    {Object.keys(groupedServices).length > 0 ? (
+                        Object.entries(groupedServices).map(([category, services]) => (
+                            <div key={category} className="col-xl-12">
+                                <h3 className="category-title mb-3">
+                                    {category.replace(/_/g, ' ').toUpperCase()}
+                                </h3>
+                                <div className="row gy-4">
+                                    {services.map((data) => (
+                                        <div className="col-xl-4 col-lg-4 col-md-6" key={data.id}>
+                                            <div className="services__two-single-service">
+                                                {data.icon && (
+                                                    <div className="services__two-single-service-icon">
+                                                        {data.icon}
+                                                    </div>
+                                                )}
+                                                <div className="services__two-single-service-image">
+                                                    <img className="img__full" src={image2?.src} alt={data.title} />
+                                                </div>
+                                                <div className="services__two-single-service-content formation-solution">
+                                                    <h4>{data.title}</h4>
+                                                    <Link href={`/formation/${data.id}`}>
+                                                        <a className="btn-three mb-20">Voir plus</a>
+                                                    </Link>
+                                                </div>
                                             </div>
-                                        <div className="services__five-single-service-content">
-                                            <h4>{firstAndSecondWord}</h4>
-                                            <p>{data.description_courte}</p>
-                                            <Link href={`/formation/${data.documentId}`} className="btn-three rounded-circle"><i className="fas fa-plus btn-ajout"></i></Link>
                                         </div>
-                                    </div>
+                                    ))}
                                 </div>
-                            );
-                        })}
-                    </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="col-xl-12">
+                            <p>Aucune formation disponible pour le moment.</p>
+                        </div>
+                    )}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

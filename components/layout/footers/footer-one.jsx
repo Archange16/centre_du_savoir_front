@@ -3,7 +3,7 @@ import Link from "next/link";
 import logo from "../../../public/assets/img/logo-2.png";
 import ctaBg from "../../../public/assets/img/subscribe/subscribe-one-shape-1.png";
 import footerBg from "../../../public/assets/img/shape/footer-two-bg.png";
-import servicesData from "@/components/data/services-data";
+import servicesData from "@/components/data/formationsPrincipales";
 
 const FooterOne = () => {
     return (
