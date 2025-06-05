@@ -10,6 +10,8 @@ import Tab from "./tab/tab";
 import Video from "./video";
 import BlogFour from "./blog";
 import ScrollToTop from "../../common/scroll/scroll-to-top";
+import ChooseUsThree from "./choose-us";
+import WorkProcess from "./work";
 
 const HomeFour = () => {
     return (
@@ -20,9 +22,12 @@ const HomeFour = () => {
             <AboutFour />
             <ServicesFour />
             <ChooseFour />
-            <Tab />
             <Video />
-            <BlogFour />
+            <WorkProcess />
+            {/* <Tab /> */}
+            
+            {/* <BlogFour /> */}
+            <ChooseUsThree />
             <FooterFour />
             <ScrollToTop />
         </div>

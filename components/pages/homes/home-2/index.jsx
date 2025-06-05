@@ -24,7 +24,7 @@ const HomeTwo = () => {
             <AboutTwo />
             <ServicesTwo />
             <SkillArea />
-            {/* <Team /> */}
+            <Team />
             <Pricing />
             <TextSlide />
             <ContactForm />

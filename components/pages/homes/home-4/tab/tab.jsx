@@ -1,5 +1,6 @@
 import React from 'react';
 import TabContent from './tab-content';
+import tablesData from '@/components/data/tab-contents';
 
 const Tab = () => {
     return (
@@ -9,34 +10,22 @@ const Tab = () => {
                     <ul className="row nav mb-5 gy-4 justify-content-center">
                         <li className="nav-item col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div className="skill__two-tab nav-link active" id="topic-1-tab" data-bs-toggle="pill" data-bs-target="#topic-1" role="button" aria-controls="topic-1">
-                                <span className="skill__two-tab-icon">
-                                    <i className="flaticon-content-marketing"></i>
-                                </span>
-                                <span>Customized Solution</span>
+                                <span>Formations reconnues</span>
                         </div>
                         </li>
                         <li className="nav-item col-xl-3 col-lg-3 col-md-4 col-sm-6">
                             <div className="skill__two-tab nav-link" id="topic-2-tab" data-bs-toggle="pill" data-bs-target="#topic-2" role="button" aria-controls="topic-2">
-                                <span className="skill__two-tab-icon">
-                                    <i className="flaticon-it-service"></i>
-                                </span>
-                                <span>Technological Mastery</span>
+                                <span>Flexibilité</span>
                             </div>
                         </li>
                         <li className="nav-item col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div className="skill__two-tab nav-link" id="topic-3-tab" data-bs-toggle="pill" data-bs-target="#topic-3" role="button" aria-controls="topic-3">
-                                <span className="skill__two-tab-icon">
-                                    <i className="flaticon-satellite-signal"></i>
-                                </span>
-                                <span>Robust Cyber Security</span>
+                                <span>Accompagnement personnalisé</span>
                             </div>
                         </li>
                         <li className="nav-item col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div className="skill__two-tab nav-link" id="topic-4-tab" data-bs-toggle="pill" data-bs-target="#topic-4" role="button" aria-controls="topic-4">
-                                <div className="skill__two-tab-icon">
-                                    <i className="flaticon-analytics"></i>
-                                </div>
-                                <span>Network Architecture</span>
+                                <span>Accès à une communauté</span>
                             </div>
                         </li>
                     </ul>
