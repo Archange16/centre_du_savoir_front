@@ -5,6 +5,7 @@ import ScrollToTop from "../../common/scroll/scroll-to-top";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
 import FooterTwo from "@/components/layout/footers/footer-two";
 import FormationSingleMain from "./formation";
+import HeaderFour from "@/components/layout/headers/header/header-four";
 
 const FormationsSingle = ({selectedFormation}) => {
     const words = selectedFormation?.title.split(' ');
@@ -13,7 +14,7 @@ const FormationsSingle = ({selectedFormation}) => {
     return (
         <>
             <SEO pageTitle={firstAndSecondWord?.title} />             
-            <HeaderTwo />
+            <HeaderFour />
             <BreadCrumb  title={firstAndSecondWord} innerTitle={firstAndSecondWord?.title}  />
             <FormationSingleMain firstAndSecondWord={firstAndSecondWord}/>
             <FooterTwo />

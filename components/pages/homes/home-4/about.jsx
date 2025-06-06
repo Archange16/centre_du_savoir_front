@@ -10,7 +10,7 @@ const AboutFour = () => {
                     <div className="row align-items-center flex-wrap-reverse gy-4">
                         <div className="col-xl-6 col-lg-8">
                             <div className="about__four-image">
-                                <div className="experience-bar animate-y-axis-slider">
+                               {/*  <div className="experience-bar animate-y-axis-slider">
                                     <div className="experience-bar-right">
                                         <div className="experience-bar-counter">
                                             <h4 className="counter">25</h4>
@@ -18,7 +18,7 @@ const AboutFour = () => {
                                         </div>
                                         <span>Years Of Experience</span>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="about__four-image-wrapper">
                                     <img className="image-1" src={about1.src} alt="image" />
                                     <img className="image-2" src={about2.src} alt="image" />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import logo from "../../../public/assets/img/logo-2.png";
-import servicesData from "@/components/data/formationsPrincipales";
+import servicesData from "@/components/data/categoriesPrincipale";
 import Social from "@/components/data/social";
 
 const FooterThree = () => {
@@ -19,7 +19,7 @@ const FooterThree = () => {
                         <div className="footer__three-widget">
                             <div className="footer__three-widget-about">
                                 <Link href="/"><img src={logo.src} alt="image" /></Link>
-                                <p>Financial planners help people to gain knowledge about</p>
+                                <p>Bienvenue au Centre Professionnel du Savoir – une plateforme dédiée à la formation professionnelle en génie civil. Nous vous proposons des formations 100 % en ligne, interactives et adaptées aux exigences du marché du travail</p>
                                 <form action="#">
                                     <input type="text" name="email" placeholder="Your e-mail" required="" />
                                     <button type="submit"><i className="fas fa-paper-plane"></i></button>
@@ -29,14 +29,14 @@ const FooterThree = () => {
                     </div>
                     <div className="col-xl-3 col-md-6 col-sm-5 sm-mb-30">
                         <div className="footer__three-widget border-one">
-                            <h4 className="ml-60">Our Services</h4>
+                            <h4 className="ml-60">Nos formations</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-									{servicesData.slice(0, 4).map((data, id) => {
-										const words = data.title.split(' ');
+									{servicesData.slice(0, 8).map((data, id) => {
+										const words = data.categorie.split(' ');
 										const firstAndSecondWord = words.slice(0, 2).join(' ');
 										return (
-											<li key={id}><Link href={`/services/${data.id}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
+											<li key={id}><Link href={`/categories/${data.categorie}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
 										);
 									})}
                                 </ul>

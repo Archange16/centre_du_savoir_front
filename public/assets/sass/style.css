@@ -1074,7 +1074,7 @@ p {
   --color-3: #0B46BF;
   --color-4: #CCCCCC;
   --color-5: #12223e;
-  --color-6: #864af942;
+  --color-6: #00355a;
   --color-7: #07204D;
   --border-color-1: #E7E7E7;
   --border-color-2: #E9E9E8;
@@ -7401,6 +7401,10 @@ Responsive Menu Css
 /*==========================================================================
 * Work Process Two style 
 ==========================================================================*/
+.work-process__two {
+  background-color: var(--color-1);
+  padding: 140px 0;
+}
 .work-process__two-title {
   margin-bottom: 60px;
 }
@@ -7415,8 +7419,8 @@ Responsive Menu Css
 }
 .work-process__two-cards-single {
   border: 1px solid var(--color-4);
-  margin-right: 25px;
-  padding: 35px 38px;
+  margin-right: 15px;
+  padding: 25px 10px;
   border-radius: 20px;
   position: relative;
   outline: 7px solid var(--text-white);
@@ -7432,7 +7436,7 @@ Responsive Menu Css
   margin-bottom: 15px;
 }
 .work-process__two-cards-single-title-left h4 {
-  font-size: 22px;
+  font-size: 20px;
 }
 .work-process__two-cards-single-title-left span {
   margin-bottom: 12px;
@@ -10460,7 +10464,7 @@ Responsive Menu Css
 .footer__three {
   position: relative;
   z-index: 1;
-  background-color: var(--bg-heading-color);
+  background-color: var(--color-6);
 }
 .footer__three-top {
   display: flex;

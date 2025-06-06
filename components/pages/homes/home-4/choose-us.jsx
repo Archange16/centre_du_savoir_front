@@ -9,28 +9,28 @@ const ChooseUsThree = () => {
                 <div className="row align-items-center gy-4">
                     <div className="col-xl-6 col-lg-6 col-md-9">
                         <div className="why-choose-us__two-content">
-                            <span className="subtitle-one">Why CHOSE US</span>
-                            <h2>IT Infrastructure most active <span className="highlighted-two">Solutions</span></h2>
-                            <p>IT Technology is a broad category encompassing all aspec info technology and the application of technology IT Technology</p>
+                            <span className="subtitle-one">Rejoignez professionnels du génie civil</span>
+                            <h2>DÉMARREZ VOTRE RÉUSSITE <span className="highlighted-two">DANS LE GÉNIE CIVIL</span></h2>
+                            <p>Notre ambition est de devenir la référence en matière de formation en génie civil en ligne, en proposant des parcours flexibles, orientés vers la pratique et conçus pour répondre aux exigences concrètes du terrain. Nous voulons permettre à chaque apprenant, où qu’il se trouve, d’acquérir les compétences clés pour exceller et contribuer à des projets techniques d’envergure à l’échelle mondiale.</p>
                             <div className="why-choose-us__two-content-service">
                                 <div className="service">
                                     <i className="fas fa-check-circle"></i>
-                                    <span>Data Management Experts</span>
+                                    <span>Flexibilité totale</span>
                                 </div>
                                 <div className="service">
                                     <i className="fas fa-check-circle"></i>
-                                    <span>Mobile App Developments</span>
+                                    <span>Approche terrain</span>
                                 </div>
                                 <div className="service">
                                     <i className="fas fa-check-circle"></i>
-                                    <span>IT Infrastructure Solutions</span>
+                                    <span>Expertise reconnue</span>
                                 </div>
                                 <div className="service">
                                     <i className="fas fa-check-circle"></i>
-                                    <span>Data Analytics Consulting</span>
+                                    <span>Accès international</span>
                                 </div>
                             </div>
-                            <Link href="/services" className="btn-one">Learn More
+                            <Link href="/categories/Geniecivil" className="btn-one">Voir les formations
                                 <i className="fas fa-arrow-right"></i>
                             </Link>
                         </div>

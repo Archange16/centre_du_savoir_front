@@ -3,7 +3,7 @@ import bureautiqueImage from "../../public/assets/img/service/service-details.pn
 const categoriesData = [
   {
     "id": "anglais-debutant-a1-a2",
-    "categorie": "Génie civil",
+    "categorie": "Geniecivil",
     "image": bureautiqueImage
   },
   {
@@ -23,7 +23,7 @@ const categoriesData = [
   },
   {
     "id": "adobe-premiere-pro-2020-2024",
-    "categorie": "e)Informatique bureautique ",
+    "categorie": "Informatique bureautique",
     "image": bureautiqueImage
   },
   {
