@@ -44,6 +44,8 @@ const ServicesFour = () => {
                                             Liste des formations <i className="fas fa-chevron-right"></i>
                                         </Link>
                                     </div>
+                                    <h4 className="blog__four-single-blog-content-title" href={`/services/${data.slug}`}>{data.titre}</h4>
+                                    <Link className="btn-one" href={`/services/${data.slug}`}>En savoir plus<i className="fas fa-angle-right"></i></Link>
                                 </div>
                             </div>
                         ))
