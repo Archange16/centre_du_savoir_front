@@ -27,7 +27,7 @@ const FooterFour = () => {
 							<div className="footer__four-widget-solution">
 								<ul>
 									{servicesData.slice(0, 4).map((data, id) => {
-										const words = data.title.split(' ');
+										const words = data.titre.split(' ');
 										const firstAndSecondWord = words.slice(0, 2).join(' ');
 										return (
 											<li key={id}><Link href={`/services/${data.id}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>

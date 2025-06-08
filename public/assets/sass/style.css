@@ -8475,7 +8475,7 @@ Responsive Menu Css
   border-radius: 50px;
   display: flex;
   align-items: center;
-  width: 290px;
+  width: 350px;
   flex-wrap: wrap;
   -moz-column-gap: 24px;
        column-gap: 24px;
@@ -8490,7 +8490,7 @@ Responsive Menu Css
   margin-right: 10px;
 }
 .blog__four-single-blog-content-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 36px;
   text-transform: none;

@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
             <head>
                 <link rel='icon' type='image/png' href='../favicon.ico' />
             </head>
-            <body>
+            <body suppressHydrationWarning={true}>
                 {children}
             </body>
         </html>
