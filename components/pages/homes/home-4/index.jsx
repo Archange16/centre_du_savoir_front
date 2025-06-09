@@ -12,6 +12,7 @@ import ScrollToTop from "../../common/scroll/scroll-to-top";
 import ChooseUsThree from "./choose-us";
 import WorkProcess from "./work";
 import FooterThree from "@/components/layout/footers/footer-three";
+import AboutThree from "./aboutp";
 
 const HomeFour = () => {
     return (
@@ -21,12 +22,9 @@ const HomeFour = () => {
             <BannerFour />
             <AboutFour />
             <ServicesFour />
-            <ChooseFour />
+            <AboutThree />
             <Video />
             <WorkProcess />
-            {/* <Tab /> */}
-            
-            {/* <BlogFour /> */}
             <ChooseUsThree />
             <FooterThree />
             <ScrollToTop />

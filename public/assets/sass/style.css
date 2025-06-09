@@ -4897,9 +4897,13 @@ Responsive Menu Css
 /*==========================================================================
 * About Area Three CSS
 ==========================================================================*/
+.about__three{
+  background-color: #f7f7f7;
+}
 .about__three-content h2 {
+  font-size: 45px;
   text-transform: none;
-  margin-bottom: 17px;
+  margin-bottom: 18px;
 }
 .about__three-content p {
   color: var(--color-2);
@@ -8461,6 +8465,10 @@ Responsive Menu Css
 /*==========================================================================
 * Blog Four Style
 ==========================================================================*/
+.blog__four {
+  background-color: #f0f0f0;
+  padding: 120px 0;
+}
 .blog__four-title {
   margin-bottom: 62px;
 }

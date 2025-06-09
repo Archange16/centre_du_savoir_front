@@ -27,7 +27,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                     <div className="col-xl-7">
                         <div className="blog__details-thumb">
                             <span className="date">Domaine : { service?.domaine}</span>
-                                <img className="img__full" src={image2.src} alt="blog-details-image" />
+                                <img className="img__full" src={service.image.src} alt="blog-details-image" />
                             </div>
                             <div className="blog__details-content">
                                 <div className="blog__details-content-top">
