@@ -327,6 +327,7 @@ const servicesData = [
   {
     "id": 7,
     "documentId": "qhse-gc7",
+    "image": services2,
     "titre": "Formation en Qualité, Hygiène, Sécurité et Environnement (QHSE) pour le Génie Civil",
     "slug": "formation-qhse-genie-civil",
     "description_courte": "Acquérir les compétences pour garantir la sécurité et la conformité réglementaire sur les chantiers de construction.",
@@ -377,6 +378,7 @@ const servicesData = [
   {
     "id": 8,
     "documentId": "vrd-urbaine8",
+    "image": services2,
     "titre": "Formation avancée en V.R.D (Voirie Urbaine)",
     "slug": "formation-vrd-voirie-urbaine",
     "description_courte": "Acquérir des compétences pointues en conception et gestion des infrastructures urbaines (voirie, assainissement, eau potable).",
@@ -432,6 +434,7 @@ const servicesData = [
   {
     "id": 9,
     "documentId": "carto-geo9",
+    "image": services2,
     "titre": "Formation en Cartographie Géologique et Topographique Avancée",
     "slug": "formation-cartographie-geologique-topographique",
     "description_courte": "Développer des compétences avancées en analyse géospatiale pour la gestion des risques et l'aménagement du territoire.",
@@ -486,6 +489,7 @@ const servicesData = [
   {
     "id": 10,
     "documentId": "assainissement10",
+    "image": services2,
     "titre": "Formation en Assainissement (Maîtrise des Réseaux Eaux Usées et Pluviales)",
     "slug": "formation-assainissement-eaux",
     "description_courte": "Acquérir les compétences pour concevoir et gérer des réseaux d'assainissement efficaces et durables.",

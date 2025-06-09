@@ -18,7 +18,7 @@ const AboutMain = () => {
                 <div className="row align-items-center flex-wrap-reverse gy-4">
                     <div className="col-xl-6 col-lg-5">
                         <div className="about__one-image">
-                            <div className="experience-bar animate-y-axis-slider">
+                           {/*  <div className="experience-bar animate-y-axis-slider">
                                 <i className="flaticon-consultant"></i>
                                 <div className="experience-bar-right">
                                     <div className="experience-bar-counter">
@@ -27,7 +27,7 @@ const AboutMain = () => {
                                     </div>
                                     <span>Années d'expérience</span>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="about__one-image-wrapper">
                                 <img src={about1.src} alt="image" className="image-1" />
                                 <img src={about2.src} alt="image" className="image-2" />
@@ -95,7 +95,7 @@ const AboutMain = () => {
             </div>
         </div>
 
-        <WorkArea />
+        {/* <WorkArea /> */}
         <Testimonial />
         </>
     );

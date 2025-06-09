@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import image2 from '../../../../public/assets/img/service/service-details.png';
 import { useParams } from 'next/navigation';
-import servicesData from '@/components/data/formationsPrincipales';
+import servicesData from '@/components/data/services-data';
 import BlogSidebar from '../../blogs/blog-sidebar/blog-sidebar';
 
 
@@ -12,7 +12,7 @@ const FormationSingleMain = ({selectedFormation}) => {
     const { id } = params;
 
     // Chercher le service correspondant dans la data
-    const service = servicesData.find((item) => item.id === id);
+    const service = selectedFormation/* .find((item) => item.id === id) */;
     // Vérifier si le service existe
     if (!service) {
         return <div>Aucune formation trouvé.</div>;
@@ -44,7 +44,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                                     {service?.niveau} Niveau
                                 </span>
                             </div>
-                            <h2>{service?.title}</h2>
+                            <h2>{service?.titre}</h2>
                             <p>{service?.description_courte}</p>
                             <p>{service?.description_longue}</p>
                             <div className="all__sidebar-item-search mb-3">

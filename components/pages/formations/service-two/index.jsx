@@ -9,9 +9,9 @@ import FooterTwo from "@/components/layout/footers/footer-two";
 const ServicePageTwo = () => {
     return (
         <>
-            <SEO pageTitle="Services Two" />
+            <SEO pageTitle="Nos Formations" />
             <HeaderTwo />
-            <BreadCrumb title="Services Two" innerTitle="Services Two" />
+            <BreadCrumb title="Nos Formations" innerTitle="Nos Formations" />
             <ServicesMain />
             <FooterTwo />
             <ScrollToTop />

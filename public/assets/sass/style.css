@@ -1063,7 +1063,7 @@ p {
   --primary-color-1: #f39200;
   --primary-color-2: #F8E559;
   --primary-color-3: #f39200;
-  --bg-heading-color: #0f70b7;
+  --bg-heading-color: #002d4e;
   --text-heading-color: #0f70b7;
   --btn-heading-color: #131313;
   --body-color: #343434;
@@ -9290,6 +9290,7 @@ Responsive Menu Css
 .testimonial__one {
   overflow: hidden;
   padding-bottom: 0;
+  background-color: var(--color-6);
 }
 .testimonial__one-left {
   background-size: cover;

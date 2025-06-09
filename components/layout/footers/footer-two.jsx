@@ -55,8 +55,8 @@ const FooterTwo = () => {
                             <div className="footer__one-widget-solution">
                                 <ul>
                                     {servicesData.slice(0, 4).map((data, id) => {
-                                        const words = data.titre.split(' ');
-                                        const firstAndSecondWord = words.slice(0, 5).join(' ');
+                                        const words = data.titre?.split(' ');
+                                        const firstAndSecondWord = words?.slice(0, 5).join(' ');
                                         return (
                                             <li key={id}><Link href={`/services/${data.id}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
                                         );
