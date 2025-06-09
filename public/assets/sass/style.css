@@ -6392,6 +6392,10 @@ Responsive Menu Css
 /*==========================================================================
 * Team Two Style
 ==========================================================================*/
+.team__two {
+  padding-top: 100px;
+  background: var(--color-1);
+}
 .team__two-title h2 {
   text-transform: none;
 }
@@ -6412,7 +6416,7 @@ Responsive Menu Css
   align-items: center;
   z-index: 3;
   position: relative;
-  border: 1px solid var(--color-4);
+  /* border: 1px solid var(--color-4); */
   border-radius: 0 0 20px 19px;
   margin-top: -30px;
 }
@@ -6656,7 +6660,7 @@ Responsive Menu Css
   border-radius: 5px;
   transition: 0.4s;
   text-align: center;
-  width: 43%;
+  width: 45%;
   margin-right: 28px;
   margin-bottom: 28px;
 }

@@ -19,9 +19,9 @@ const ContactUs = () => {
                         <div className="col-xl-6">
                             <div className="contact__two-content">
                                 <div className="contact__two-title">
-                                    <span className="subtitle-one">Contact</span>
-                                    <h2>Des questions ? Un projet ?</h2>
-                                    <p>Notre équipe est à votre écoute pour vous accompagner dans la conception et la mise en œuvre de vos solutions digitales sur mesure. N'hésitez pas à nous écrire !</p>
+                                    <span className="subtitle-one">Nous contacter</span>
+                                    <h2>Nous contacter</h2>
+                                    <p>ous avez une question ou besoin d'infos ? Contactez-nous via nos coordonnées ci-dessous, nous vous répondrons dès que possible.</p>
                                 </div>
                                 <div className="contact__two-form">
                                     <FormArea />
@@ -36,8 +36,7 @@ const ContactUs = () => {
                                     </div>
                                     <div className="contact__two-single-info-content">
                                         <h4>Email</h4>
-                                        <span>contact@digital-expert.cg</span>
-                                        <span>support@digital-expert.cg</span>
+                                        <span>contact@centreprofessionneldusavoir.com</span>
                                     </div>
                                 </div>
                                 <div className="contact__two-single-info">
@@ -46,8 +45,7 @@ const ContactUs = () => {
                                     </div>
                                     <div className="contact__two-single-info-content">
                                         <h4>Téléphone</h4>
-                                        <span>+242 06 123 4567</span>
-                                        <span>+242 05 987 6543</span>
+                                        <span>+212 780-223487</span>
                                     </div>
                                 </div>
                                 <div className="contact__two-single-info">
@@ -66,7 +64,7 @@ const ContactUs = () => {
                                     </div>
                                     <div className="contact__two-single-info-content">
                                         <h4>Adresse</h4>
-                                        <span>Centre-ville, Brazzaville, République du Congo</span>
+                                        <span>HAY ESAADA immeuble 136 Porte 1 ÉTAGE 3</span>
                                     </div>    
                                 </div>
                             </div>

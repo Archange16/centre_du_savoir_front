@@ -1,6 +1,6 @@
 import Link from "next/link";
 import logo from "../../../public/assets/img/logo-2.png";
-import servicesData from "@/components/data/categoriesPrincipale";
+import servicesData from "@/components/data/services-data";
 import Social from "@/components/data/social";
 
 const FooterThree = () => {
@@ -9,7 +9,7 @@ const FooterThree = () => {
         <div className="footer__three">
             <div className="container pt-80 pb-80">
                 <div className="footer__three-top">
-                    <h3>Join Our Social Community!</h3>
+                    <h3>Rejoignez notre communauté sociale !</h3>
                     <div className="footer__three-top-social">
                         <Social />
                     </div>
@@ -33,10 +33,10 @@ const FooterThree = () => {
                             <div className="footer__three-widget-solution">
                                 <ul>
 									{servicesData.slice(0, 8).map((data, id) => {
-										const words = data.categorie.split(' ');
+										const words = data.titre.split(' ');
 										const firstAndSecondWord = words.slice(0, 2).join(' ');
 										return (
-											<li key={id}><Link href={`/categories/${data.categorie}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
+											<li key={id}><Link href={`/services/${data.slug}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
 										);
 									})}
                                 </ul>
@@ -48,7 +48,7 @@ const FooterThree = () => {
                             <h4 className="ml-60">Resources​</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-									<li><Link href="services"><i className="far fa-chevron-double-right"></i>Service</Link></li>
+									<li><Link href="/services"><i className="far fa-chevron-double-right"></i>Nos formations</Link></li>
 									<li><Link href="faq"><i className="far fa-chevron-double-right"></i>FAQ</Link></li>
 									<li><Link href="testimonial"><i className="far fa-chevron-double-right"></i>Testimonial</Link></li>
 									<li><Link href="about"><i className="far fa-chevron-double-right"></i>About Us</Link></li>

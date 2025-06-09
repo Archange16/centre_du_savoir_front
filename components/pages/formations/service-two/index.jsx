@@ -4,7 +4,7 @@ import BreadCrumb from "../../common/breadcrumb";
 import ServicesMain from "./service-two";
 import ScrollToTop from "../../common/scroll/scroll-to-top";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
-import FooterTwo from "@/components/layout/footers/footer-two";
+import FooterThree from "@/components/layout/footers/footer-three";
 
 const ServicePageTwo = () => {
     return (
@@ -13,7 +13,7 @@ const ServicePageTwo = () => {
             <HeaderTwo />
             <BreadCrumb title="Nos Formations" innerTitle="Nos Formations" />
             <ServicesMain />
-            <FooterTwo />
+            <FooterThree />
             <ScrollToTop />
         </>
     );

@@ -30,7 +30,7 @@ const ChooseUsThree = () => {
                                     <span>Accès international</span>
                                 </div>
                             </div>
-                            <Link href="/categories/Geniecivil" className="btn-one">Voir les formations
+                            <Link href="/services" className="btn-one">Voir les formations
                                 <i className="fas fa-arrow-right"></i>
                             </Link>
                         </div>

@@ -6,6 +6,7 @@ import HeaderTwo from "@/components/layout/headers/header/header-two";
 import FooterTwo from "@/components/layout/footers/footer-two";
 import FormationSingleMain from "./formation";
 import HeaderFour from "@/components/layout/headers/header/header-four";
+import FooterThree from "@/components/layout/footers/footer-three";
 
 const FormationsSingle = ({selectedFormation}) => {
     console.log("selectedFormation", selectedFormation);
@@ -18,7 +19,7 @@ const FormationsSingle = ({selectedFormation}) => {
             <HeaderFour />
             <BreadCrumb  title={firstAndSecondWord} innerTitle={firstAndSecondWord}  />
             <FormationSingleMain selectedFormation={selectedFormation}/>
-            <FooterTwo />
+            <FooterThree />
             <ScrollToTop />
         </>
     );
