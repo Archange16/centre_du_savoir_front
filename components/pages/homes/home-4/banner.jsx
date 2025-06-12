@@ -10,7 +10,7 @@ const BannerFour = () => {
                     <div className="row align-items-center gy-4 justify-content-center">
                         <div className="col-xl-6 col-lg-6">
                             <div className="banner__four-content">
-                                <span className="subtitle-two">Innovating The Future</span>
+                                <span className="subtitle-two">centre professionnel du savoir</span>
                                 <h2>Transformez votre avenir avec des formations professionnelles certifiantes !</h2>
                                 <p>Apprenez à votre rythme, en ligne ou en hybride, avec des formations adaptées à vos besoins.</p>
                                 <div className="banner__four-content-bottom">

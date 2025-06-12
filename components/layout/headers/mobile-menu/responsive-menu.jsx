@@ -28,23 +28,8 @@ const ResponsiveMenu = () => {
                 </li>  
                 <li className='menu-item-has-children'>
                     <Link href='/about'>A propos</Link>
-                   {/*  <ul className='sub-menu' style={activeSubMenu("pages")}>
-                        <li><Link href="/about">About Us</Link></li>
-                        <li><Link href="/testimonial">Testimonials</Link></li>
-                        <li><Link href="/pricing-plan">Pricing Plan</Link></li>
-                        <li className='menu-item-has-children'><Link href='#'>Teams</Link>
-                            <ul className='sub-menu' style={activeSubMenus("team")}>
-                                <li><Link href="/team">Team Style 01</Link></li>
-                                <li><Link href="/team-two">Team Style 02</Link></li>
-                            </ul>
-                            <a className={`mean-expand ${activeIcons("team")}`} onClick={() => actives("team")}></a>
-                        </li>
-                            <li><Link href="/request-quote">Request Quote</Link></li>
-                            <li><Link href="/404">404</Link></li>
-                        </ul>
-                    <a className={`mean-expand ${activeIcon("pages")}`} onClick={() => active("pages")}></a> */}
                 </li>
-                <li className='menu-item-has-children'><Link href='/services'>Nos Services</Link>
+                <li className='menu-item-has-children'><Link href='/services'>Nos Formations</Link>
                     {/* <ul className='sub-menu' style={activeSubMenu("services")}>
                         <li><Link href="/services">Services 01</Link></li>
                         <li><Link href="/services-two">Services 02</Link></li>
@@ -52,15 +37,15 @@ const ResponsiveMenu = () => {
                     </ul>
                     <a className={`mean-expand ${activeIcon("services")}`} onClick={() => active("services")}></a> */}
                 </li>
-                <li className='menu-item-has-children'><Link href='/portfolio/2-columns'> Nos Réalisations</Link>
-                    {/* <ul className='sub-menu' style={activeSubMenu("project")}>
+                {/* <li className='menu-item-has-children'><Link href='/blog'> Blog</Link>
+                    <ul className='sub-menu' style={activeSubMenu("project")}>
                         <li><Link href="/portfolio/2-columns">2 Columns</Link></li>
                         <li><Link href="/portfolio/3-columns">3 Columns</Link></li>
                         <li><Link href="/portfolio/gateway-integration">Portfolio Details</Link></li>
                     </ul>
-                    <a className={`mean-expand ${activeIcon("project")}`} onClick={() => active("project")}></a> */}
-                </li>
-                <li className='menu-item-has-children'><Link href='/blog'>Blog</Link>
+                    <a className={`mean-expand ${activeIcon("project")}`} onClick={() => active("project")}></a>
+                </li> */}
+                <li className='menu-item-has-children'><Link href='/accompagnement'>Accompagnement</Link>
                     {/* <ul className='sub-menu' style={activeSubMenu("blog")}>
                         <li><Link href="/blog">Blog Grid</Link></li>
                         <li><Link href="/blog-standard">Blog Standard</Link></li>

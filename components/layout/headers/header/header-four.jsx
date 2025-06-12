@@ -27,15 +27,19 @@ const HeaderFour = ({variant}) => {
         <div className="top__bar four">
             <div className="custom__container">
                 <div className="row">
-                    <div className="col-xl-7 col-md-7">
+                    <div className="col-xl-4 col-md-7">
                         <div className="top__bar-left">
-                            <span><i className="fas fa-clock"></i>HAY ESAADA immeuble 136 Porte 1 ÉTAGE 3</span>
+                            <span><i className="fas fa-map"></i>HAY ESAADA immeuble 136 Porte 1 ÉTAGE 3</span>
+                        </div>
+                    </div>
+                    <div className="col-xl-4 col-md-5">
+                        <div className="top__bar-right">
                             <Link href="mailto:contact@centreprofessionneldusavoir.com"><i className="fas fa-envelope"></i>contact@centreprofessionneldusavoir.com</Link>
                         </div>
                     </div>
-                    <div className="col-xl-5 col-md-5">
+                     <div className="col-xl-4 col-md-5">
                         <div className="top__bar-right">
-                            <Link href="tel:+212780223487">+212 780-223487</Link>
+                            <Link href="tel:+212780223487"><i className="fas fa-phone"></i>+212 780-223487</Link>
                         </div>
                     </div>
                 </div>

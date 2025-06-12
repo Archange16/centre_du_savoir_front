@@ -3105,7 +3105,7 @@ p {
   color: var(--text-white);
 }
 .top__bar-left a i {
-  font-size: 16px;
+  font-size: 13px;
   margin-right: 5px;
   color: var(--primary-color-1);
 }
@@ -3152,7 +3152,7 @@ p {
   background: var(--primary-color-1);
 }
 .top__bar.four .top__bar-left span {
-  font-size: 18px;
+  font-size: 15px;
   margin-right: 27px;
   text-transform: capitalize;
   color: var(--text-heading-color);
@@ -4379,7 +4379,7 @@ Responsive Menu Css
   position: relative;
 }
 .banner__four-content h2 {
-  font-size: 40px;
+  font-size: 450x;
   line-height: 1.13;
   margin-bottom: 20px;
   text-transform: none;
@@ -4454,7 +4454,7 @@ Responsive Menu Css
 }
 @media (max-width: 480px) {
   .banner__four-content h2 {
-    font-size: 50px;
+    font-size: 30px;
   }
 }
 @media (max-width: 359px) {
