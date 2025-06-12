@@ -1,79 +1,99 @@
 import icon from '../../../../public/assets/img/icon/project-details-icon.png';
 import image1 from '../../../../public/assets/img/portfolio/project-details.png';
 import image2 from '../../../../public/assets/img/portfolio/project-details-2.png';
+import Faq from '../../faq';
+import FaqOne from '../../faq/faq-one';
+import FaqPage from '@/app/faq/page';
 
 const PortfolioDetailsMain = ({singleData}) => {
     return (
         <div className="project__details section-padding">
             <div className="container">
-                <div className="row gy-4 mb-40 justify-content-center">
-                    <div className="col-xl-4 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Database Management</h4>
-                            <div className="project-feature-icon">
-                                <img src={icon.src} alt="image" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-4 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Cloud Computing</h4>
-                            <div className="project-feature-icon">
-                                <img src={icon.src} alt="image" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-4 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Network Security</h4>
-                            <div className="project-feature-icon">
-                                <img src={icon.src} alt="image" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div className="row">
                     <div className="col-xl-12">
                         <div className="project__details-thumb">
-                            <img src={singleData.image.src} alt="image" />
+                           
+                            
                             <div className="project-info">
                                 <div className="project-info-top">
-                                    <h4>Project Details</h4>
+                                    <h4>Centre Professionnel du Savoir</h4>
                                 </div>
                                 <ul>
-                                    <li>Name:<span>Net Works</span></li>
-                                    <li>Author:<span>Rajin Saleh</span></li>
-                                    <li>Date:<span>23 December,2023</span></li>
-                                    <li>Tags:<span>DataMasters</span></li>
-                                    <li>Value:<span className="value">$ 240</span></li>
-                                    <li className="project-rating">
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
+                                    {/* <li>Nom :<span>Centre Professionnel du Savoir</span></li> */}
+                                    <li>Localisation :<span>Marrakech, Maroc 🇲🇦</span></li>
+                                    <li>Public :<span>Entreprises, bureaux d’études, maîtres d’ouvrage</span></li>
+                                    <li>Contact :
+                                        <span>
+                                            +212 780-223487
+                                        </span>
+                                    </li>
+                                    <li>Objectif :
+                                        <span>
+                                            Viabilisation, solidité et conformité technique des ouvrages
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <div className="row gy-4 mb-40 justify-content-center">
+                    <h2>CENTRE PROFESSIONNEL DU SAVOIR</h2>
+                    <p>Votre partenaire technique dans le BTP</p>
+
+                    <div className="col-xl-3 col-lg-5">
+                        <div className="project-feature">
+                            <h4>Études & Conception de Voiries, Assainissement et Routes</h4>
+                           
+                        </div>
+                    </div>
+                    <div className="col-xl-2 col-lg-5">
+                        <div className="project-feature">
+                            <h4>Études Hydrologiques & Hydrauliques</h4>
+                            
+                        </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-5">
+                        <div className="project-feature">
+                            <h4>Calculs des Structures d’Ouvrages d’Art : Ponts, Dalots, Buses, Châteaux d’eau</h4>
+                            
+                        </div>
+                    </div>
+                     <div className="col-xl-2 col-lg-5">
+                        <div className="project-feature">
+                            <h4>Calculs de Structures Bâtiment & Métallique</h4>
+                            
+                        </div>
+                    </div>
+                     <div className="col-xl-2 col-lg-5">
+                        <div className="project-feature">
+                            <h4>Conception des Plans d’Exécution</h4>
+                        
+                        </div>
+                    </div>
+                </div>
+                    
                     <div className="col-xl-8">
                         <div className="project__details-content">
                             <div className="project__details-content-mid">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galltype and scrambled it to make a type specimen book. It has survived not only five centuries tinto electronic typesetting remaining essentially unchanged Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been </p>
-                                <h3>Enabling Seamless IT Experiences</h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galltype and scrambled it to make a type specimen book</p>
-                                <p>. It has survived not only five centuries tinto electronic typesetting remaining essentially unchanged Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been </p>
+                                <h3>Votre partenaire technique dans le BTP</h3>
+                                <p>
+                                    Le Centre Professionnel du Savoir vous accompagne de l’esquisse aux plans d’exécution.
+                                    Nous proposons un accompagnement complet, sur mesure, dans toutes les phases de vos projets techniques.
+                                </p>
+                                <p>
+                                    Notre expertise couvre les études hydrologiques & hydrauliques, les calculs de structures d’ouvrages d’art et les plans d’exécution,
+                                    en garantissant une conformité totale avec les normes en vigueur.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div className="project__details-images">
-                        <img src={image1.src} alt="image" />
-                        <img src={image2.src} alt="image" />
-                    </div>
-                    <div className="project__details-content">
+                    
+                     <div className="project__details-content">
                         <div className="project__details-content-bottom">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr standard dummy text ever since the 1500s, when an unknown printer took a galltype and scrambled it to make a type specimen book. It has survived a only five centuries tinto electronic typesetting remaining essentially unchanged Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been </p>
+                            <p>
+                                Que vous soyez une entreprise, un bureau d’études, un maître d’ouvrage ou un porteur de projet, nous sommes à vos côtés
+                                pour assurer la réussite de vos ouvrages techniques. Disponible pour toute collaboration à travers le Maroc.
+                            </p>
                         </div>
                     </div>
                 </div>

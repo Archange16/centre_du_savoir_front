@@ -212,6 +212,8 @@ input[type=time],
 input[type=datetime],
 input[type=datetime-local],
 input[type=color],
+select,
+option,
 textarea {
   color: var(--body-color);
   border-radius: 5px;
@@ -237,6 +239,7 @@ input[type=time]:focus,
 input[type=datetime]:focus,
 input[type=datetime-local]:focus,
 input[type=color]:focus,
+select:focus,
 textarea:focus {
   color: var(--text-heading-color);
   outline: none;
@@ -6186,14 +6189,19 @@ Responsive Menu Css
   display: flex;
   justify-content: space-between;
   background: var(--color-1);
-  padding: 38px 40px 68px 40px;
+  padding: 15px;
   border-radius: 10px;
   position: relative;
+  height: 100%;
 }
 .project__details .project-feature h4 {
-  width: 54%;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  font-size: 22px;
+  font-weight: 600;
 }
-.project__details .project-feature::before {
+/* .project__details .project-feature::before {
   content: "";
   width: 81%;
   height: 1px;
@@ -6202,7 +6210,7 @@ Responsive Menu Css
   bottom: 38px;
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 .project__details-thumb {
   position: relative;
 }
@@ -6210,11 +6218,11 @@ Responsive Menu Css
   width: 100%;
 }
 .project__details-thumb .project-info {
-  position: absolute;
-  bottom: -44%;
+  position: relative;
+  bottom: 10%;
   right: 0;
-  width: 410px;
-  border-radius: 10px 0 0 10px;
+  width: 100%;
+  border-radius: 10px 10px 10px 10px;
   overflow: hidden;
 }
 .project__details-thumb .project-info .project-info-top {
@@ -10965,4 +10973,12 @@ Responsive Menu Css
   font-weight: 500;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+/*==========================================================================
+* Carte Maps
+=============================================================================*/
+.contact__two-map {
+  height: 100%;
+  min-height: 400px;
+}
+
 

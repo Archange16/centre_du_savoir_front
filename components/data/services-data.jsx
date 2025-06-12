@@ -9,11 +9,16 @@ import services8 from "../../public/assets/img/service/Formation en Qualité, hy
 import services9 from "../../public/assets/img/service/Formation Calcul des Structures et Solidité des Bâtiments.jpg";
 import services10 from "../../public/assets/img/service/Formation en béton armé et structures avancées.jpg";
 
+const brochure = "/assets/img/brochure/CONCEPTION ET REALISATION DES  DES INFRASTRUCTURES ROUTIÈRES AVANCÉ.pdf";
+
+
+
 const servicesData = [
     {
       "id": 1,
       "documentId": "calcstruct1",
       "image": services9,
+      "brochure": brochure,
       "titre": "Formation Calcul des Structures et Solidité des Bâtiments",
       "slug": "formation-calcul-structures-solidite-batiments",
       "description_courte": "Acquérir les compétences pour analyser et concevoir des structures de bâtiment robustes et sécurisées.",
@@ -51,6 +56,7 @@ const servicesData = [
     "id": 2,
     "documentId": "opcbtp2",
     "image": services6,
+    "brochure": brochure,
     "titre": "Formation en OPC : Pilotage et Planification BTP",
     "slug": "formation-opc-pilotage-planification-btp",
     "description_courte": "Maîtriser les techniques de gestion de projet dans le secteur du bâtiment et des travaux publics.",
@@ -107,6 +113,7 @@ const servicesData = [
     "id": 3,
     "documentId": "metre-btp3",
     "image": services1,
+    "brochure": brochure,
     "titre": "Formation pour Connaître et Maîtriser le Métré dans le BTP",
     "slug": "formation-metre-btp",
     "description_courte": "Maîtriser les techniques de métré pour des estimations précises et une optimisation des coûts en construction.",
@@ -160,6 +167,7 @@ const servicesData = [
     "id": 4,
     "documentId": "mines-tech4",
     "image": services5,
+    "brochure": brochure,
     "titre": "Formation en Techniques Avancées pour l'Exploitation des Travaux Miniers",
     "slug": "formation-techniques-minieres",
     "description_courte": "Acquérir des compétences de pointe pour optimiser l'extraction minière avec des méthodes modernes et durables.",
@@ -213,6 +221,7 @@ const servicesData = [
     "id": 5,
     "documentId": "beton-hydraulique5",
     "image": services10,
+    "brochure": brochure,
     "titre": "Formation en béton armé et structures avancées : modélisation Hydraulique en génie civil",
     "slug": "formation-beton-armee-hydraulique",
     "description_courte": "Maîtriser la conception des structures en béton armé avec intégration de modélisation hydraulique pour les infrastructures complexes.",
@@ -271,6 +280,7 @@ const servicesData = [
     "id": 6,
     "documentId": "routes-avance6",
     "image": services4,
+    "brochure": brochure,
     "titre": "Formation en Conception et Réalisation des Infrastructures Routières avancé",
     "slug": "formation-infrastructures-routieres-avance",
     "description_courte": "Acquérir une expertise approfondie pour concevoir des routes modernes, sûres et durables.",
@@ -332,6 +342,7 @@ const servicesData = [
     "id": 7,
     "documentId": "qhse-gc7",
     "image": services8,
+    "brochure": brochure,
     "titre": "Formation en Qualité, Hygiène, Sécurité et Environnement (QHSE) pour le Génie Civil",
     "slug": "formation-qhse-genie-civil",
     "description_courte": "Acquérir les compétences pour garantir la sécurité et la conformité réglementaire sur les chantiers de construction.",
@@ -383,6 +394,7 @@ const servicesData = [
     "id": 8,
     "documentId": "vrd-urbaine8",
     "image": services7,
+    "brochure": brochure,
     "titre": "Formation avancée en V.R.D (Voirie Urbaine)",
     "slug": "formation-vrd-voirie-urbaine",
     "description_courte": "Acquérir des compétences pointues en conception et gestion des infrastructures urbaines (voirie, assainissement, eau potable).",
@@ -439,6 +451,7 @@ const servicesData = [
     "id": 9,
     "documentId": "carto-geo9",
     "image": services3,
+    "brochure": brochure,
     "titre": "Formation en Cartographie Géologique et Topographique Avancée",
     "slug": "formation-cartographie-geologique-topographique",
     "description_courte": "Développer des compétences avancées en analyse géospatiale pour la gestion des risques et l'aménagement du territoire.",

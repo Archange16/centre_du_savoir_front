@@ -48,7 +48,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                             <p>{service?.description_courte}</p>
                             <p>{service?.description_longue}</p>
                             <div className="all__sidebar-item-search mb-3">
-                                <button className="btn-one">Téléchager notre plaqute<i className="fal fa-download"></i></button> 
+                                <button className="btn-one"><Link href={`/brochures/${service?.slug}`}>Téléchager notre plaqute</Link><i className="fal fa-download"></i></button> 
                             </div>
                             
                             <div className="blog__details-portfolio">

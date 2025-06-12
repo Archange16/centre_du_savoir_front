@@ -21,7 +21,7 @@ const MainMenu = () => {
                 </li>
                {/*  <li className="menu-item-has-children"><Link href="/blog">Blog</Link>
                 </li> */}
-                <li className="menu-item-has-children"><Link href="/request-quote">Demande d'admission</Link>
+                <li className="menu-item-has-children"><Link href="/accompagnement">Accompagnement</Link>
                 </li>
                 <li className="menu-item-has-children"><Link href="/contact">Contact</Link></li>
             </ul>
