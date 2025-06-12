@@ -13,9 +13,9 @@ export default async function handler(req, res) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: "mail.evolapp.com",
-      port: 465,
-      secure: true,
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_SECURE === 'true',
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -24,15 +24,15 @@ export default async function handler(req, res) {
 
     await transporter.sendMail({
       from: `"${name}" <${process.env.SMTP_USER}>`,
-      to: 'evolapp10@gmail.com',
+      to: process.env.MAIL_TO,
       replyTo: email,
       subject: subject || 'Nouveau message de formulaire',
       html: `
         <h3>Nouvelle demande de contact</h3>
         <p><strong>Nom :</strong> ${name}</p>
         <p><strong>Email :</strong> ${email}</p>
-        <p><strong>Téléphone :</strong> ${phone}</p>
-        <p><strong>Sujet :</strong> ${subject}</p>
+        <p><strong>Téléphone :</strong> ${phone || 'Non fourni'}</p>
+        <p><strong>Sujet :</strong> ${subject || 'Pas de sujet'}</p>
         <p><strong>Message :</strong><br/>${message}</p>
       `,
     });
