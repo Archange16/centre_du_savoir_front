@@ -14,7 +14,7 @@ const AboutUs = () => {
     return (
       <>
         <SEO pageTitle="À propos de nous" />
-        <HeaderFour />
+        <HeaderTwo />
         <BreadCrumb title="À propos de nous" innerTitle="À propos de nous" />
         <AboutMain />
         <Team />

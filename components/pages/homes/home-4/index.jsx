@@ -10,12 +10,13 @@ import ChooseUsThree from "./choose-us";
 import WorkProcess from "./work";
 import FooterThree from "@/components/layout/footers/footer-three";
 import AboutThree from "./aboutp";
+import HeaderTwo from "@/components/layout/headers/header/header-two";
 
 const HomeFour = () => {
     return (
         <div>
             <SEO pageTitle='Digital Business' />
-            <HeaderFour />
+            <HeaderTwo />
             <BannerFour />
             <AboutFour />
             <ServicesFour />

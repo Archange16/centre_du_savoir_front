@@ -39,8 +39,8 @@ const HeaderTwo = ({variant}) => {
                         <div className="col-xl-7 col-md-7">
                             <div className="top__bar-left">
                                 <span><i className="fas fa-clock"></i>Horaires : 08h - 18h</span>
-                                <Link href="mailto:contact@evolapp.com">
-                                    <i className="fas fa-envelope"></i>contact@evolapp.com
+                                <Link href="mailto:contact@centreperofessionneldusavoir.com">
+                                    <i className="fas fa-envelope"></i>contact@centreperofessionneldusavoir.com
                                 </Link>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ const HeaderTwo = ({variant}) => {
                                     <i className="flaticon-phone-call"></i>
                                     <div className="header__area-menubar-right-box-help-info">
                                         <span>Appelez-nous</span>
-                                        <Link href="tel:+242061234567">(+212) 06 47 810243</Link>
+                                        <Link href="tel:+242061234567">(+212) 780-223487</Link>
                                     </div>
                                 </div>
 

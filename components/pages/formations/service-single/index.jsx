@@ -16,7 +16,7 @@ const FormationsSingle = ({selectedFormation}) => {
     return (
         <>
             <SEO pageTitle={firstAndSecondWord?.title} />             
-            <HeaderFour />
+            <HeaderTwo />
             <BreadCrumb  title={firstAndSecondWord} innerTitle={firstAndSecondWord}  />
             <FormationSingleMain selectedFormation={selectedFormation}/>
             <FooterThree />

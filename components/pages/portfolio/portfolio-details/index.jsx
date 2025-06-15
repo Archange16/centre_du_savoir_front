@@ -12,9 +12,9 @@ import FooterThree from "@/components/layout/footers/footer-three";
 const PortfolioDetails = ({singleData}) => {
     return (
         <>
-            <SEO pageTitle={singleData?.title} />
-            <HeaderFour />
-            <BreadCrumb title={singleData?.title} innerTitle={singleData?.title} />
+            <SEO pageTitle="CENTRE PROFESSIONNEL DU SAVOIR" />
+            <HeaderTwo />
+            <BreadCrumb title="CENTRE PROFESSIONNEL DU SAVOIR" innerTitle="Votre partenaire technique dans le BTP" />
             <PortfolioDetailsMain />
             <FooterThree />
             <ScrollToTop />

@@ -32,9 +32,9 @@ const FooterThree = () => {
                             <h4 className="ml-60">Nos formations</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-									{servicesData.slice(0, 8).map((data, id) => {
+									{servicesData.slice(0, 4).map((data, id) => {
 										const words = data.titre.split(' ');
-										const firstAndSecondWord = words.slice(0, 2).join(' ');
+										const firstAndSecondWord = words.slice(2, 10).join(' ');
 										return (
 											<li key={id}><Link href={`/services/${data.slug}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
 										);

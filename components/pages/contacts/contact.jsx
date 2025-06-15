@@ -5,6 +5,7 @@ import ScrollToTop from "../common/scroll/scroll-to-top";
 import FormArea from "./form";
 import FooterTwo from "@/components/layout/footers/footer-two";
 import HeaderFour from "@/components/layout/headers/header/header-four";
+import HeaderTwo from "@/components/layout/headers/header/header-two";
 
 //import Map from '@/components/maps/LeafletMap';
 
@@ -16,7 +17,7 @@ const ContactUs = () => {
     return (
         <>
             <SEO pageTitle="Contactez-nous" />        
-            <HeaderFour />
+            <HeaderTwo />
             <BreadCrumb title="Contactez nous" innerTitle="Contactez-nous" />
             <div className="contact__two section-padding">
                 <div className="container">

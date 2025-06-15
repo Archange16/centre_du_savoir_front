@@ -1,105 +1,88 @@
-import icon from '../../../../public/assets/img/icon/project-details-icon.png';
-import image1 from '../../../../public/assets/img/portfolio/project-details.png';
-import image2 from '../../../../public/assets/img/portfolio/project-details-2.png';
-import Faq from '../../faq';
-import FaqOne from '../../faq/faq-one';
-import FaqPage from '@/app/faq/page';
+import Link from 'next/link';
+import image2 from '../../../../public/assets/img/service/service-details.png';
+import { useParams } from 'next/navigation';
+import servicesData from '@/components/data/services-data';
+import BlogSidebar from '../../blogs/blog-sidebar/blog-sidebar';
 
-const PortfolioDetailsMain = ({singleData}) => {
+
+
+const FormationSingleMain = ({selectedFormation}) => {
+
+    const params = useParams();
+    const { id } = params;
+
+    // Chercher le service correspondant dans la data
+    const service = selectedFormation/* .find((item) => item.id === id) */;
+    // Vérifier si le service existe
+   
+      //const category = singleData?.title.split(' ').slice(0, 2).join(' ') + '..';
+
     return (
-        <div className="project__details section-padding">
+        <>
+        <div className="blog__details section-padding">
             <div className="container">
-                <div className="row">
-                    <div className="col-xl-12">
-                        <div className="project__details-thumb">
-                           
+                <div className="row gy-4 flex-wrap-reverse">
+                    <div className="col-xl-7">
+                        <div className="blog__details-thumb">
+                                {/* <img className="img__full" src={service.image.src} alt="blog-details-image" /> */}
+                            </div>
+                            <div className="blog__details-content">
+                               
+                            <h2>🔧 Nos services :</h2>
+                            <p>{service?.description_courte}</p>
+                            <p>{service?.description_longue}</p>
                             
-                            <div className="project-info">
-                                <div className="project-info-top">
-                                    <h4>Centre Professionnel du Savoir</h4>
-                                </div>
-                                <ul>
-                                    {/* <li>Nom :<span>Centre Professionnel du Savoir</span></li> */}
-                                    <li>Localisation :<span>Marrakech, Maroc 🇲🇦</span></li>
-                                    <li>Public :<span>Entreprises, bureaux d’études, maîtres d’ouvrage</span></li>
-                                    <li>Contact :
-                                        <span>
-                                            +212 780-223487
-                                        </span>
+                            <div className="blog__details-portfolio">
+                                <h6>Études & Conception de Voiries, Assainissement et Routes</h6>
+                                <h6>Études Hydrologiques & Hydraulique</h6>
+                                <h6>Calculs des Structures d’Ouvrages d’Art : Ponts, Dalots, Buses, Châteaux d’eau</h6>
+                                <h6>Calculs de Structures Bâtiment & Métallique</h6>
+                                <h6>Conception des Plans d’Exécution</h6>
+                                <h6>Calculs de Structures Bâtiment & Métallique</h6>
+                                <h6>Calculs de Structures Bâtiment & Métallique</h6>
+                                 <h2>Conception des Plans d’Exécution :</h2>
+                                 <h6>🎯 De l’esquisse aux plans d’exécution : un accompagnement complet, sur mesure.</h6>
+                                 <h6>💼 Pour les professionnels du BTP :</h6>
+                                 <h6>Entreprises, bureaux d’études, maîtres d’ouvrage, porteurs de projets
+</h6>
+                                <ul className="blog__details-portfolio-middle">
+                                    {service?.profils_concernes?.map((item, index) => (
+                                    <li key={index}>
+                                        
+                                        <h5><i className="fas fa-check-circle"></i>✅ Objectif :</h5>
+                                        <p>{item.competences}</p>
+                                        {/* Pas besoin de Link si ce sont juste des prérequis en texte */}
                                     </li>
-                                    <li>Objectif :
-                                        <span>
-                                            Viabilisation, solidité et conformité technique des ouvrages
-                                        </span>
+                                    ))}
+                            
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div className="blog__details-comment-form">
+                            <div className="all__sidebar-item">
+                            <h6>✅ Objectif :</h6>
+                            <div className="all__sidebar-item-search">
+                               <ul className="blog__details-portfolio-middle">
+                                    <li>
+                                        <i className="fas fa-check-circle"></i>
+                                        Vous accompagner dans la viabilisation, la solidité et la conformité technique de vos ouvrages.
+                                        📍 Disponible pour collaboration sur tout projet technique.
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div className="row gy-4 mb-40 justify-content-center">
-                    <h2>CENTRE PROFESSIONNEL DU SAVOIR</h2>
-                    <p>Votre partenaire technique dans le BTP</p>
-
-                    <div className="col-xl-3 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Études & Conception de Voiries, Assainissement et Routes</h4>
-                           
                         </div>
                     </div>
-                    <div className="col-xl-2 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Études Hydrologiques & Hydrauliques</h4>
-                            
-                        </div>
-                    </div>
-                    <div className="col-xl-3 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Calculs des Structures d’Ouvrages d’Art : Ponts, Dalots, Buses, Châteaux d’eau</h4>
-                            
-                        </div>
-                    </div>
-                     <div className="col-xl-2 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Calculs de Structures Bâtiment & Métallique</h4>
-                            
-                        </div>
-                    </div>
-                     <div className="col-xl-2 col-lg-5">
-                        <div className="project-feature">
-                            <h4>Conception des Plans d’Exécution</h4>
-                        
-                        </div>
-                    </div>
-                </div>
-                    
-                    <div className="col-xl-8">
-                        <div className="project__details-content">
-                            <div className="project__details-content-mid">
-                                <h3>Votre partenaire technique dans le BTP</h3>
-                                <p>
-                                    Le Centre Professionnel du Savoir vous accompagne de l’esquisse aux plans d’exécution.
-                                    Nous proposons un accompagnement complet, sur mesure, dans toutes les phases de vos projets techniques.
-                                </p>
-                                <p>
-                                    Notre expertise couvre les études hydrologiques & hydrauliques, les calculs de structures d’ouvrages d’art et les plans d’exécution,
-                                    en garantissant une conformité totale avec les normes en vigueur.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                     <div className="project__details-content">
-                        <div className="project__details-content-bottom">
-                            <p>
-                                Que vous soyez une entreprise, un bureau d’études, un maître d’ouvrage ou un porteur de projet, nous sommes à vos côtés
-                                pour assurer la réussite de vos ouvrages techniques. Disponible pour toute collaboration à travers le Maroc.
-                            </p>
-                        </div>
+                    <div className='col-xl-5'>
+                        <BlogSidebar />
                     </div>
                 </div>
             </div>
-        </div>
+        </div>       
+        </>
     );
 };
 
-export default PortfolioDetailsMain;
+export default FormationSingleMain;
