@@ -18,7 +18,13 @@ const ServicesMain = () => {
                                     <div className="blog__four-single-blog-content-top">
                                         <span><i className="fas fa-clock"></i>{data.duree_heures} h</span> {/* Horloge pour durée */}
                                         <span><i className="fas fa-euro-sign"></i>{data.prix} €</span> {/* Euro pour prix */}
-                                        <span><i className="fas fa-laptop"></i> Cours en ligne</span> {/* Laptop pour cours en ligne */}
+                                        <span><i className="fas fa-laptop"></i> Cours en ligne </span> {/* Laptop pour cours en ligne */}
+                                        {data.disponible && (
+                                        <span>
+                                            <i className="fas fa-check-circle"></i> {data.disponible}
+                                        </span>
+                                        )} {/* Laptop pour cours en ligne */}
+                                        
                                     </div>
                                     <h4 className="blog__four-single-blog-content-title" href={`/blog/${data.id}`}>{data.titre}</h4>
                                     <Link className="btn-one" href={`/services/${data.slug}`}>En savoir plus<i className="fas fa-angle-right"></i></Link>

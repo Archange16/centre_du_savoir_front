@@ -12,7 +12,7 @@ const RequestQuotePage = () => {
     return (
         <>
             <SEO pageTitle="Téléchargement de la plaquette" />
-            <HeaderFour />
+            <HeaderTwo />
             <BreadCrumb title="Téléchargement de la plaquette" innerTitle="Téléchargement de la plaquette" />
             <RequestQuoteMain />
             <FooterThree />

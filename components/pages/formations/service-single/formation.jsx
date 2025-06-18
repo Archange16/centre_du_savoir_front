@@ -45,11 +45,11 @@ const FormationSingleMain = ({selectedFormation}) => {
                                 </span>
                             </div>
                             <h2>{service?.titre}</h2>
-                            <p>{service?.description_courte}</p>
-                            <p>{service?.description_longue}</p>
                             <div className="all__sidebar-item-search mb-3">
                                 <button className="btn-one"><Link href={`/brochures/${service?.slug}`}>Téléchager notre plaqute</Link><i className="fal fa-download"></i></button> 
                             </div>
+                            <p>{service?.description_courte}</p>
+                            {/* <p>{service?.description_longue}</p> */}
                             
                             <div className="blog__details-portfolio">
                                 <h6>PROFILS CONCERNÉS & COMPÉTENCES ACQUISES:</h6>
