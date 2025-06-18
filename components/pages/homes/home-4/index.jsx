@@ -15,7 +15,7 @@ import HeaderTwo from "@/components/layout/headers/header/header-two";
 const HomeFour = () => {
     return (
         <div>
-            <SEO pageTitle='Digital Business' />
+            <SEO pageTitle='Centre professionnel du savoir' />
             <HeaderTwo />
             <BannerFour />
             <AboutFour />
