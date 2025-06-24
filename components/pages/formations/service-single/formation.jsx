@@ -70,10 +70,10 @@ const FormationSingleMain = ({selectedFormation}) => {
 
                         <div className="blog__details-comment-form">
                             <div className="all__sidebar-item">
-                            <h6>OBJECTIFS DE LA FORMATION:</h6>
+                            <h6>Logiciels utilisés:</h6>
                             <div className="all__sidebar-item-search">
                                <ul className="blog__details-portfolio-middle">
-                                    {service?.prerequis?.map((item, index) => (
+                                    {service?.logiciels?.map((item, index) => (
                                     <li key={index}>
                                         <i className="fas fa-check-circle"></i>
                                         {/* Pas besoin de Link si ce sont juste des prérequis en texte */}
