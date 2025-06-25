@@ -42,22 +42,22 @@ const FormArea = () => {
         <div className="row">
           <div className="col-md-12 mb-30">
             <div className="contact__form-area-item">
-              <input type="text" name="name" placeholder="Full Name" required value={formData.name} onChange={handleChange} />
+              <input type="text" name="name" placeholder="Nom et prénom" required value={formData.name} onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-6 mb-30">
             <div className="contact__form-area-item">
-              <input type="email" name="email" placeholder="Email Address" required value={formData.email} onChange={handleChange} />
+              <input type="email" name="email" placeholder="Addresse Email" required value={formData.email} onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-6 mb-30">
             <div className="contact__form-area-item">
-              <input type="tel" name="phone" placeholder="Phone Number" required value={formData.phone} onChange={handleChange} />
+              <input type="tel" name="phone" placeholder="Numéro de téléphone" required value={formData.phone} onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-12 mb-30">
             <div className="contact__form-area-item">
-              <input type="text" name="subject" placeholder="Subject" value={formData.subject} onChange={handleChange} />
+              <input type="text" name="subject" placeholder="Objet" value={formData.subject} onChange={handleChange} />
             </div>
           </div>
           <div className="col-md-12 mb-30">
@@ -67,7 +67,7 @@ const FormArea = () => {
           </div>
           <div className="col-md-12">
             <div className="contact__two-right-form-item">
-              <button className="btn-one" type="submit">Submit Now</button>
+              <button className="btn-one" type="submit">Envoyer</button>
             </div>
           </div>
         </div>

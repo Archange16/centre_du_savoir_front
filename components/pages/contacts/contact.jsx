@@ -6,6 +6,8 @@ import FormArea from "./form";
 import FooterTwo from "@/components/layout/footers/footer-two";
 import HeaderFour from "@/components/layout/headers/header/header-four";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
+import FooterFour from "@/components/layout/footers/footer-four";
+import FooterThree from "@/components/layout/footers/footer-three";
 
 //import Map from '@/components/maps/LeafletMap';
 
@@ -40,7 +42,7 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
-            <FooterTwo />
+            <FooterThree/>
             <ScrollToTop />
         </>
     );

@@ -20,10 +20,10 @@ const FooterThree = () => {
                             <div className="footer__three-widget-about">
                                 <Link href="/"><img src={logo.src} alt="image" /></Link>
                                 <p>Bienvenue au Centre Professionnel du Savoir – une plateforme dédiée à la formation professionnelle en génie civil. Nous vous proposons des formations 100 % en ligne, interactives et adaptées aux exigences du marché du travail</p>
-                                <form action="#">
+                               {/*  <form action="#">
                                     <input type="text" name="email" placeholder="Your e-mail" required="" />
                                     <button type="submit"><i className="fas fa-paper-plane"></i></button>
-                                 </form>
+                                 </form> */}
                             </div>
                         </div>
                     </div>
@@ -49,9 +49,9 @@ const FooterThree = () => {
                             <div className="footer__three-widget-solution">
                                 <ul>
 									<li><Link href="/services"><i className="far fa-chevron-double-right"></i>Nos formations</Link></li>
-									<li><Link href="faq"><i className="far fa-chevron-double-right"></i>FAQ</Link></li>
-									<li><Link href="testimonial"><i className="far fa-chevron-double-right"></i>Testimonial</Link></li>
-									<li><Link href="about"><i className="far fa-chevron-double-right"></i>About Us</Link></li>
+									<li><Link href="/accompagnement"><i className="far fa-chevron-double-right"></i>Suivi de projet</Link></li>
+									{/* <li><Link href="testimonial"><i className="far fa-chevron-double-right"></i>Testimonial</Link></li> */}
+									<li><Link href="about"><i className="far fa-chevron-double-right"></i>A propos de nous</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -66,7 +66,7 @@ const FooterThree = () => {
                                     </div>
                                     <div className="footer__three-widget-location-item-info email">
                                         <span>Email</span>
-                                        <Link href="mailto:helpinfo@gmail.com">helpinfo@gmail.com</Link>
+                                        <Link href="mailto: contact@centreperofessionneldusavoir.com">centreperofessionneldusavoir.com</Link>
                                     </div>
                                 </div>
                                 <div className="footer__three-widget-location-item">
@@ -75,7 +75,7 @@ const FooterThree = () => {
                                     </div>
                                     <div className="footer__three-widget-location-item-info">
                                         <span>Address</span>
-                                        <Link href="https://google.com/maps">321 Data Drive, Cloud City, WA 67890</Link>
+                                        <Link href="https://google.com/maps">HAY ESAADA immeuble 136 Porte 1 ÉTAGE 3</Link>
                                     </div>
                                 </div>
                             </div>
@@ -88,13 +88,13 @@ const FooterThree = () => {
                     <div className="row justify-content-between copyright__one-container-area">
                         <div className="col-xl-5 col-lg-6"> 
                             <div className="copyright__one-left">
-                                <p>© ThemeOri  2024 | All Rights Reserved</p>
+                                <p>© 2024 |<Link href="https://www.centreprofessionneldusavoir.com/"> centreprofessionneldusavoir.com</Link> </p>
                             </div>
                         </div>
                         <div className="col-xl-5 col-lg-6">
                             <div className="copyright__one-right">
-                                <Link href="/about">Privacy Policy</Link>
-                                <Link href="/contact">Contact Us</Link>
+                                <Link href="/about">A propos de nous</Link>
+                                <Link href="/contact">Contactez-nous</Link>
                             </div>
                         </div>
                     </div>
