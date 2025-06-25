@@ -3811,12 +3811,13 @@ Responsive Menu Css
   top: 0;
   left: 0;
   width: 400px;
-  height: 100%;
+  height: 100vh;
   z-index: 9999;
   transition: 0.5s;
   transform: translateX(-100%);
   padding: 40px;
   background: var(--color-5);
+  overflow-y: auto;
 }
 .menu__bar-popup.show {
   opacity: 1;
@@ -3859,7 +3860,7 @@ Responsive Menu Css
   top: 0;
   left: 0;
   width: 0;
-  height: 100%;
+  height: 1000%;
   transition: 0.8s;
   visibility: hidden;
   z-index: 9;
