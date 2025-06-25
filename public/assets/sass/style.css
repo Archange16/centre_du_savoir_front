@@ -420,7 +420,7 @@ p {
 }
 
 .subtitle-two {
-  background: rgba(14, 89, 242, 0.2392156863);
+  background: rgba(14, 90, 242, 0.719);
 }
 
 .subtitle-three::before {
@@ -4388,17 +4388,20 @@ Responsive Menu Css
   position: relative;
 }
 .banner__four-content h2 {
-  font-size: 450x;
+  font-size: 50px;
   line-height: 1.13;
   margin-bottom: 20px;
   text-transform: none;
   color: var(--text-white);
+  text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .banner__four-content p {
   font-size: 25px;
   text-transform: none;
   margin-bottom: 40px;
-  color: var(--primary-color-1);
+  color: var(--color-6);
+  font-weight: 600;
+  text-shadow: 0 0 5px white;
 }
 .banner__four-content a:hover {
   color: var(--text-white);
@@ -5074,7 +5077,7 @@ Responsive Menu Css
   width: 285px;
 }
 .about__four-content h2 {
-  font-size: 35px;
+  font-size: 40px;
   text-transform: none;
   margin-bottom: 30px;
 }

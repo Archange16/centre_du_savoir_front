@@ -5,7 +5,7 @@ import banner1 from "../../../../public/assets/img/banner/banner-four.png";
 const BannerFour = () => {
     return (
         <>
-            <div className="banner__four" style={{backgroundImage: `url(${bannerBg.src})`}}>
+            <div className="banner__four pt-5 pb-5" style={{backgroundImage: `url(${bannerBg.src})`}}>
                 <div className="container">
                     <div className="row align-items-center gy-4 justify-content-center">
                         <div className="col-xl-6 col-lg-6">
@@ -28,7 +28,7 @@ const BannerFour = () => {
                         <div className="col-xl-5 offset-xl-1 col-lg-6 col-md-9">
                             <div className="banner__four-image">
                                 <div className="banner__four-image-wrapper">
-                                <img src={banner1.src} alt="image" />
+                               {/*  <img src={banner1.src} alt="image" /> */}
                                 </div>
                             </div>
                         </div>
