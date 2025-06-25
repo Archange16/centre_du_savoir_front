@@ -24,7 +24,7 @@ const FormationSingleMain = ({selectedFormation}) => {
         <div className="blog__details section-padding">
             <div className="container">
                 <div className="row gy-4 flex-wrap-reverse">
-                    <div className="col-xl-7">
+                    <div className="col-xl-7 col-12 order-2 order-xl-1">
                         <div className="blog__details-thumb">
                             <span className="date">Domaine : { service?.domaine}</span>
                                 <img className="img__full" src={service.image.src} alt="blog-details-image" />
@@ -100,7 +100,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                         </div>
                         </div>
                     </div>
-                    <div className='col-xl-5'>
+                    <div className='col-xl-5 col-12 order-1 order-xl-2'>
                         <BlogSidebar />
                     </div>
                 </div>
