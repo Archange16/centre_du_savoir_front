@@ -11,6 +11,7 @@ import WorkProcess from "./work";
 import FooterThree from "@/components/layout/footers/footer-three";
 import AboutThree from "./aboutp";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
+import WorkArea from "../home/work";
 
 const HomeFour = () => {
     return (
@@ -23,6 +24,7 @@ const HomeFour = () => {
             <AboutThree />
             <Video />
             <WorkProcess />
+            <WorkArea />
             <ChooseUsThree />
             <FooterThree />
             <ScrollToTop />

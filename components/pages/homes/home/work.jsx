@@ -2,6 +2,8 @@ import workBg from "../../../../public/assets/img/work-process/work-process-bg.p
 import image1 from "../../../../public/assets/img/work-process/work-process-1.png";
 import image2 from "../../../../public/assets/img/work-process/work-process-2.png";
 import Count from "../../common/count";
+import FormSuiviProjet from "../../contacts/form-suivi-projet";
+import BlogSidebarSuivi from "../../blogs/blog-sidebar/blog-sidebar-suivi";
 
 const WorkArea = () => {
     return (
@@ -10,54 +12,56 @@ const WorkArea = () => {
                 <div className="row align-items-end work-process-area__one-title">
                     <div className="col-xl-7 col-lg-7">
                         <div className="work-process-area__one-content-left">
-                            <span className="subtitle-one">Work Process</span>
-                            <h2>Sustainable and Responsible Computing</h2>
+                            <span className="subtitle-one">Suivi de projet</span>
+                            <h2>Votre partenaire technique dans le BTP</h2>
                         </div>
                     </div>
                     <div className="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1">
                         <div className="work-process-area__one-content-right">
-                            <p>Discuss strategies for reducing energy consumption in data centers, personal devices, and reduce power usage</p>
+                            <p>Vous accompagner dans la viabilisation, la solidité et la conformité technique de vos ouvrages. 📍 Disponible pour collaboration sur tout projet technique.</p>
                         </div>
                     </div>
                 </div>
                 <div className="row justify-content-center gy-4">
                     <div className="col-xl-6">
                         <div className="work-process-area__one-single-work">
-                            <span>01</span>
                             <div className="work-process-area__one-single-work-content">
-                                <h4>Assess Requirements Precisely</h4>
-                                <p>Begin by comprehensively understanding your business needs to ensure a perfect fit for tech solutions.</p>
+                                <h4>Études & Conception de Voiries, Assainissement et Routes</h4>
                             </div>
                         </div>
                         <div className="work-process-area__one-single-work">
-                            <span>02</span>
                             <div className="work-process-area__one-single-work-content">
-                                <h4>Develop Custom Solutions</h4>
-                                <p>Engage in crafting tailor-made software designed meticulously to align with your specific targets.</p>
+                                <h4>Études Hydrologiques & Hydraulique</h4>
                             </div>
                         </div>
                         <div className="work-process-area__one-single-work">
-                            <span>03</span>
                             <div className="work-process-area__one-single-work-content">
-                                <h4>Implement and Support</h4>
-                                <p>Seamlessly integrate the new systems into framework with ongoing support for continual optimization.</p>
+                                <h4>Calculs des Structures d’Ouvrages d’Art : Ponts, Dalots, Buses, Châteaux d’eau</h4>
+                            </div>
+                        </div>
+                        <div className="work-process-area__one-single-work">
+                            <div className="work-process-area__one-single-work-content">
+                                <h4>Calculs de Structures Bâtiment & Métallique</h4>
+                            </div>
+                        </div>
+                        <div className="work-process-area__one-single-work">
+                            <div className="work-process-area__one-single-work-content">
+                                <h4>Conception des Plans d’Exécution</h4>
+                            </div>
+                        </div>
+                        <div className="work-process-area__one-single-work">
+                            <div className="work-process-area__one-single-work-content">
+                                <h4>Calculs de Structures Bâtiment & Métallique</h4>
+                            </div>
+                        </div>
+                        <div className="work-process-area__one-single-work">
+                            <div className="work-process-area__one-single-work-content">
+                                <h4>Calculs de Structures Bâtiment & Métallique</h4>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-6">
-                        <div className="work-process-area__one-right-img">
-                            <img src={image1.src} alt="image" />
-                        </div>
-                        <div className="work-process-area__one-right-counter-img">
-                            <div className="img-counter">
-                                <div className="counter-only">
-                                    <h2 className="counter"><Count number={20}/></h2>
-                                    <h2>+</h2>
-                                </div>
-                                <span>years of experiences</span>
-                            </div>
-                            <img src={image2.src} alt="image" />
-                        </div>
+                        <BlogSidebarSuivi/>
                     </div>
                 </div>
             </div>
