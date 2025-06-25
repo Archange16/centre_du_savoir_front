@@ -8507,7 +8507,7 @@ Responsive Menu Css
 .blog__four-single-blog-content {
   border: 2px solid var(--color-4);
   border-top: 0;
-  padding: 20px 41px;
+  padding: 20px 0px;
   padding-bottom: 15px;
   border-radius: 0 0 20px 20px;
   text-align: center;
@@ -8522,7 +8522,7 @@ Responsive Menu Css
   border-radius: 50px;
   display: flex;
   align-items: center;
-  width: 350px;
+  width: 340px;
   flex-wrap: wrap;
   -moz-column-gap: 24px;
        column-gap: 24px;
@@ -8589,6 +8589,20 @@ Responsive Menu Css
     justify-content: center;
     row-gap: 3px;
   }
+  .blog__four-single-blog-content-top {
+  background-color: var(--color-1);
+  padding: 10px 25px;
+  transform: translateY(-0px);
+  margin: auto;
+  margin-bottom: -20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 350px;
+  flex-wrap: wrap;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+}
 }
 /*==========================================================================
 * Blog With Sidebar Style
