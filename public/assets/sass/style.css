@@ -3105,7 +3105,7 @@ p {
   justify-content: start;
 }
 .top__bar-left a {
-  font-size: 18px;
+  font-size: 17px;
   margin-right: 27px;
   text-transform: lowercase;
   color: var(--text-heading-color);
