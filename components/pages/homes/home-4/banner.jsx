@@ -15,13 +15,13 @@ const BannerFour = () => {
                                 <p>Apprenez à votre rythme, en ligne ou en hybride, avec des formations adaptées à vos besoins.</p>
                                 <div className="banner__four-content-bottom">
                                     <Link href="/services" className="btn-two">Découvrez nos formations<i className="fas fa-arrow-right"></i></Link>
-                                    <div className="banner__four-content-call">
+                                    <Link href="/accompagnement" className="btn-four">Suivi de projet<i className="fas fa-arrow-right"></i></Link>
+                                   {/*  <div className="banner__four-content-call">
                                         <i className="flaticon-telephone-call"></i>
                                         <div className="banner__four-content-call-right">
-                                            <span>Étudions votre projet</span>
-                                            <Link href="tel:+212780223487">+212 780-223487</Link>
+                                            <Link href="/services" className="btn-two">Découvrez nos formations<i className="fas fa-arrow-right"></i></Link>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

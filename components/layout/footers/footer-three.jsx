@@ -66,7 +66,7 @@ const FooterThree = () => {
                                     </div>
                                     <div className="footer__three-widget-location-item-info email">
                                         <span>Email</span>
-                                        <Link href="mailto: contact@centreperofessionneldusavoir.com">centreperofessionneldusavoir.com</Link>
+                                        <Link href="mailto:contact@centreperofessionneldusavoir.com">centreperofessionneldusavoir.com</Link>
                                     </div>
                                 </div>
                                 <div className="footer__three-widget-location-item">
@@ -88,14 +88,14 @@ const FooterThree = () => {
                     <div className="row justify-content-between copyright__one-container-area">
                         <div className="col-xl-5 col-lg-6"> 
                             <div className="copyright__one-left">
-                                <p>© 2024 |<Link href="https://www.centreprofessionneldusavoir.com/"> centreprofessionneldusavoir.com</Link> </p>
+                                <p>© 2024 |<Link href="https://www.centreprofessionneldusavoir.com/">centreprofessionneldusavoir.com</Link> </p>
                             </div>
                         </div>
                         <div className="col-xl-5 col-lg-6">
-                            <div className="copyright__one-right">
+                           {/*  <div className="copyright__one-right">
                                 <Link href="/about">A propos de nous</Link>
                                 <Link href="/contact">Contactez-nous</Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

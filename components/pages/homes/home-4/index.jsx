@@ -12,6 +12,8 @@ import FooterThree from "@/components/layout/footers/footer-three";
 import AboutThree from "./aboutp";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
 import WorkArea from "../home/work";
+import TestimonialTwo from "../home-2/testimonial";
+import AboutTwo from "../home-2/about";
 
 const HomeFour = () => {
     return (
@@ -22,10 +24,11 @@ const HomeFour = () => {
             <AboutFour />
             <ServicesFour />
             <AboutThree />
-            <Video />
+            {/* <Video /> */}
             <WorkProcess />
             <WorkArea />
             <ChooseUsThree />
+            <AboutTwo/>
             <FooterThree />
             <ScrollToTop />
         </div>

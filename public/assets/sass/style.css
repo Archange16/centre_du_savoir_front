@@ -1073,6 +1073,7 @@ p {
   --primary-color-1: #f39200;
   --primary-color-2: #F8E559;
   --primary-color-3: #f39200;
+  --primary-color-4: #d38003;
   --bg-heading-color: #002d4e;
   --text-heading-color: #0f70b7;
   --btn-heading-color: #131313;
@@ -3105,7 +3106,7 @@ p {
   justify-content: start;
 }
 .top__bar-left a {
-  font-size: 17px;
+  font-size: 15px;
   margin-right: 27px;
   text-transform: lowercase;
   color: var(--text-heading-color);
@@ -4568,12 +4569,12 @@ Responsive Menu Css
 * Page Banner CSS
 ==========================================================================*/
 .page__banner {
-  background-image: url('../img/entetesite.webp');
+  background-image: url('../img/banner/banner-four-bg.png');
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
-  padding: 150px 20px;
+  padding: 200px 20px;
 }
 .page__banner::before {
   background-color: var(--bg-heading-color);
@@ -4583,7 +4584,7 @@ Responsive Menu Css
   left: 0;
   width: 100%;
   height: 100%;
-   opacity: 0.9;
+   opacity: 0.5;
   /*visibility: visible; */
 }
 /* .page__banner {
@@ -4769,15 +4770,19 @@ Responsive Menu Css
 /*==========================================================================
 * About Area Two CSS
 ==========================================================================*/
+.about__two{
+  background-color: var(--primary-color-4);
+}
 .about__two-content {
   padding-left: 54px;
 }
 .about__two-content h2 {
   text-transform: none;
   margin-bottom: 17px;
+  color: var(--color-4);
 }
 .about__two-content p {
-  color: var(--color-2);
+  color: var(--color-4);
   margin-bottom: 30px;
   text-transform: none;
 }
@@ -4790,7 +4795,7 @@ Responsive Menu Css
 }
 .about__two-content-service .service span {
   font-size: 18px;
-  color: var(--color-2);
+  color: var(--color-4);
 }
 .about__two-content-service .service i {
   color: var(--primary-color-1);
@@ -10687,6 +10692,13 @@ Responsive Menu Css
   .footer__three-widget-solution {
     margin-left: 0;
   }
+  @media (max-width: 490px){
+  .footer__three-widget-location-item-info a {
+  font-weight: 700;
+  font-size: 14px;
+  }
+  }
+
 }
 /*==========================================================================
 * Footer Four CSS
