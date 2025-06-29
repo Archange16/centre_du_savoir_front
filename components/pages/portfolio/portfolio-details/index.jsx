@@ -14,7 +14,7 @@ const PortfolioDetails = ({singleData}) => {
         <>
             <SEO pageTitle="CENTRE PROFESSIONNEL DU SAVOIR" />
             <HeaderTwo />
-            <BreadCrumb title="CENTRE PROFESSIONNEL DU SAVOIR" innerTitle="Votre partenaire technique dans le BTP" />
+            <BreadCrumb description="Nous proposons également un accompagnement personnalisé et l'étude de projets pour ceux qui souhaitent collaborer ou concrétiser une idée professionnelle." title="CENTRE PROFESSIONNEL DU SAVOIR" innerTitle="Votre partenaire technique dans le BTP" />
             <PortfolioDetailsMain />
             <FooterThree />
             <ScrollToTop />

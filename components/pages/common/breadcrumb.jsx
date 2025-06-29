@@ -2,7 +2,7 @@ import Link from 'next/link';
 import image from "../../../public/assets/img/banner/page-banner-img.png";
 import shape from "../../../public/assets/img/shape/page-banner-shape.png";
 
-const BreadCrumb = ({title, innerTitle}) => {
+const BreadCrumb = ({title, innerTitle, description}) => {
     return (
         <div className="page__banner">
            {/*  <div className="page__banner-shape">
@@ -12,6 +12,7 @@ const BreadCrumb = ({title, innerTitle}) => {
                 <div className="row justify-content-between align-items-center">
                     <div className="col-xl-7 col-lg-7">
                         <div className="page__banner-content">
+                            <span className="mb-5">{description}</span>
                             <h2>{title}</h2>
                             <span><Link href="/">Home</Link><span>|</span>{innerTitle}</span>
                         </div>
