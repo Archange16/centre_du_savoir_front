@@ -39,8 +39,8 @@ const HeaderTwo = ({variant}) => {
                         <div className="col-xl-7 col-md-7">
                             <div className="top__bar-left">
                                 <span><i className="fas fa-clock"></i>Horaires : 08h - 18h</span>
-                                <Link href="mailto:contact@centreperofessionneldusavoir.com">
-                                    <i className="fas fa-envelope"></i>contact@centreperofessionneldusavoir.com
+                                <Link href="mailto:contact@centreprofessionneldusavoir.com">
+                                    <i className="fas fa-envelope"></i>contact@centreprofessionneldusavoir.com
                                 </Link>
                             </div>
                         </div>
