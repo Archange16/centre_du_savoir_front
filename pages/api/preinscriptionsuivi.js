@@ -46,12 +46,12 @@ Message : ${message || 'N/A'}
     await transporter.sendMail({
       from: `"Préinscription" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
-      subject: 'Nouvelle préinscription reçue',
+      subject: 'Nouvelle Demande reçue',
       text: mailText,
       replyTo: email,
     });
 
-    res.status(200).json({ message: 'Préinscription envoyée avec succès !' });
+    res.status(200).json({ message: 'Demande envoyée avec succès !' });
   } catch (error) {
     console.error('Erreur lors de l\'envoi du mail:', error);
     res.status(500).json({ message: 'Erreur serveur lors de l\'envoi du mail.' });
