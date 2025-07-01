@@ -25,7 +25,7 @@ const BlogFour = () => {
                                 <div className="blog__four-single-blog-content">
                                     <div className="blog__four-single-blog-content-top">
                                         <span><i className="fas fa-clock"></i>{data.duree_heures} h</span> {/* Horloge pour durée */}
-                                        <span><i className="fas fa-euro-sign"></i>{data.prix} €</span> {/* Euro pour prix */}
+                                        <span>{data.prix} <i className="fas fa-euro-sign"></i></span> {/* Euro pour prix */}
                                         <span><i className="fas fa-laptop"></i> Cours en ligne</span> {/* Laptop pour cours en ligne */}
                                     </div>
                                     <h4 className="blog__four-single-blog-content-title" href={`/blog/${data.id}`}>{data.titre}</h4>
