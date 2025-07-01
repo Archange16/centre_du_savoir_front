@@ -14,41 +14,49 @@ const FormSuiviProjet = () => {
     message: ''
   });
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const [status, setStatus] = useState({ success: null, message: '' });
 
-    /* if (name === 'motivations') {
-      const newMotivations = checked
-        ? [...formData.motivations, value]
-        : formData.motivations.filter((mot) => mot !== value);
-      setFormData({ ...formData, motivations: newMotivations });
-    } else if (type === 'checkbox' && name === 'consentement') {
-      setFormData({ ...formData, [name]: checked });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    } */
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await fetch('/api/preinscriptionsuivi', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
       if (res.ok) {
-        alert('Préinscription envoyée avec succès !');
+        setStatus({ success: true, message: 'Préinscription envoyée avec succès !' });
+        setFormData({
+          civilite: '',
+          nom: '',
+          autreTel: '',
+          email: '',
+          ville: '',
+          pays: '',
+          diplome: '',
+          poste: '',
+          etablissement: '',
+          message: '',
+        });
       } else {
-        alert(data.message || "Erreur lors de l'envoi.");
+        setStatus({ success: false, message: data.message || "Erreur lors de l'envoi." });
       }
     } catch (error) {
       console.error(error);
-      alert("Erreur réseau.");
+      setStatus({ success: false, message: 'Erreur réseau.' });
     }
   };
 
@@ -57,53 +65,135 @@ const FormSuiviProjet = () => {
       <div className="row">
         {/* Civilité */}
         <div className="col-md-12 mb-30">
-          <label>Civilité :</label><br />
-          <label><input type="radio" name="civilite" value="Mlle" onChange={handleChange} /> Mlle</label>{' '}
-          <label><input type="radio" name="civilite" value="Mme" onChange={handleChange} /> Mme</label>{' '}
-          <label><input type="radio" name="civilite" value="Mr" onChange={handleChange} /> Mr</label>
+          <label className="form-label">Civilité :</label><br />
+          {['Mlle', 'Mme', 'Mr'].map((civ) => (
+            <label key={civ} style={{ marginRight: '10px' }}>
+              <input
+                type="radio"
+                name="civilite"
+                value={civ}
+                checked={formData.civilite === civ}
+                onChange={handleChange}
+                required
+              />{' '}
+              {civ}
+            </label>
+          ))}
         </div>
 
         {/* Nom et prénom */}
         <div className="col-md-6 mb-30">
-          <input type="text" name="nom" placeholder="Votre nom et prénom *" required value={formData.nom} onChange={handleChange} />
+          <input
+            type="text"
+            name="nom"
+            placeholder="Votre nom et prénom *"
+            value={formData.nom}
+            onChange={handleChange}
+            required
+            autoComplete="name"
+          />
         </div>
 
-        {/* Numéros de téléphone */}
-  
+        {/* Téléphone */}
         <div className="col-md-6 mb-30">
-          <input type="tel" name="autreTel" placeholder="Téléphone" value={formData.autreTel} onChange={handleChange} />
+          <input
+            type="tel"
+            name="autreTel"
+            placeholder="Téléphone"
+            value={formData.autreTel}
+            onChange={handleChange}
+            autoComplete="tel"
+          />
         </div>
 
         {/* Email */}
         <div className="col-md-6 mb-30">
-          <input type="email" name="email" placeholder="Adresse Email *" required value={formData.email} onChange={handleChange} />
+          <input
+            type="email"
+            name="email"
+            placeholder="Adresse Email *"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            autoComplete="email"
+          />
         </div>
 
-        {/* Ville et Pays */}
+        {/* Ville */}
         <div className="col-md-6 mb-30">
-          <input type="text" name="ville" placeholder="Ville *" required value={formData.ville} onChange={handleChange} />
-        </div>
-        <div className="col-md-6 mb-30">
-          <input type="text" name="pays" placeholder="Pays *" required value={formData.pays} onChange={handleChange} />
+          <input
+            type="text"
+            name="ville"
+            placeholder="Ville *"
+            value={formData.ville}
+            onChange={handleChange}
+            required
+          />
         </div>
 
-        {/* Diplôme et Poste */}
+        {/* Pays */}
         <div className="col-md-6 mb-30">
-          <input type="text" name="diplome" placeholder="Dernier diplôme obtenu *" required value={formData.diplome} onChange={handleChange} />
+          <input
+            type="text"
+            name="pays"
+            placeholder="Pays *"
+            value={formData.pays}
+            onChange={handleChange}
+            required
+          />
         </div>
+
+        {/* Diplôme */}
         <div className="col-md-6 mb-30">
-          <input type="text" name="poste" placeholder="Fonction ou Poste actuel *" required value={formData.poste} onChange={handleChange} />
+          <input
+            type="text"
+            name="diplome"
+            placeholder="Dernier diplôme obtenu *"
+            value={formData.diplome}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Poste */}
+        <div className="col-md-6 mb-30">
+          <input
+            type="text"
+            name="poste"
+            placeholder="Fonction ou Poste actuel *"
+            value={formData.poste}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         {/* Établissement */}
         <div className="col-md-6 mb-30">
-          <input type="text" name="etablissement" placeholder="Établissement" value={formData.etablissement} onChange={handleChange} />
+          <input
+            type="text"
+            name="etablissement"
+            placeholder="Établissement"
+            value={formData.etablissement}
+            onChange={handleChange}
+          />
         </div>
 
         {/* Message */}
         <div className="col-md-12 mb-30">
-          <textarea name="message" placeholder="Votre message" value={formData.message} onChange={handleChange}></textarea>
+          <textarea
+            name="message"
+            placeholder="Votre message"
+            value={formData.message}
+            onChange={handleChange}
+          ></textarea>
         </div>
+
+        {/* Message de statut */}
+        {status.message && (
+          <div className={`col-md-12 mb-20 ${status.success ? 'text-success' : 'text-danger'}`}>
+            {status.message}
+          </div>
+        )}
 
         {/* Bouton */}
         <div className="col-md-12">
