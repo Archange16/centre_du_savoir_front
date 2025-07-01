@@ -101,7 +101,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                         </div>
                     </div>
                     <div className='col-xl-5 col-12 order-1 order-xl-2'>
-                        <BlogSidebar />
+                        <BlogSidebar titre={service}/>
                     </div>
                 </div>
             </div>

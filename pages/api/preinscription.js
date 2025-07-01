@@ -7,6 +7,8 @@ export default async function handler(req, res) {
   }
 
   const {
+    titre,
+    prix,
     civilite,
     nom,
     autreTel,
@@ -35,6 +37,8 @@ export default async function handler(req, res) {
   const mailText = `
 Civilité : ${civilite}
 Nom : ${nom}
+Titre de la formation : ${titre}
+Prix : ${prix} €
 Autre téléphone : ${autreTel || 'N/A'}
 Email : ${email}
 Ville : ${ville}

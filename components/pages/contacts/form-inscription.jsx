@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
-const FormInscription = () => {
+const FormInscription = (service) => {
   const [formData, setFormData] = useState({
+    titre: service.service?.titre.titre || 'Préinscription en ligne',
+    prix: service.service?.titre.prix,
     civilite: '',
     nom: '',
     autreTel: '',

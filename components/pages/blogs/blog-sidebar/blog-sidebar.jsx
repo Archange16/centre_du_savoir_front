@@ -3,7 +3,7 @@ import blogData from '@/components/data/blog-data';
 import Link from 'next/link';
 import FormInscription from '../../contacts/form-inscription';
 
-const BlogSidebar = () => {
+const BlogSidebar = (service) => {
     const blogPost = blogData.slice(0, 3);
     return (
         <div className="all__sidebar dark_image ml-25 xl-ml-0">
@@ -11,7 +11,7 @@ const BlogSidebar = () => {
             <div className="all__sidebar-item">
                 <h6>Préinscription en ligne</h6>
                 <div className="all__sidebar-item-post">
-                    <FormInscription />
+                    <FormInscription service={service}/>
                    {/*  {blogPost.map((data, id) => (
                         <div className="post__item" key={id}>
                             <div className="post__item-image">
