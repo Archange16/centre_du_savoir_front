@@ -11,9 +11,9 @@ import WorkProcess from "./work";
 import FooterThree from "@/components/layout/footers/footer-three";
 import AboutThree from "./aboutp";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
-import WorkArea from "../home/work";
 import TestimonialTwo from "../home-2/testimonial";
 import AboutTwo from "../home-2/about";
+import WorkArea from "./work1";
 
 const HomeFour = () => {
     return (
