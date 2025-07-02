@@ -302,7 +302,7 @@ const servicesData = [
       "Bases en hydraulique ou assainissement"
     ]
   },
-  {
+ /*  {
   id: 9,
   documentId: "metrebtp3",
   image: services1,
@@ -397,7 +397,7 @@ const servicesData = [
     "Suivre et auditer les performances environnementales"
   ],
   prerequis: ["Notions en gestion de chantier ou qualité"]
-}
+} */
 ];
 
 export default servicesData;
