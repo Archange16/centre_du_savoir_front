@@ -61,7 +61,7 @@ const AboutMain = () => {
                                     <span>Programmes adaptés à l’évolution du marché et aux besoins des employeurs.</span>
                                 </div>
                             </div>
-                            <Link href="/about" className="btn-one">Demande d'admission <i className="fas fa-arrow-right"></i></Link>
+                            <Link href="https://whatsapp.com/channel/0029Vb5h2SPEQIaobPw0vT1D" className="btn-one">Rejoignez notre communauté WhatsApp <i className="fas fa-arrow-right"></i></Link>
                         </div>
                     </div>
                 </div>
