@@ -301,7 +301,103 @@ const servicesData = [
     prerequis: [
       "Bases en hydraulique ou assainissement"
     ]
-  }
+  },
+  {
+  id: 9,
+  documentId: "metrebtp3",
+  image: services1,
+  brochure: "", // Ajoute ici le lien de la brochure si disponible
+  disponible: "n'est pas disponible",
+  titre: "Formation pour Connaître et Maîtriser le Métré dans le BTP",
+  slug: "formation-metre-btp",
+  description_courte: "Apprenez à quantifier les travaux et à établir un métré précis dans les projets BTP.",
+  description_longue: "Cette formation permet de comprendre les bases et techniques avancées du métré dans le BTP. Elle est essentielle pour l'estimation des quantités, l'établissement des devis et la gestion financière des projets.",
+  niveau: "Débutant à intermédiaire",
+  duree_heures: 30,
+  prix: 390,
+  prix_promotionnel: 390,
+  langue: "Français",
+  est_actif: true,
+  public_cible: "Techniciens BTP, métreurs, économistes de la construction",
+  domaine: "Économie de la construction",
+  profils_concernes: [
+    {
+      profil: "Métriseurs",
+      competences: "Réalisation de quantitatifs et devis"
+    }
+  ],
+  logiciels: ["Excel", "AutoCAD", "Covadis"],
+  objectifs: [
+    "Comprendre les principes de base du métré",
+    "Établir un devis quantitatif",
+    "Optimiser les estimations de coût"
+  ],
+  prerequis: ["Notions de construction ou chantier"]
+},
+{
+  id: 10,
+  documentId: "betonhydrau7",
+  image: services10,
+  brochure: "", // Ajoute ici le lien de la brochure si disponible
+  disponible: "n'est pas disponible",
+  titre: "Formation en béton armé et structures avancées : modélisation Hydraulique en génie civil",
+  slug: "formation-beton-armee-hydraulique",
+  description_courte: "Maîtrisez les calculs complexes de structures et les interactions hydraulique-béton armé.",
+  description_longue: "Cette formation approfondit les techniques de modélisation des structures en béton armé, avec un focus sur les effets de l'eau (poussée, infiltration, stabilité). Elle est idéale pour les projets hydrauliques et ouvrages soumis à des efforts complexes.",
+  niveau: "Avancé",
+  duree_heures: 36,
+  prix: 520,
+  prix_promotionnel: 520,
+  langue: "Français",
+  est_actif: true,
+  public_cible: "Ingénieurs en génie civil, hydrauliciens",
+  domaine: "Génie Civil – Structures",
+  profils_concernes: [
+    {
+      profil: "Ingénieurs structure",
+      competences: "Analyse des efforts et dimensionnement béton"
+    }
+  ],
+  logiciels: ["Robot Structural Analysis", "SAP2000", "Revit", "Autodesk CFD"],
+  objectifs: [
+    "Analyser les structures en béton armé soumises à des contraintes hydrauliques",
+    "Maîtriser les logiciels de simulation",
+    "Appliquer les normes aux ouvrages hydrauliques"
+  ],
+  prerequis: ["Connaissances en béton armé et hydraulique"]
+},
+{
+  id: 11,
+  documentId: "qhse5",
+  image: services8,
+  brochure: "", // Ajoute ici le lien de la brochure si disponible
+  disponible: "n'est pas disponible",
+  titre: "Formation en Qualité, Hygiène, Sécurité et Environnement (QHSE) pour le Génie Civil",
+  slug: "formation-qhse-genie-civil",
+  description_courte: "Implémentez une démarche QHSE performante sur vos chantiers BTP.",
+  description_longue: "Cette formation vous permet de maîtriser les référentiels qualité, sécurité, santé et environnement adaptés aux travaux de génie civil. Elle aide à réduire les risques, à se conformer aux normes et à améliorer la performance globale des projets.",
+  niveau: "Intermédiaire",
+  duree_heures: 28,
+  prix: 430,
+  prix_promotionnel: 430,
+  langue: "Français",
+  est_actif: true,
+  public_cible: "Coordinateurs QHSE, ingénieurs BTP",
+  domaine: "QHSE",
+  profils_concernes: [
+    {
+      profil: "Responsables qualité chantier",
+      competences: "Mise en œuvre de normes ISO, sécurité"
+    }
+  ],
+  logiciels: ["Excel", "MS Project", "Audit tools"],
+  objectifs: [
+    "Appliquer les bonnes pratiques QHSE",
+    "Mettre en œuvre une politique sécurité sur chantier",
+    "Suivre et auditer les performances environnementales"
+  ],
+  prerequis: ["Notions en gestion de chantier ou qualité"]
+}
 ];
 
 export default servicesData;

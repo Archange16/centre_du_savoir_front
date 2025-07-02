@@ -14,7 +14,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                         <img className='logo_one' src={logo2.src} alt="logo" />
                     </Link>
                 </div>
-                <p>Nous proposons des solutions numériques sur mesure pour répondre aux besoins spécifiques des entreprises et des particuliers : sites web, applications, design, marketing digital et IA.</p>
+                <p>Bienvenue au Centre Professionnel du Savoir – une plateforme dédiée à la formation professionnelle en génie civil. Nous vous proposons des formations 100 % en ligne, interactives et adaptées aux exigences du marché du travail</p>
 
                 <div className="header__area-menubar-right-sidebar-popup-contact">
                     <h4 className="mb-30">Contactez-nous</h4>
@@ -35,7 +35,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                         </div>
                         <div className="header__area-menubar-right-sidebar-popup-contact-item-content">
                             <span>Email</span>
-                            <h6><Link href="mailto:contact@evolapp.com">contact@evolapp.com</Link></h6>
+                            <h6><Link href="mailto:contact@centreprofessionneldusavoir.com">contact@centreprofessionneldusavoir.com</Link></h6>
                         </div>
                     </div>
 
