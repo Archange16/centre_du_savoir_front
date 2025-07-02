@@ -14,7 +14,7 @@ const brochure2 = "/assets/img/brochure/BROCHURE CARTOGRAPHIE GÉOLOGIQUE ET TOP
 const brochure3 = "/assets/img/brochure/BROCHURE CONCEPTION ET RÉALISATION DES INFRASTRUCTURES ROTIÈRES.pdf";
 const brochure4 = "/assets/img/brochure/BROCHURE EXPLOITATION MINIÈRE À CIEL OUVERT.pdf";
 const brochure5 = "/assets/img/brochure/BROCHURE OUVRAGE D'ART.pdf";
-/* const brochure6 = "/assets/img/brochure/CONCEPTION ET REALISATION DES  DES INFRASTRUCTURES ROUTIÈRES AVANCÉ.pdf"; */
+const brochure6 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
 const brochure7 = "/assets/img/brochure/MAÎTRISE DE L'ORDONNNCEMENT, PILOTAGE ET COORDINATION DES TRAVAUX (OPC).pdf";
 const brochure8 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
 const brochure9 = "/assets/img/brochure/V.R.D VOIRIE URBAINE.pdf";
@@ -163,7 +163,7 @@ const servicesData = [
     image: services9,
     brochure: brochure1,
     disponible: "disponible sur notre plateforme",
-    titre: "Formation Calcul des Structures et Solidité des Bâtiments",
+    titre: "Formation en Calcul des Structures et Solidité des Bâtiments",
     slug: "formation-calcul-structures-solidite-batiments",
     description_courte: "Acquérir les compétences pour analyser et concevoir des structures de bâtiment robustes et sécurisées.",
     description_longue: "Cette formation permet d'acquérir les compétences nécessaires pour analyser et concevoir des structures de bâtiment robustes et sécurisées. Elle offre une compréhension approfondie des principes de résistance des matériaux, des méthodes de calcul et des normes en vigueur, essentielles pour garantir la stabilité et la sécurité des constructions.",
@@ -246,8 +246,8 @@ const servicesData = [
     description_longue: "Cette formation permet d’acquérir des compétences pointues dans la conception, la réalisation et la gestion des infrastructures urbaines : voirie, assainissement, réseaux d’eau potable et aménagements publics.",
     niveau: "Avancé",
     duree_heures: 32,
-    prix: 490,
-    prix_promotionnel: 490,
+    prix: 350,
+    prix_promotionnel: 350,
     langue: "Français",
     est_actif: true,
     public_cible: "Techniciens et ingénieurs VRD",
@@ -280,8 +280,8 @@ const servicesData = [
     description_longue: "Cette formation vous permet d’acquérir les compétences essentielles pour concevoir, gérer et entretenir des réseaux d’assainissement efficaces, tout en garantissant la protection de l’environnement et la santé publique.",
     niveau: "Intermédiaire",
     duree_heures: 32,
-    prix: 490,
-    prix_promotionnel: 490,
+    prix: 350,
+    prix_promotionnel: 350,
     langue: "Français",
     est_actif: true,
     public_cible: "Techniciens assainissement, ingénieurs réseaux",
@@ -313,9 +313,9 @@ const servicesData = [
   description_courte: "Apprenez à quantifier les travaux et à établir un métré précis dans les projets BTP.",
   description_longue: "Cette formation permet de comprendre les bases et techniques avancées du métré dans le BTP. Elle est essentielle pour l'estimation des quantités, l'établissement des devis et la gestion financière des projets.",
   niveau: "Débutant à intermédiaire",
-  duree_heures: 30,
-  prix: 390,
-  prix_promotionnel: 390,
+  duree_heures: 32,
+  prix: 350,
+  prix_promotionnel: 350,
   langue: "Français",
   est_actif: true,
   public_cible: "Techniciens BTP, métreurs, économistes de la construction",
@@ -345,9 +345,9 @@ const servicesData = [
   description_courte: "Maîtrisez les calculs complexes de structures et les interactions hydraulique-béton armé.",
   description_longue: "Cette formation approfondit les techniques de modélisation des structures en béton armé, avec un focus sur les effets de l'eau (poussée, infiltration, stabilité). Elle est idéale pour les projets hydrauliques et ouvrages soumis à des efforts complexes.",
   niveau: "Avancé",
-  duree_heures: 36,
-  prix: 520,
-  prix_promotionnel: 520,
+  duree_heures: 32,
+  prix: 350,
+  prix_promotionnel: 350,
   langue: "Français",
   est_actif: true,
   public_cible: "Ingénieurs en génie civil, hydrauliciens",
@@ -377,9 +377,9 @@ const servicesData = [
   description_courte: "Implémentez une démarche QHSE performante sur vos chantiers BTP.",
   description_longue: "Cette formation vous permet de maîtriser les référentiels qualité, sécurité, santé et environnement adaptés aux travaux de génie civil. Elle aide à réduire les risques, à se conformer aux normes et à améliorer la performance globale des projets.",
   niveau: "Intermédiaire",
-  duree_heures: 28,
-  prix: 430,
-  prix_promotionnel: 430,
+  duree_heures: 32,
+  prix: 350,
+  prix_promotionnel: 350,
   langue: "Français",
   est_actif: true,
   public_cible: "Coordinateurs QHSE, ingénieurs BTP",

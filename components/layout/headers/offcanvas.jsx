@@ -25,7 +25,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                         </div>
                         <div className="header__area-menubar-right-sidebar-popup-contact-item-content">
                             <span>Appelez-nous</span>
-                            <h6><Link href="tel:+242061234567">(+212) 06 47 810243</Link></h6>
+                            <h6><Link href="tel:+242061234567">(+212) 780 22 34 87</Link></h6>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                         </div>
                         <div className="header__area-menubar-right-sidebar-popup-contact-item-content">
                             <span>Adresse</span>
-                            <h6><Link href="https://google.com/maps" target="_blank">Maroc, Sidi Ghanem à côté de l'immeuble d'EBF Marrakech</Link></h6>
+                            <h6><Link href="https://google.com/maps" target="_blank">HAY esaada immeuble 136 Porte 1 ÉTAGE 3</Link></h6>
                         </div>
                     </div>
                 </div>

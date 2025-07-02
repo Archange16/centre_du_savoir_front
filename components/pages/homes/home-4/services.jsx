@@ -15,7 +15,7 @@ const BlogFour = () => {
                     </div>
                 </div>
                 <div className="row gy-4">
-                    {blogData.slice(0, 6)?.map((data, id) => (
+                    {blogData.slice(0, 10)?.map((data, id) => (
                         <div className="col-xl-4 col-lg-6" key={id}>
                             <div className="blog__four-single-blog">
                                 <div className="blog__four-single-blog-img">
