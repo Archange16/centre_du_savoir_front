@@ -10,12 +10,12 @@ import FooterTwo from "@/components/layout/footers/footer-two";
 const BlogStandardPage = () => {
     return (
         <>
-            <SEO pageTitle='Blog Standard' />
+           {/*  <SEO pageTitle='Blog Standard' />
             <HeaderTwo />
             <BreadCrumb title="Blog Standard" innerTitle="Blog Standard" />
             <BlogStandardMain />
             <FooterTwo />
-            <ScrollToTop />
+            <ScrollToTop /> */}
         </>
     );
 };
