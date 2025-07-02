@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 
 const FormSuiviProjet = () => {
   const [formData, setFormData] = useState({
-    civilite: '',
-    nom: '',
-    autreTel: '',
+    entreprise: '',
+    gerant: '',
     email: '',
-    ville: '',
-    pays: '',
-    diplome: '',
-    poste: '',
-    etablissement: '',
-    message: ''
+    telephone: '',
+    description: ''
   });
 
   const [status, setStatus] = useState({ success: null, message: '' });
@@ -38,18 +33,13 @@ const FormSuiviProjet = () => {
 
       const data = await res.json();
       if (res.ok) {
-        setStatus({ success: true, message: 'Préinscription envoyée avec succès !' });
+        setStatus({ success: true, message: 'Données envoyées avec succès !' });
         setFormData({
-          civilite: '',
-          nom: '',
-          autreTel: '',
+          entreprise: '',
+          gerant: '',
           email: '',
-          ville: '',
-          pays: '',
-          diplome: '',
-          poste: '',
-          etablissement: '',
-          message: '',
+          telephone: '',
+          description: ''
         });
       } else {
         setStatus({ success: false, message: data.message || "Erreur lors de l'envoi." });
@@ -63,55 +53,36 @@ const FormSuiviProjet = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
-        {/* Civilité */}
+        {/* Nom de l'entreprise */}
         <div className="col-md-12 mb-30">
-          <label className="form-label">Civilité :</label><br />
-          {['Mlle', 'Mme', 'Mr'].map((civ) => (
-            <label key={civ} style={{ marginRight: '10px' }}>
-              <input
-                type="radio"
-                name="civilite"
-                value={civ}
-                checked={formData.civilite === civ}
-                onChange={handleChange}
-                required
-              />{' '}
-              {civ}
-            </label>
-          ))}
-        </div>
-
-        {/* Nom et prénom */}
-        <div className="col-md-6 mb-30">
           <input
             type="text"
-            name="nom"
-            placeholder="Votre nom et prénom *"
-            value={formData.nom}
+            name="entreprise"
+            placeholder="Nom de l'entreprise *"
+            value={formData.entreprise}
             onChange={handleChange}
             required
-            autoComplete="name"
           />
         </div>
 
-        {/* Téléphone */}
-        <div className="col-md-6 mb-30">
+        {/* Nom du Gérant/Directeur */}
+        <div className="col-md-12 mb-30">
           <input
-            type="tel"
-            name="autreTel"
-            placeholder="Téléphone"
-            value={formData.autreTel}
+            type="text"
+            name="gerant"
+            placeholder="Nom du Gérant / Directeur *"
+            value={formData.gerant}
             onChange={handleChange}
-            autoComplete="tel"
+            required
           />
         </div>
 
-        {/* Email */}
-        <div className="col-md-6 mb-30">
+        {/* Adresse email */}
+        <div className="col-md-12 mb-30">
           <input
             type="email"
             name="email"
-            placeholder="Adresse Email *"
+            placeholder="Adresse email *"
             value={formData.email}
             onChange={handleChange}
             required
@@ -119,72 +90,27 @@ const FormSuiviProjet = () => {
           />
         </div>
 
-        {/* Ville */}
-        <div className="col-md-6 mb-30">
+        {/* Téléphone / WhatsApp */}
+        <div className="col-md-12 mb-30">
           <input
-            type="text"
-            name="ville"
-            placeholder="Ville *"
-            value={formData.ville}
+            type="tel"
+            name="telephone"
+            placeholder="Téléphone / WhatsApp *"
+            value={formData.telephone}
             onChange={handleChange}
             required
+            autoComplete="tel"
           />
         </div>
 
-        {/* Pays */}
-        <div className="col-md-6 mb-30">
-          <input
-            type="text"
-            name="pays"
-            placeholder="Pays *"
-            value={formData.pays}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Diplôme */}
-        <div className="col-md-6 mb-30">
-          <input
-            type="text"
-            name="diplome"
-            placeholder="Dernier diplôme obtenu *"
-            value={formData.diplome}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Poste */}
-        <div className="col-md-6 mb-30">
-          <input
-            type="text"
-            name="poste"
-            placeholder="Fonction ou Poste actuel *"
-            value={formData.poste}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Établissement */}
-        <div className="col-md-6 mb-30">
-          <input
-            type="text"
-            name="etablissement"
-            placeholder="Établissement"
-            value={formData.etablissement}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Message */}
+        {/* Description du projet */}
         <div className="col-md-12 mb-30">
           <textarea
-            name="message"
-            placeholder="Votre message"
-            value={formData.message}
+            name="description"
+            placeholder="Description du projet *"
+            value={formData.description}
             onChange={handleChange}
+            required
           ></textarea>
         </div>
 

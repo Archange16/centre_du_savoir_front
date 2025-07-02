@@ -7,7 +7,7 @@ const Team = () => {
             <div className="team__two section-padding">
                 <div className="container">
                     <div className="row justify-content-between align-items-end mb-60">
-                        <div className="col-xl-6 col-lg-7 col-md-9 team__two-title">
+                        <div className="col-xl-12 col-lg-7 col-md-9 team__two-title">
                             <span className="subtitle-one">Notre équipe</span>
                             <h2>Notre équipe</h2>
                             <p>Atteignez vos objectifs au Centre Professionnel du Savoir, formations 100 % en ligne</p>
@@ -33,7 +33,7 @@ const Team = () => {
                                     </div>
                                 </div>
                             </div>
-                        ))};
+                        ))}
                     </div>
                 </div>
             </div>            

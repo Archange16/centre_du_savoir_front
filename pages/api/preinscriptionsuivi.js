@@ -7,17 +7,17 @@ export default async function handler(req, res) {
   }
 
   const {
-    civilite,
-    nom,
-    autreTel,
+    entreprise,
+    gerant,
     email,
-    ville,
-    pays,
-    diplome,
-    poste,
-    etablissement,
-    message,
+    telephone,
+    description,
   } = req.body;
+
+  if (!entreprise || !gerant || !email || !telephone || !description) {
+    res.status(400).json({ message: 'Tous les champs requis doivent être remplis.' });
+    return;
+  }
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -30,23 +30,19 @@ export default async function handler(req, res) {
   });
 
   const mailText = `
-Civilité : ${civilite}
-Nom : ${nom}
-Autre téléphone : ${autreTel || 'N/A'}
+Nom de l'entreprise : ${entreprise}
+Nom du Gérant / Directeur : ${gerant}
 Email : ${email}
-Ville : ${ville}
-Pays : ${pays}
-Diplôme : ${diplome}
-Poste : ${poste}
-Établissement : ${etablissement || 'N/A'}
-Message : ${message || 'N/A'}
+Téléphone / WhatsApp : ${telephone}
+Description du projet :
+${description}
 `;
 
   try {
     await transporter.sendMail({
-      from: `"Préinscription" <${process.env.SMTP_USER}>`,
+      from: `"Formulaire Projet" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
-      subject: 'Nouvelle Demande reçue',
+      subject: 'Nouvelle demande de suivi de projet',
       text: mailText,
       replyTo: email,
     });

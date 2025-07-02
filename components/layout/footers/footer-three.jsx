@@ -66,7 +66,7 @@ const FooterThree = () => {
                                     </div>
                                     <div className="footer__three-widget-location-item-info email">
                                         <span>Email</span>
-                                        <Link href="mailto:contact@centreprofessionneldusavoir.com">centreprofessionneldusavoir.com</Link>
+                                        <Link href="mailto:contact@centreprofessionneldusavoir.com">contact@centreprofessionneldusavoir.com</Link>
                                     </div>
                                 </div>
                                 <div className="footer__three-widget-location-item">
