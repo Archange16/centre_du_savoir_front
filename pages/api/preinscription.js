@@ -27,14 +27,18 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT),
-    secure: process.env.SMTP_SECURE === 'true',
+    secure: process.env.SMTP_PORT === '465', // true si port 465, sinon false
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
   });
 
-  const mailText = `
+  try {
+    await transporter.verify(); // Vérifie la connexion SMTP
+    console.log('✅ SMTP server ready');
+
+    const mailText = `
 Civilité : ${civilite}
 Nom : ${nom}
 Titre de la formation : ${titre}
@@ -52,12 +56,31 @@ Message : ${message || 'N/A'}
 Consentement : ${consentement ? 'Oui' : 'Non'}
 `;
 
-  try {
+    const mailHtml = `
+      <h3>Nouvelle préinscription reçue</h3>
+      <p><strong>Civilité :</strong> ${civilite}</p>
+      <p><strong>Nom :</strong> ${nom}</p>
+      <p><strong>Titre de la formation :</strong> ${titre}</p>
+      <p><strong>Prix :</strong> ${prix} €</p>
+      <p><strong>Autre téléphone :</strong> ${autreTel || 'N/A'}</p>
+      <p><strong>Email :</strong> ${email}</p>
+      <p><strong>Ville :</strong> ${ville}</p>
+      <p><strong>Pays :</strong> ${pays}</p>
+      <p><strong>Diplôme :</strong> ${diplome}</p>
+      <p><strong>Poste :</strong> ${poste}</p>
+      <p><strong>Établissement :</strong> ${etablissement || 'N/A'}</p>
+      <p><strong>Motivations :</strong> ${motivations.join(', ')}</p>
+      <p><strong>Autres motivations :</strong> ${autresMotivations || 'N/A'}</p>
+      <p><strong>Message :</strong> ${message || 'N/A'}</p>
+      <p><strong>Consentement :</strong> ${consentement ? 'Oui' : 'Non'}</p>
+    `;
+
     await transporter.sendMail({
       from: `"Préinscription" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
       subject: 'Nouvelle préinscription reçue',
       text: mailText,
+      html: mailHtml,
       replyTo: email,
     });
 

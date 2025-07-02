@@ -11,13 +11,13 @@ import services10 from "../../public/assets/img/service/Formation en béton arm�
 
 const brochure1 = "/assets/img/brochure/BROCHURE CALCUL DES STRUCTURES ET SOLIDITÉ DES BÂTIMENTS.pdf";
 const brochure2 = "/assets/img/brochure/BROCHURE CARTOGRAPHIE GÉOLOGIQUE ET TOPOGRAPHIQUE AVANCÉE.pdf";
-const brochure3 = "/assets/img/BROCHURE CONCEPTION ET RÉALISATION DES INFRASTRUCTURES ROTIÈRES.pdf";
+const brochure3 = "/assets/img/brochure/BROCHURE CONCEPTION ET RÉALISATION DES INFRASTRUCTURES ROTIÈRES.pdf";
 const brochure4 = "/assets/img/brochure/BROCHURE EXPLOITATION MINIÈRE À CIEL OUVERT.pdf";
 const brochure5 = "/assets/img/brochure/BROCHURE OUVRAGE D'ART.pdf";
-const brochure6 = "/assets/img/brochure/CONCEPTION ET REALISATION DES  DES INFRASTRUCTURES ROUTIÈRES AVANCÉ.pdf";
-const brochure7 = "/assets/img/MAÎTRISE DE L'ORDONNNCEMENT, PILOTAGE ET COORDINATION DES TRAVAUX (OPC).pdf";
-const brochure8 = "/assets/img/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
-const brochure9 = "/assets/img/V.R.D VOIRIE URBAINE.pdf";
+/* const brochure6 = "/assets/img/brochure/CONCEPTION ET REALISATION DES  DES INFRASTRUCTURES ROUTIÈRES AVANCÉ.pdf"; */
+const brochure7 = "/assets/img/brochure/MAÎTRISE DE L'ORDONNNCEMENT, PILOTAGE ET COORDINATION DES TRAVAUX (OPC).pdf";
+const brochure8 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
+const brochure9 = "/assets/img/brochure/V.R.D VOIRIE URBAINE.pdf";
 
 
 
@@ -302,7 +302,7 @@ const servicesData = [
       "Bases en hydraulique ou assainissement"
     ]
   },
- /*  {
+  {
   id: 9,
   documentId: "metrebtp3",
   image: services1,
@@ -397,7 +397,7 @@ const servicesData = [
     "Suivre et auditer les performances environnementales"
   ],
   prerequis: ["Notions en gestion de chantier ou qualité"]
-} */
+}
 ];
 
 export default servicesData;
