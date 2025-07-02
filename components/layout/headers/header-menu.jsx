@@ -9,7 +9,7 @@ const MainMenu = () => {
                 </li>
                 <li className="menu-item-has-children"><Link href="/about">A propos</Link>
                 </li>
-                <li className="menu-item-has-children"><Link href="/services">Formations<i className="fas fa-angle-right"></i></Link>
+                <li className="menu-item-has-children"><Link href="/services">Formations{/* <i className="fas fa-angle-right"></i> */}</Link>
                      <ul className='sub-menu'>
                         <li><Link href="/services/formation-calcul-structures-solidite-batiments">Formation Calcul des Structures et Solidité des Bâtiments</Link></li>
                         <li><Link href="/services/formation-opc-pilotage-planification-btp">Formation en OPC : Pilotage et Planification BTP</Link></li>

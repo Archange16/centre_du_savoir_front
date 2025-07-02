@@ -36,7 +36,7 @@ const FooterThree = () => {
 										const words = data.titre.split(' ');
 										const firstAndSecondWord = words.slice(2, 10).join(' ');
 										return (
-											<li key={id}><Link href={`/services/${data.slug}`}><i className="far fa-chevron-double-right"></i>{firstAndSecondWord}</Link></li>
+											<li key={id}><Link href={`/services/${data.slug}`}>{/* <i className="far fa-chevron-double-right"></i> */}{firstAndSecondWord}</Link></li>
 										);
 									})}
                                 </ul>
@@ -48,10 +48,10 @@ const FooterThree = () => {
                             <h4 className="ml-60">Resources​</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-									<li><Link href="/services"><i className="far fa-chevron-double-right"></i>Nos formations</Link></li>
-									<li><Link href="/accompagnement"><i className="far fa-chevron-double-right"></i>Suivi de projet</Link></li>
+									<li><Link href="/services">{/* <i className="far fa-chevron-double-right"></i> */}Nos formations</Link></li>
+									<li><Link href="/accompagnement">{/* <i className="far fa-chevron-double-right"></i> */}Suivi de projet</Link></li>
 									{/* <li><Link href="testimonial"><i className="far fa-chevron-double-right"></i>Testimonial</Link></li> */}
-									<li><Link href="about"><i className="far fa-chevron-double-right"></i>A propos de nous</Link></li>
+									<li><Link href="about">{/* <i className="far fa-chevron-double-right"></i> */}A propos de nous</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -66,7 +66,7 @@ const FooterThree = () => {
                                     </div>
                                     <div className="footer__three-widget-location-item-info email">
                                         <span>Email</span>
-                                        <Link href="mailto:contact@centreperofessionneldusavoir.com">centreperofessionneldusavoir.com</Link>
+                                        <Link href="mailto:contact@centreprofessionneldusavoir.com">centreprofessionneldusavoir.com</Link>
                                     </div>
                                 </div>
                                 <div className="footer__three-widget-location-item">
