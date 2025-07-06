@@ -5,8 +5,7 @@ import { useParams } from 'next/navigation';
 import selectedFormation from '@/components/data/services-data';
 
 
-const RequestQuoteMain = ({service}) => {
-    const { titre, prix } = service?.titre || {};
+const RequestQuoteMain = () => {
     const params = useParams();
         const { id } = params;
         // Chercher le service correspondant dans la data
