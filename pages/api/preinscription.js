@@ -39,22 +39,22 @@ export default async function handler(req, res) {
     console.log('✅ SMTP server ready');
 
     const mailText = `
-Civilité : ${civilite}
-Nom : ${nom}
-Titre de la formation : ${titre}
-Prix : ${prix} €
-Autre téléphone : ${autreTel || 'N/A'}
-Email : ${email}
-Ville : ${ville}
-Pays : ${pays}
-Diplôme : ${diplome}
-Poste : ${poste}
-Établissement : ${etablissement || 'N/A'}
-Motivations : ${motivations.join(', ')}
-Autres motivations : ${autresMotivations || 'N/A'}
-Message : ${message || 'N/A'}
-Consentement : ${consentement ? 'Oui' : 'Non'}
-`;
+    Civilité : ${civilite}
+    Nom : ${nom}
+    Titre de la formation : ${titre}
+    Prix : ${prix} €
+    Autre téléphone : ${autreTel || 'N/A'}
+    Email : ${email}
+    Ville : ${ville}
+    Pays : ${pays}
+    Diplôme : ${diplome}
+    Poste : ${poste}
+    Établissement : ${etablissement || 'N/A'}
+    Motivations : ${motivations.join(', ')}
+    Autres motivations : ${autresMotivations || 'N/A'}
+    Message : ${message || 'N/A'}
+    Consentement : ${consentement ? 'Oui' : 'Non'}
+    `;
 
     const mailHtml = `
       <h3>Nouvelle préinscription reçue</h3>

@@ -5,7 +5,8 @@ import { useParams } from 'next/navigation';
 import selectedFormation from '@/components/data/services-data';
 
 
-const RequestQuoteMain = () => {
+const RequestQuoteMain = ({service}) => {
+    const { titre, prix } = service?.titre || {};
     const params = useParams();
         const { id } = params;
         // Chercher le service correspondant dans la data
@@ -26,6 +27,8 @@ const RequestQuoteMain = () => {
             }
 
            const [formData, setFormData] = useState({
+            titre: titre || 'Téléchargement de la plaquette',
+            prix: prix || '',
             firstName: '',
             lastName: '',
             email: '',

@@ -8,7 +8,7 @@ const BlogFour = () => {
                 <div className="row justify-content-center text-center">
                     <div className="col-xl-6 col-lg-6 col-md-8 col-sm-9">
                         <div className="blog__four-title">
-                            <span className="subtitle-one">Nos Formations</span>
+                            <span className="subtitle-one">Découvrez</span>
                             <h2>Nos Formations</h2>
                             <p>Nous proposons des formations en génie civil pour les professionnels souhaitant renforcer leurs compétences. Inscrivez-vous en ligne !</p>
                         </div>

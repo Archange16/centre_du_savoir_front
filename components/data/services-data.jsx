@@ -5,7 +5,7 @@ import services4 from "../../public/assets/img/service/Formation en Conception e
 import services5 from "../../public/assets/img/service/La formation en Techniques Avancées pour l'Exploitation des Travaux Miniers.jpg";
 import services6 from "../../public/assets/img/service/Pilotage et Planification BTP.jpg";
 import services7 from "../../public/assets/img/service/Formation avancée en V.R.D.jpg";
-import services8 from "../../public/assets/img/service/Formation en Qualité, hygiène, sécurité et environnement.jpg";
+import services8 from "../../public/assets/img/service/Formation en Gestion Intégrée des Projets Miniers.png";
 import services9 from "../../public/assets/img/service/Formation Calcul des Structures et Solidité des Bâtiments.jpg";
 import services10 from "../../public/assets/img/service/Formation en béton armé et structures avancées.jpg";
 
@@ -14,10 +14,10 @@ const brochure2 = "/assets/img/brochure/BROCHURE CARTOGRAPHIE GÉOLOGIQUE ET TOP
 const brochure3 = "/assets/img/brochure/BROCHURE CONCEPTION ET RÉALISATION DES INFRASTRUCTURES ROTIÈRES.pdf";
 const brochure4 = "/assets/img/brochure/BROCHURE EXPLOITATION MINIÈRE À CIEL OUVERT.pdf";
 const brochure5 = "/assets/img/brochure/BROCHURE OUVRAGE D'ART.pdf";
-const brochure6 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
-const brochure7 = "/assets/img/brochure/MAÎTRISE DE L'ORDONNNCEMENT, PILOTAGE ET COORDINATION DES TRAVAUX (OPC).pdf";
-const brochure8 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
-const brochure9 = "/assets/img/brochure/V.R.D VOIRIE URBAINE.pdf";
+const brochure6 = "/assets/img/brochure/MAÎTRISE DE L'ORDONNNCEMENT, PILOTAGE ET COORDINATION DES TRAVAUX (OPC).pdf";
+const brochure7 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
+const brochure8 = "/assets/img/brochure/V.R.D VOIRIE URBAINE.pdf";
+const brochure9 = "/assets/img/brochure/BROCHURE GESTION INTEGRÉE DES PROJETS MINIERS.pdf";
 
 
 
@@ -200,7 +200,7 @@ const servicesData = [
     id: 6,
     documentId: "opc2",
     image: services6,
-    brochure: brochure7,
+    brochure: brochure6,
     disponible: "disponible sur notre plateforme",
     titre: "Formation en OPC : Pilotage et Planification BTP",
     slug: "formation-opc-pilotage-planification-btp",
@@ -238,7 +238,7 @@ const servicesData = [
     id: 7,
     documentId: "vrd8",
     image: services7,
-    brochure: brochure9,
+    brochure: brochure8,
     disponible: "disponible sur notre plateforme",
     titre: "Formation avancée en V.R.D (Voirie Urbaine)",
     slug: "formation-avancee-vrd",
@@ -272,7 +272,7 @@ const servicesData = [
     id: 8,
     documentId: "assainissement10",
     image: services2,
-    brochure: brochure8,
+    brochure: brochure7,
     disponible: "disponible sur notre plateforme",
     titre: "Formation en Assainissement (Maîtrise des Réseaux Eaux Usées et Pluviales)",
     slug: "formation-assainissement-eaux-usees-pluviales",
@@ -303,6 +303,49 @@ const servicesData = [
     ]
   },
   {
+  id: 9,
+  documentId: "projetsMiniers01",
+  image: services8,
+  brochure: brochure9,
+  disponible: "disponible sur notre plateforme",
+  titre: "Formation en Gestion Intégrée des Projets Miniers",
+  slug: "formation-gestion-projets-miniers",
+  description_courte: "Maîtriser la gestion intégrée des projets miniers, de la planification à l’impact environnemental.",
+  description_longue: "Cette formation vise à doter les participants des compétences nécessaires pour gérer efficacement les projets miniers de manière intégrée, en tenant compte des aspects techniques, économiques, environnementaux et sociaux.",
+  niveau: "Intermédiaire",
+  duree_heures: 32,
+  prix: 490,
+  prix_promotionnel: 490,
+  langue: "Français",
+  est_actif: true,
+  public_cible: "Ingénieurs miniers, gestionnaires de projets miniers, responsables de la planification et du développement minier, professionnels de l'industrie minière",
+  domaine: "Mines et gestion de projets",
+  profils_concernes: [
+    {
+      profil: "Ingénieurs miniers",
+      competences: "Gestion intégrée des projets miniers"
+    },
+    {
+      profil: "Gestionnaires de projets",
+      competences: "Planification, suivi et évaluation des projets miniers"
+    }
+  ],
+  logiciels: ["MS Project", "Asana", "Trello"],
+  objectifs: [
+    "Gérer des projets miniers de manière intégrée",
+    "Analyser les risques et opportunités",
+    "Développer des plans stratégiques",
+    "Gérer les ressources humaines et les équipes",
+    "Contrôler les coûts et les budgets",
+    "Assurer la qualité et la sécurité",
+    "Gérer les impacts environnementaux et sociaux"
+  ],
+  prerequis: [
+    "Connaissances de base en exploitation minière ou en gestion de projet"
+  ]
+}
+
+  /* {
   id: 9,
   documentId: "metrebtp3",
   image: services1,
@@ -397,7 +440,7 @@ const servicesData = [
     "Suivre et auditer les performances environnementales"
   ],
   prerequis: ["Notions en gestion de chantier ou qualité"]
-}
+} */
 ];
 
 export default servicesData;

@@ -1074,7 +1074,7 @@ p {
   --primary-color-2: #F8E559;
   --primary-color-3: #f39200;
   --primary-color-4: #d38003;
-  --bg-heading-color: #002d4e;
+  --bg-heading-color: #015b9b;
   --text-heading-color: #0f70b7;
   --btn-heading-color: #131313;
   --body-color: #343434;
@@ -1082,11 +1082,11 @@ p {
   --dark-two: #222429;
   --color-1: #F4F7FB;
   --color-2: #737373;
-  --color-3: #0B46BF;
+  --color-3: #0f70b7;
   --color-4: #CCCCCC;
-  --color-5: #12223e;
-  --color-6: #00355a;
-  --color-7: #07204D;
+  --color-5: #0f70b7;
+  --color-6: #095e9b;
+  --color-7: #0f70b7;
   --border-color-1: #E7E7E7;
   --border-color-2: #E9E9E8;
   --border-color-3: rgba(19, 19, 19, 0.1);
@@ -4384,6 +4384,9 @@ Responsive Menu Css
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
+}
+.banner__four::before {
+  background-color: var(--text-heading-color) important;
 }
 .banner__four-content {
   z-index: 3;
