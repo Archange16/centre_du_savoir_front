@@ -4401,12 +4401,12 @@ Responsive Menu Css
   text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .banner__four-content p {
-  font-size: 25px;
+  font-size: 30px;
   text-transform: none;
   margin-bottom: 40px;
-  color: var(--color-6);
+  color: var(--text-white);
   font-weight: 600;
-  text-shadow: 0 0 5px white;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .banner__four-content a:hover {
   color: var(--text-white);
