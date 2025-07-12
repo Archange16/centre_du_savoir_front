@@ -35,6 +35,7 @@ const Team = () => {
                             </div>
                         ))}
                     </div>
+                     <Link href="/team" className="btn-one">Voir les membres de notre équipe<i className="fas fa-arrow-right"></i></Link>
                 </div>
             </div>            
         </>
