@@ -5,15 +5,16 @@ import TeamMain from "./team";
 import ScrollToTop from "../../common/scroll/scroll-to-top";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
 import FooterTwo from "@/components/layout/footers/footer-two";
+import FooterThree from "@/components/layout/footers/footer-three";
 
 const TeamPage = () => {
     return (
         <>
-            <SEO pageTitle='Nos équipes' />
+            <SEO pageTitle='Notre équipes' />
             <HeaderTwo />
-            <BreadCrumb title='Nos équipes' innerTitle='Nos équipes'/>
+            <BreadCrumb title='Notre équipes' innerTitle='Notre équipes'/>
             <TeamMain />
-            <FooterTwo />
+            <FooterThree />
             <ScrollToTop />
         </>
     );

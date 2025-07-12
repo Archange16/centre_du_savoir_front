@@ -65,8 +65,8 @@ const teamData = [
     {
         id: 'cansu-tuman',
         image: team5,
-        name: 'Cansu Tuman',
-        position: 'Project Manager',
+        name: 'Okabel NDINGA',
+        position: 'Spécialiste de génie civil',
         mail: 'cansu@gmail.com',
         phone: '+125 (456) 121 894',
         category: 'manager',
@@ -79,8 +79,8 @@ const teamData = [
     {
         id: 'devon-lane',
         image: team6,
-        name: 'Devon Lane',
-        position: 'Technician',
+        name: 'TOLNO Etienne',
+        position: 'Ingénieur minier – Développeur web & Graphiste',
         mail: 'devon@gmail.com',
         phone: '+125 (544) 897 488',
         category: 'designer',

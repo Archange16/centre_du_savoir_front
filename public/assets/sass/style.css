@@ -4404,9 +4404,9 @@ Responsive Menu Css
   font-size: 25px;
   text-transform: none;
   margin-bottom: 40px;
-  color: var(--bg-white);
+  color: var(--bg-heading-color);
   font-weight: 600;
-  text-shadow: 0 0 5px rgb(0, 0, 0);
+  /* text-shadow: 0 0 5px rgb(0, 0, 0); */
 
 }
 .banner__four-content a:hover {
