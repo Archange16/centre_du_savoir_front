@@ -106,7 +106,7 @@ body {
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 img {
@@ -126,6 +126,7 @@ button,
 i {
   text-decoration: none;
   color: inherit;
+  text-transform: none;
 }
 
 a:focus,
