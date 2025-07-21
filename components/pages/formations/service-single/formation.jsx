@@ -33,7 +33,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                                 <div className="blog__details-content-top">
                                 <span>
                                     <i className="fas fa-money-bill-wave"></i> {/* Prix */}
-                                    {service?.prix} Dhs
+                                    {service?.prix} Euros
                                 </span>
                                 <span>
                                     <i className="fas fa-clock"></i> {/* Durée */}
