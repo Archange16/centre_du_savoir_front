@@ -26,7 +26,34 @@ const HeaderTwo = ({variant}) => {
 
     return (
         <>
-            <div className="top__bar two">
+        <div className="top__bar two">
+            <div className="custom__container">
+                <div className="row">
+                {/* Affichage desktop uniquement */}
+                <div className="col-12 d-none d-md-flex justify-content-between">
+                    <div className="top__bar-right">
+                    <Link href="https://www.google.com/maps">
+                        <i className="fas fa-map-marker-alt"></i> Marrakech, Royaume du Maroc
+                    </Link>
+                    </div>
+                    <div className="top__bar-left">
+                    <span>
+                        <i className="fas fa-clock"></i> Horaires : 08h - 18h
+                    </span>
+                    <Link href="mailto:contact@centreprofessionneldusavoir.com">
+                        <i className="fas fa-envelope"></i> contact@centreprofessionneldusavoir.com
+                    </Link>
+                    </div>
+                </div>
+
+                {/* Affichage mobile uniquement */}
+                <div className="col-12 d-flex d-md-none justify-content-center">
+                    <Link href="https://wa.me/212780223487" className="btn-two text-white shadow rounded-pill">Contactez-nous<i className="fab fa-whatsapp"></i></Link>
+                </div>
+                </div>
+            </div>
+            </div>
+            {/* <div className="top__bar two">
                 <div className="custom__container">
                     <div className="row">
                         <div className="col-xl-5 col-md-5">
@@ -46,7 +73,7 @@ const HeaderTwo = ({variant}) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className={`header__area ${variant ? variant : ""} header__sticky two ${isSticky ? "header__sticky-sticky-menu" : ""}`}>
                 <div className="custom__container">
