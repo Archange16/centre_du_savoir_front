@@ -63,13 +63,13 @@ const HeaderTwo = ({variant}) => {
                         </div>
                         <div className="header__area-menubar-right">
                             <div className="header__area-menubar-right-box">
-                                <div className="header__area-menubar-right-box-search">
+                               {/*  <div className="header__area-menubar-right-box-search">
                                     <div className="search">	
                                         <span className="header__area-menubar-right-box-search-icon open" onClick={() => setSearch(true)}>
                                             <i className="flaticon-loupe"></i>
                                         </span>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div className="header__area-menubar-right-box-sidebar">
                                     <div className="header__area-menubar-right-box-sidebar-popup-icon" onClick={() => setSidebarOpen(true)}>

@@ -414,7 +414,7 @@ p {
   line-height: 1.87;
   display: inline-block;
   margin-bottom: 14px;
-  /* background: rgb(14, 90, 242); */
+  background: rgb(14, 90, 242);
   padding: 1px 25px;
   border-radius: 10px;
 }
