@@ -26,8 +26,8 @@ const RequestQuoteMain = () => {
             }
 
            const [formData, setFormData] = useState({
-            titre: titre || 'Téléchargement de la plaquette',
-            prix: prix || '',
+            titre: service?.titre || 'Téléchargement de la plaquette',
+            prix: service?.prix || '',
             firstName: '',
             lastName: '',
             email: '',
@@ -125,14 +125,22 @@ const RequestQuoteMain = () => {
                                 <option value="bac+1">Bac+1</option>
                                 <option value="bac+2">Bac+2</option>
                                 <option value="bac+3">Bac+3</option>
+                                <option value="bac+3">Bac+4</option>
+                                <option value="bac+3">Bac+5</option>
                             </select>
                             </div>
-                        <div className="request-quote__area-input-field">
+                            <div className="request-quote__area-input-field">
                             <label htmlFor="experience">Années d’expérience de travail</label>
-                            <input type="number" id="experience" value={formData.number} onChange={handleChange} placeholder="0" />
-                        </div>
+                            <input
+                                type="number"
+                                id="experience"
+                                value={formData.experience}
+                                onChange={handleChange}
+                                placeholder="0"
+                                min="0"
+                            />
+                            </div>
                     </div>
-                    
                     <input type="submit" value="Télécharger" className="btn-two mt-4" />
                 </form>
             </div>

@@ -408,19 +408,19 @@ p {
   position: relative;
   text-transform: capitalize;
   font-family: var(--heading-font);
-  color: var(--primary-color-1);
+  color: var(--text-white);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.87;
   display: inline-block;
   margin-bottom: 14px;
-  background: rgba(14, 89, 242, 0.1019607843);
+  /* background: rgb(14, 90, 242); */
   padding: 1px 25px;
   border-radius: 10px;
 }
 
 .subtitle-two {
-  background: rgba(14, 90, 242, 0.719);
+  background: rgb(14, 90, 242);
 }
 
 .subtitle-three::before {
@@ -3551,7 +3551,7 @@ p {
   z-index: 999;
 }
 .header__area-menubar-right-sidebar-popup p {
-  color: var(--color-4);
+  color: var(--color-1);
 }
 .header__area-menubar-right-sidebar-popup-contact {
   margin: 40px 0;
@@ -4391,9 +4391,10 @@ Responsive Menu Css
 .banner__four-content {
   z-index: 3;
   position: relative;
+  padding: 50px 0;
 }
 .banner__four-content h2 {
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1.13;
   margin-bottom: 20px;
   text-transform: none;
@@ -4401,10 +4402,10 @@ Responsive Menu Css
   text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .banner__four-content p {
-  font-size: 25px;
+  font-size: 22px;
   text-transform: none;
   margin-bottom: 40px;
-  color: var(--bg-heading-color);
+  color: var(--bg-white);
   font-weight: 600;
   /* text-shadow: 0 0 5px rgb(0, 0, 0); */
 
@@ -4937,7 +4938,7 @@ Responsive Menu Css
 }
 .about__three-content-service-single {
   display: flex;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.06);
   align-items: center;
   margin-bottom: 20px;
@@ -5103,6 +5104,7 @@ Responsive Menu Css
 }
 .about__four-content-service .service span {
   font-size: 18px;
+  text-transform: none;
 }
 .about__four-content-service .service i {
   color: var(--color-3);
@@ -5251,6 +5253,7 @@ Responsive Menu Css
 }
 .skill-area__one-right h2 {
   margin-bottom: 18px;
+  text-transform: none;
 }
 .skill-area__one-right p {
   color: var(--color-2);
@@ -5393,6 +5396,7 @@ Responsive Menu Css
 }
 .skill__two-tab-details-content h2 {
   margin-bottom: 30px;
+  text-transform: none;
 }
 .skill__two-tab-details-content p {
   color: var(--color-2);
@@ -5838,6 +5842,7 @@ Responsive Menu Css
 }
 .service__details-content h2 {
   margin-bottom: 25px;
+  text-transform: none;
 }
 .service__details-content p {
   color: var(--color-2);
@@ -6047,6 +6052,7 @@ Responsive Menu Css
   }
   .portfolio__one-content-left h2 {
     margin: 0;
+    text-decoration: none;
   }
 }
 @media (max-width: 992px) {
@@ -6567,6 +6573,7 @@ Responsive Menu Css
 }
 .contact__one-title h2 {
   color: var(--text-white);
+  text-transform: none;
 }
 .contact__one-form input {
   background-color: transparent;
@@ -7373,6 +7380,7 @@ Responsive Menu Css
 }
 .work-process-area__one-right-counter-img .img-counter h2 {
   color: var(--bg-white);
+  text-decoration: none;
 }
 .work-process-area__one-right-counter-img .img-counter > span {
   font-size: 22px;
@@ -7420,6 +7428,7 @@ Responsive Menu Css
   }
   .work-process-area__one-title h2 {
     margin-bottom: 20px;
+    text-decoration: none;
   }
 }
 @media (max-width: 535px) {
