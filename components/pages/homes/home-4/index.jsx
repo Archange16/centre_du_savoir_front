@@ -24,7 +24,7 @@ const HomeFour = () => {
             <AboutFour />
             <ServicesFour />
             <AboutThree />
-            {/* <Video /> */}
+            <Video />
             <WorkProcess />
             <WorkArea />
             <ChooseUsThree />

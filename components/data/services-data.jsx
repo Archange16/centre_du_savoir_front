@@ -24,6 +24,104 @@ const brochure9 = "/assets/img/brochure/BROCHURE GESTION INTEGRÉE DES PROJETS M
 const servicesData = [
   {
     id: 1,
+    documentId: "mines4",
+    image: services5,
+    brochure: brochure4,
+    disponible: "disponible sur notre plateforme",
+    titre: "Formation en exploitation minière à ciel ouvert : fondamentaux de l’extraction moderne",
+    slug: "techniques-avancees-exploitation-miniere",
+    description_courte: "Optimisez les processus d’extraction minière modernes.",
+    description_longue: "Cette formation offre des compétences de pointe pour optimiser les processus d’extraction et de gestion des mines. Elle permet de maîtriser les dernières technologies et méthodes pour améliorer la sécurité, la rentabilité et la durabilité.",
+    niveau: "Avancé",
+    duree_heures: 32,
+    prix: 490,
+    prix_promotionnel: 490,
+    langue: "Français",
+    est_actif: true,
+    public_cible: "Ingénieurs miniers, responsables de sites",
+    domaine: "Mines et carrières",
+    profils_concernes: [
+      {
+        profil: "Responsables d’exploitation",
+        competences: "Gestion technique et environnementale des mines"
+      }
+    ],
+    logiciels: ["ArcGIS", "MapInfo", "QGIS"],
+    objectifs: [
+      "Améliorer les procédés miniers",
+      "Utiliser des outils géospatiaux",
+      "Gérer les aspects environnementaux"
+    ],
+    prerequis: ["Connaissances de base en exploitation minière"]
+  },
+  {
+    id: 2,
+    documentId: "infraroutes6",
+    image: services4,
+    brochure: brochure3,
+    disponible: "disponible sur notre plateforme",
+    titre: "Formation en Conception et Réalisation des Infrastructures Routières Avancées (route)",
+    slug: "formation-infrastructures-routieres-avancee",
+    description_courte: "Acquérir une expertise approfondie dans la conception et réalisation de routes modernes.",
+    description_longue: "Cette formation permet aux apprenants d’acquérir les compétences techniques nécessaires pour concevoir, planifier et réaliser des infrastructures routières de qualité, en optimisant les coûts, la sécurité et la durabilité.",
+    niveau: "Avancé",
+    duree_heures: 40,
+    prix: 490,
+    prix_promotionnel: 490,
+    langue: "Français",
+    est_actif: true,
+    public_cible: "Ingénieurs routiers, urbanistes",
+    domaine: "Infrastructure routière",
+    profils_concernes: [
+      {
+        profil: "Techniciens voirie",
+        competences: "Conception géométrique et drainage"
+      }
+    ],
+    logiciels: ["PISTE", "AutoPISTE", "AutoCAD", "COVADIS", "IE-OUVRAGES", "Global Mapper", "Flowmaster", "Google EARTH", "Excel"],
+    objectifs: [
+      "Maîtriser les étapes de conception routière",
+      "Utiliser les outils spécialisés",
+      "Garantir la sécurité et la durabilité des routes"
+    ],
+    prerequis: ["Bases en géotechnique et topographie"]
+  },
+   {
+    id: 3,
+    documentId: "vrd8",
+    image: services7,
+    brochure: brochure8,
+    disponible: "disponible sur notre plateforme",
+    titre: "Formation avancée en V.R.D (Voirie Urbaine)",
+    slug: "formation-avancee-vrd",
+    description_courte: "Maîtriser la conception et gestion des infrastructures urbaines modernes.",
+    description_longue: "Cette formation permet d’acquérir des compétences pointues dans la conception, la réalisation et la gestion des infrastructures urbaines : voirie, assainissement, réseaux d’eau potable et aménagements publics.",
+    niveau: "Avancé",
+    duree_heures: 32,
+    prix: 350,
+    prix_promotionnel: 350,
+    langue: "Français",
+    est_actif: true,
+    public_cible: "Techniciens et ingénieurs VRD",
+    domaine: "Aménagement urbain",
+    profils_concernes: [
+      {
+        profil: "Projeteurs VRD",
+        competences: "Conception réseaux et voirie"
+      }
+    ],
+    logiciels: ["AutoPISTE", "AutoCAD", "COVADIS", "EXCEL"],
+    objectifs: [
+      "Réaliser des études de réseaux urbains",
+      "Concevoir des voiries et espaces publics",
+      "Appliquer les normes d’aménagement urbain"
+    ],
+    prerequis: [
+      "Connaissances en urbanisme ou VRD"
+    ]
+  },
+  {
+    id: 4,
     documentId: "ouvragesart11",
     image: services10,
     brochure: brochure5,
@@ -62,71 +160,7 @@ const servicesData = [
     ]
   },
   {
-    id: 2,
-    documentId: "mines4",
-    image: services5,
-    brochure: brochure4,
-    disponible: "disponible sur notre plateforme",
-    titre: "Formation en exploitation minière à ciel ouvert : fondamentaux de l’extraction moderne",
-    slug: "techniques-avancees-exploitation-miniere",
-    description_courte: "Optimisez les processus d’extraction minière modernes.",
-    description_longue: "Cette formation offre des compétences de pointe pour optimiser les processus d’extraction et de gestion des mines. Elle permet de maîtriser les dernières technologies et méthodes pour améliorer la sécurité, la rentabilité et la durabilité.",
-    niveau: "Avancé",
-    duree_heures: 32,
-    prix: 490,
-    prix_promotionnel: 490,
-    langue: "Français",
-    est_actif: true,
-    public_cible: "Ingénieurs miniers, responsables de sites",
-    domaine: "Mines et carrières",
-    profils_concernes: [
-      {
-        profil: "Responsables d’exploitation",
-        competences: "Gestion technique et environnementale des mines"
-      }
-    ],
-    logiciels: ["ArcGIS", "MapInfo", "QGIS"],
-    objectifs: [
-      "Améliorer les procédés miniers",
-      "Utiliser des outils géospatiaux",
-      "Gérer les aspects environnementaux"
-    ],
-    prerequis: ["Connaissances de base en exploitation minière"]
-  },
-  {
-    id: 3,
-    documentId: "infraroutes6",
-    image: services4,
-    brochure: brochure3,
-    disponible: "disponible sur notre plateforme",
-    titre: "Formation en Conception et Réalisation des Infrastructures Routières Avancées (route)",
-    slug: "formation-infrastructures-routieres-avancee",
-    description_courte: "Acquérir une expertise approfondie dans la conception et réalisation de routes modernes.",
-    description_longue: "Cette formation permet aux apprenants d’acquérir les compétences techniques nécessaires pour concevoir, planifier et réaliser des infrastructures routières de qualité, en optimisant les coûts, la sécurité et la durabilité.",
-    niveau: "Avancé",
-    duree_heures: 40,
-    prix: 490,
-    prix_promotionnel: 490,
-    langue: "Français",
-    est_actif: true,
-    public_cible: "Ingénieurs routiers, urbanistes",
-    domaine: "Infrastructure routière",
-    profils_concernes: [
-      {
-        profil: "Techniciens voirie",
-        competences: "Conception géométrique et drainage"
-      }
-    ],
-    logiciels: ["PISTE", "AutoPISTE", "AutoCAD", "COVADIS", "IE-OUVRAGES", "Global Mapper", "Flowmaster", "Google EARTH", "Excel"],
-    objectifs: [
-      "Maîtriser les étapes de conception routière",
-      "Utiliser les outils spécialisés",
-      "Garantir la sécurité et la durabilité des routes"
-    ],
-    prerequis: ["Bases en géotechnique et topographie"]
-  },
-  {
-    id: 4,
+    id: 5,
     documentId: "cartotopo9",
     image: services3,
     brochure: brochure2,
@@ -158,7 +192,7 @@ const servicesData = [
     prerequis: ["Notions de SIG et topographie"]
   },
   {
-    id: 5,
+    id: 6,
     documentId: "calcstruct1",
     image: services9,
     brochure: brochure1,
@@ -197,7 +231,7 @@ const servicesData = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     documentId: "opc2",
     image: services6,
     brochure: brochure6,
@@ -232,40 +266,6 @@ const servicesData = [
     ],
     prerequis: [
       "Connaissance des étapes d’un projet de construction"
-    ]
-  },
-  {
-    id: 7,
-    documentId: "vrd8",
-    image: services7,
-    brochure: brochure8,
-    disponible: "disponible sur notre plateforme",
-    titre: "Formation avancée en V.R.D (Voirie Urbaine)",
-    slug: "formation-avancee-vrd",
-    description_courte: "Maîtriser la conception et gestion des infrastructures urbaines modernes.",
-    description_longue: "Cette formation permet d’acquérir des compétences pointues dans la conception, la réalisation et la gestion des infrastructures urbaines : voirie, assainissement, réseaux d’eau potable et aménagements publics.",
-    niveau: "Avancé",
-    duree_heures: 32,
-    prix: 350,
-    prix_promotionnel: 350,
-    langue: "Français",
-    est_actif: true,
-    public_cible: "Techniciens et ingénieurs VRD",
-    domaine: "Aménagement urbain",
-    profils_concernes: [
-      {
-        profil: "Projeteurs VRD",
-        competences: "Conception réseaux et voirie"
-      }
-    ],
-    logiciels: ["AutoPISTE", "AutoCAD", "COVADIS", "EXCEL"],
-    objectifs: [
-      "Réaliser des études de réseaux urbains",
-      "Concevoir des voiries et espaces publics",
-      "Appliquer les normes d’aménagement urbain"
-    ],
-    prerequis: [
-      "Connaissances en urbanisme ou VRD"
     ]
   },
   {

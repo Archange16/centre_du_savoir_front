@@ -34,7 +34,7 @@ const FooterThree = () => {
                                 <ul>
 									{servicesData.slice(0, 4).map((data, id) => {
 										const words = data.titre.split(' ');
-										const firstAndSecondWord = words.slice(2, 10).join(' ');
+										const firstAndSecondWord = words.slice(2, 100).join(' ');
 										return (
 											<li key={id}><Link href={`/services/${data.slug}`}>{/* <i className="far fa-chevron-double-right"></i> */}{firstAndSecondWord}</Link></li>
 										);
@@ -88,7 +88,7 @@ const FooterThree = () => {
                     <div className="row justify-content-between copyright__one-container-area">
                         <div className="col-xl-5 col-lg-6"> 
                             <div className="copyright__one-left">
-                                <p>© 2024 |<Link href="https://www.centreprofessionneldusavoir.com/">centreprofessionneldusavoir.com</Link> </p>
+                                <p>© 2025 |<Link href="https://www.centreprofessionneldusavoir.com/">centreprofessionneldusavoir.com</Link> </p>
                             </div>
                         </div>
                         <div className="col-xl-5 col-lg-6">

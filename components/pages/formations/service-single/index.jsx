@@ -11,7 +11,7 @@ import FooterThree from "@/components/layout/footers/footer-three";
 const FormationsSingle = ({selectedFormation}) => {
     console.log("selectedFormation", selectedFormation);
     const words = selectedFormation?.titre.split(' ');
-    const firstAndSecondWord = words?.slice(0, 10).join(' ');
+    const firstAndSecondWord = words?.slice(0, 1000).join(' ');
     console.log("firstAndSecondWord", selectedFormation);
     return (
         <>

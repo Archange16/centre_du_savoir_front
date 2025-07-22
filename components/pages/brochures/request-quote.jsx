@@ -106,7 +106,7 @@ const RequestQuoteMain = () => {
                         </div>
                         <div className="request-quote__area-input-field">
                             <label htmlFor="phone">Téléphone *</label>
-                            <input type="text" id="phone" value={formData.phone} onChange={handleChange} placeholder="+242 06 123 4567" required />
+                            <input type="text" id="phone" value={formData.phone} onChange={handleChange} placeholder="+212 78 02 23 487" required />
                         </div>
                         <div className="request-quote__area-input-field">
                             <label htmlFor="pays">Pays</label>

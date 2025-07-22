@@ -1,11 +1,16 @@
 import { useState } from "react";
-import ModalVideo from "react-modal-video";
 
 const Video = () => {
     const [openVideo, setOpenVideo] = useState(false);
+
     const openVideoModal = () => {
         setOpenVideo(true);
     };
+
+    const closeVideoModal = () => {
+        setOpenVideo(false);
+    };
+
     return (
         <>
             <div className="video__one">
@@ -13,7 +18,20 @@ const Video = () => {
                     <i className="fas fa-play"></i>
                 </span>
             </div>
-            <ModalVideo className='video-modal' channel="youtube" autoplay isOpen={openVideo} videoId="SZEflIVnhH8" onClose={() => setOpenVideo(false)} />
+
+            {openVideo && (
+                <div className="video-modal-overlay" onClick={closeVideoModal}>
+                    <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="video-close-btn" onClick={closeVideoModal}>
+                            &times;
+                        </button>
+                        <video width="100%" height="500px" controls autoPlay>
+                            <source src="../assets/img/video/VID-20250722-WA0003.mp4" type="video/mp4" />
+                            Votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
