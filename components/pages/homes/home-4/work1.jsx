@@ -49,7 +49,7 @@ const WorkArea = () => {
                                 <h4>Conception des Plans d’Exécution</h4>
                             </div>
                         </div>
-                        <div className="work-process-area__one-single-work">
+                       {/*  <div className="work-process-area__one-single-work">
                             <div className="work-process-area__one-single-work-content">
                                 <h4>Calculs de Structures Bâtiment & Métallique</h4>
                             </div>
@@ -58,7 +58,7 @@ const WorkArea = () => {
                             <div className="work-process-area__one-single-work-content">
                                 <h4>Calculs de Structures Bâtiment & Métallique</h4>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-xl-6">
                         <BlogSidebarSuivi/>
