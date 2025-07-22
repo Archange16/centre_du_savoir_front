@@ -39,8 +39,8 @@ const AboutMain = () => {
                             <span className="subtitle-one">À propos de nous</span>
                             <h2>Pourquoi choisir le Centre Professionnel du Savoir ?</h2>
                             <p>
-                                Le Centre Professionnel du Savoir est votre partenaire de confiance pour une formation professionnelle de qualité, spécialement orientée vers les métiers du génie civil.
-                                Nous vous offrons des formations 100 % en ligne, interactives, accessibles à tout moment et conçues pour répondre aux exigences actuelles du marché de l’emploi.
+                                Le Centre Professionnel du Savoir est votre partenaire de confiance pour une formation professionnelle de qualité, spécialement orientée vers les métiers du génie civil.<br/>
+                                Nous vous offrons des formations 100 % en ligne, interactives, accessibles à tout moment et conçues pour répondre aux exigences actuelles du marché de l’emploi.<br/>
                                 Grâce à notre approche pédagogique innovante, vous progressez à votre rythme tout en acquérant des compétences concrètes et certifiantes pour faire évoluer votre carrière.
                             </p>
                             <div className="about__one-content-service">

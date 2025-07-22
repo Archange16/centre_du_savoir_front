@@ -407,7 +407,7 @@ p {
 .subtitle-three,
 .subtitle-four {
   position: relative;
-  text-transform: capitalize;
+  text-transform: none;
   font-family: var(--heading-font);
   color: var(--text-white);
   font-weight: 500;
@@ -475,7 +475,7 @@ p {
   z-index: 3;
   position: relative;
   transition: 0.4s;
-  text-transform: capitalize;
+  text-transform: none;
   overflow: hidden;
   border-radius: 5px;
   border: 1px solid var(--primary-color-1);
@@ -494,6 +494,8 @@ p {
   margin-left: 10px;
   font-size: 20px;
   transition: 0.2s;
+  text-transform: none;
+  text-decoration: none;
 }
 .btn-one:hover,
 .btn-two:hover,
@@ -629,7 +631,7 @@ p {
   font-weight: 700;
   font-family: var(--heading-font);
   transition: 0.4s;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .simple-btn-1 i,
 .simple-btn-2 i,
@@ -4460,6 +4462,12 @@ Responsive Menu Css
 .banner__four-image-wrapper img {
   z-index: 3;
 }
+.banner__four {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 
 @media (max-width: 991px) {
   .banner__four {
@@ -4575,7 +4583,7 @@ Responsive Menu Css
 * Page Banner CSS
 ==========================================================================*/
 .page__banner {
-  background-image: url('../img/banner/banner-four-bg.png');
+  background-image: url('../img/banner/equipe.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -4630,6 +4638,14 @@ Responsive Menu Css
 .page__banner-img {
   z-index: 2;
   position: relative;
+}
+@media (max-width: 768px) {
+  .page__banner {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding: 0;
+  }
 }
 
 @media (max-width: 991px) {
@@ -4715,10 +4731,13 @@ Responsive Menu Css
 .about__one-content h2 {
   text-transform: none;
   margin-bottom: 30px;
+  text-decoration: none;
 }
 .about__one-content p {
   color: var(--color-2);
   margin-bottom: 30px;
+  text-transform: none;
+  text-decoration: none;
 }
 .about__one-content-service {
   display: flex;
@@ -4733,6 +4752,8 @@ Responsive Menu Css
 .about__one-content-service .service span {
   font-size: 18px;
   color: var(--color-2);
+    text-transform: none;
+  text-decoration: none;
 }
 .about__one-content-service .service i {
   color: var(--color-3);
@@ -10558,6 +10579,10 @@ Responsive Menu Css
   row-gap: 10px;
   padding: 0;
   margin: 0;
+}
+.footer__three-top-social ul li {
+  list-style: none;
+  margin-right: 10px;
 }
 .footer__three-top-social ul a {
   width: 48px;
