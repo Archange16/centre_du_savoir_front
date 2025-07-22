@@ -4588,7 +4588,7 @@ Responsive Menu Css
   background-position: center;
   position: relative;
   overflow: hidden;
-  padding: 200px 20px;
+  padding: 300px 20px;
 }
 .page__banner::before {
   background-color: var(--bg-heading-color);
@@ -4645,6 +4645,9 @@ Responsive Menu Css
     background-repeat: no-repeat;
     background-position: center top;
     padding: 0;
+    margin: 0;
+    background-size: 120%; /* zoom à 120% */
+    background-position: center;
   }
 }
 
