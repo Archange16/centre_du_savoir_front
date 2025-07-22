@@ -10,13 +10,13 @@ const WorkArea = () => {
         <div className="work-process-area__one section-padding" style={{backgroundImage: `url(${workBg.src})`}}>
             <div className="container">
                 <div className="row align-items-end work-process-area__one-title">
-                    <div className="col-xl-7 col-lg-7">
+                    <div className="col-xl-6 col-lg-6">
                         <div className="work-process-area__one-content-left">
                             <span className="subtitle-one">Suivi de projet</span>
                             <h2>Votre partenaire technique dans le BTP</h2>
                         </div>
                     </div>
-                    <div className="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1">
+                    <div className="col-xl-5 col-lg-5 custom-offset-xl">
                         <div className="work-process-area__one-content-right">
                             <p>Vous accompagner dans la viabilisation, la solidité et la conformité technique de vos ouvrages. 📍 Disponible pour collaboration sur tout projet technique.</p>
                         </div>

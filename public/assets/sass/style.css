@@ -11059,4 +11059,9 @@ Responsive Menu Css
   min-height: 400px;
 }
 
+@media (min-width: 1200px) {
+  .custom-offset-xl {
+    margin-left: 22px;
+  }
+}
 
