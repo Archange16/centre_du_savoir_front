@@ -4413,10 +4413,14 @@ Responsive Menu Css
    text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .banner__four-content a:hover {
-  color: var(--text-white);
+  color: var(--primary-color-1);
 }
 .banner__four-content a:hover i {
-  color: var(--text-white);
+  color: var(--primary-color-1);
+}
+.banner__four-content .btn-one{
+ background-color: var(--bg-white);
+  color: var(--black);
 }
 .banner__four-content-bottom {
   display: flex;
@@ -4584,14 +4588,14 @@ Responsive Menu Css
 /*==========================================================================
 * Page Banner CSS
 ==========================================================================*/
-.page__banner {
+/* .page__banner {
   background-image: url('../img/banner/equipe.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
   padding: 250px 20px;
-}
+} */
 .page__banner::before {
   background-color: var(--bg-heading-color);
   content: "";
@@ -4664,18 +4668,18 @@ Responsive Menu Css
 @media (max-width: 767px) {
   .page__banner-content h2 {
     margin-bottom: 20px;
-    font-size: 64px;
+    font-size: 40px;
     line-height: 80px;
   }
 }
 @media (max-width: 535px) {
   .page__banner-content h2 {
     margin-bottom: 18px;
-    font-size: 40px;
-    line-height: 60px;
+    font-size: 25px;
+    line-height: 23px;
   }
   .page__banner-content {
-    padding: 60px 0;
+    padding: 100px 0;
   }
   .page__banner-shape {
     display: none;
@@ -5151,6 +5155,9 @@ Responsive Menu Css
     width: -moz-fit-content;
     width: fit-content;
   }
+  .about__four-content h2 {
+  font-size: 30px;
+}
 }
 /*==========================================================================
 * About Area Five CSS

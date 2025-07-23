@@ -8,6 +8,8 @@ import HeaderFour from "@/components/layout/headers/header/header-four";
 import HeaderTwo from "@/components/layout/headers/header/header-two";
 import FooterFour from "@/components/layout/footers/footer-four";
 import FooterThree from "@/components/layout/footers/footer-three";
+import bannerData  from "@/components/data/bannerImages";
+
 
 //import Map from '@/components/maps/LeafletMap';
 
@@ -15,12 +17,12 @@ import FooterThree from "@/components/layout/footers/footer-three";
 
 
 const ContactUs = () => {
-   
+   const currentBanner = bannerData?.find(item => item.page === 'contact');
     return (
         <>
             <SEO pageTitle="Contactez-nous" />        
             <HeaderTwo />
-            <BreadCrumb title="Contactez nous" innerTitle="Contactez-nous" />
+            <BreadCrumb title="Contactez nous" innerTitle="Contactez-nous" backgroundImage={currentBanner.src}/>
             <div className="contact__two section-padding">
                 <div className="container">
                     <div className="row gy-4 align-items-center">

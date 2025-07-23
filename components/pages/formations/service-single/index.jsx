@@ -7,8 +7,10 @@ import FooterTwo from "@/components/layout/footers/footer-two";
 import FormationSingleMain from "./formation";
 import HeaderFour from "@/components/layout/headers/header/header-four";
 import FooterThree from "@/components/layout/footers/footer-three";
+import bannerData  from "@/components/data/bannerImages";
 
 const FormationsSingle = ({selectedFormation}) => {
+    const currentBanner = bannerData?.find(item => item.page === 'services');
     console.log("selectedFormation", selectedFormation);
     const words = selectedFormation?.titre.split(' ');
     const firstAndSecondWord = words?.slice(0, 1000).join(' ');
@@ -17,7 +19,7 @@ const FormationsSingle = ({selectedFormation}) => {
         <>
             <SEO pageTitle={firstAndSecondWord?.title} />             
             <HeaderTwo />
-            <BreadCrumb  title={firstAndSecondWord} innerTitle={firstAndSecondWord}  />
+            <BreadCrumb  title={firstAndSecondWord} innerTitle={firstAndSecondWord}  backgroundImage={currentBanner.src}/>
             <FormationSingleMain selectedFormation={selectedFormation}/>
             <FooterThree />
             <ScrollToTop />

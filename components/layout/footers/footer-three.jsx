@@ -19,7 +19,7 @@ const FooterThree = () => {
                         <div className="footer__three-widget">
                             <div className="footer__three-widget-about">
                                 <Link href="/"><img src={logo.src} alt="image" /></Link>
-                                <p>Bienvenue au Centre Professionnel du Savoir – une plateforme dédiée à la formation professionnelle en génie civil. Nous vous proposons des formations 100 % en ligne, interactives et adaptées aux exigences du marché du travail</p>
+                                <p>Bienvenue au Centre Professionnel du Savoir – une plateforme dédiée à la formation professionnelle en génie civil et du secteur minier. Nous vous proposons des formations 100 % en ligne, interactives et adaptées aux exigences du marché du travail</p>
                                {/*  <form action="#">
                                     <input type="text" name="email" placeholder="Your e-mail" required="" />
                                     <button type="submit"><i className="fas fa-paper-plane"></i></button>
@@ -32,9 +32,9 @@ const FooterThree = () => {
                             <h4 className="ml-60">Nos formations</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-									{servicesData.slice(0, 4).map((data, id) => {
+									{servicesData.slice(0,4).map((data, id) => {
 										const words = data.titre.split(' ');
-										const firstAndSecondWord = words.slice(2, 100).join(' ');
+										const firstAndSecondWord = words.slice(0, 100).join(' ');
 										return (
 											<li key={id}><Link href={`/services/${data.slug}`}>{/* <i className="far fa-chevron-double-right"></i> */}{firstAndSecondWord}</Link></li>
 										);
