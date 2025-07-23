@@ -19,7 +19,7 @@ const BreadCrumb = ({ title, innerTitle, description, backgroundImage }) => {
   const baseStyles = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
-    backgroundPosition: 'bottom',
+    backgroundPosition: 'center',
     position: 'relative',
     overflow: 'hidden',
     padding: '300px 20px',
