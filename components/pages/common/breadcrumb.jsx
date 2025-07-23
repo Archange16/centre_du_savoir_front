@@ -22,7 +22,7 @@ const BreadCrumb = ({ title, innerTitle, description, backgroundImage }) => {
     backgroundPosition: 'center',
     position: 'relative',
     overflow: 'hidden',
-    padding: '300px 20px',
+    padding: '450px 20px',
   };
 
   const mobileStyles = {
