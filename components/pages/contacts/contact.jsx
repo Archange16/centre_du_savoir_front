@@ -1,14 +1,14 @@
 "use client";
-import SEO from "@/components/data/seo";
+import SEO from "../../../components/data/seo";
 import BreadCrumb from "../common/breadcrumb";
 import ScrollToTop from "../common/scroll/scroll-to-top";
 import FormArea from "./form";
-import FooterTwo from "@/components/layout/footers/footer-two";
-import HeaderFour from "@/components/layout/headers/header/header-four";
-import HeaderTwo from "@/components/layout/headers/header/header-two";
-import FooterFour from "@/components/layout/footers/footer-four";
-import FooterThree from "@/components/layout/footers/footer-three";
-import bannerData  from "@/components/data/bannerImages";
+//import FooterTwo from "@/components/layout/footers/footer-two";
+//import HeaderFour from "@/components/layout/headers/header/header-four";
+import HeaderTwo from "../../../components/layout/headers/header/header-two";
+//import FooterFour from "@/components/layout/footers/footer-four";
+import FooterThree from "../../../components/layout/footers/footer-three";
+import bannerData  from "../../../components/data/bannerImages";
 
 
 //import Map from '@/components/maps/LeafletMap';

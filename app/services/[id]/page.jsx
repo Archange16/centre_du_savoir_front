@@ -1,7 +1,7 @@
 "use client"
 import { useParams, useRouter } from "next/navigation";
-import formationsData  from '@/components/data/services-data';
-import FormationsSingle from "@/components/pages/formations/service-single";
+import formationsData  from '../../../components/data/services-data';
+import FormationsSingle from "../../../components/pages/formations/service-single";
 
 
 const ServiceDetails = () => {

@@ -1,4 +1,4 @@
-import ServicePageTwo from '@/components/pages/formations/service-two';
+import ServicePageTwo from '../../components/pages/formations/service-two';
 import React from 'react';
 
 const ServicePages = () => {

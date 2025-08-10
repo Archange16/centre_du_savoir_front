@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Social from '@/components/data/social';
-import blogData from '@/components/data/blog-data';
 import BlogSidebar from '../blog-sidebar/blog-sidebar';
 import icon from '../../../../public/assets/img/icon/blog-details-quote.png';
 import image from '../../../../public/assets/img/blog/blog-details.png';

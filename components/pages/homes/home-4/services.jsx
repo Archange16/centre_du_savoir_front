@@ -1,4 +1,4 @@
-import blogData from '@/components/data/services-data';
+import blogData from '../../../../components/data/services-data';
 import Link from 'next/link';
 
 const BlogFour = () => {

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
-import selectedFormation from '@/components/data/services-data';
+import selectedFormation from '../../../components/data/services-data';
 
 
 const RequestQuoteMain = () => {

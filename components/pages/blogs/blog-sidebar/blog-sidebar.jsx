@@ -1,5 +1,5 @@
 
-import blogData from '@/components/data/blog-data';
+import blogData from '../../../../components/data/blog-data';
 import Link from 'next/link';
 import FormInscription from '../../contacts/form-inscription';
 

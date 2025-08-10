@@ -1,13 +1,11 @@
 "use client"
-import SEO from "@/components/data/seo";
+import SEO from "../../../../components/data/seo";
 import BreadCrumb from "../../common/breadcrumb";
 import ScrollToTop from "../../common/scroll/scroll-to-top";
-import HeaderTwo from "@/components/layout/headers/header/header-two";
-import FooterTwo from "@/components/layout/footers/footer-two";
+import HeaderTwo from "../../../../components/layout/headers/header/header-two";
 import FormationSingleMain from "./formation";
-import HeaderFour from "@/components/layout/headers/header/header-four";
-import FooterThree from "@/components/layout/footers/footer-three";
-import bannerData  from "@/components/data/bannerImages";
+import FooterThree from "../../../../components/layout/footers/footer-three";
+import bannerData  from "../../../../components/data/bannerImages";
 
 const FormationsSingle = ({selectedFormation}) => {
     const currentBanner = bannerData?.find(item => item.page === 'services');

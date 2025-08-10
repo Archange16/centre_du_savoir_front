@@ -1,8 +1,8 @@
 "use client"
 import { useParams, useRouter } from "next/navigation";
-import formationsData  from '@/components/data/services-data';
+import formationsData  from '../../../components/data/services-data';
 
-import RequestQuotePage from "@/components/pages/brochures";
+import RequestQuotePage from "../../../components/pages/brochures";
 
 
 const ServiceDetails = () => {

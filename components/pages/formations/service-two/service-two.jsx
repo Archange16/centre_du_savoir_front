@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import servicesData from '@/components/data/services-data';
+import servicesData from '../../../../components/data/services-data';
 
 const ServicesMain = () => {
     return (

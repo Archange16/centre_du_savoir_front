@@ -1,13 +1,9 @@
 "use client"
-import SEO from "@/components/data/seo";
-import BreadCrumb from "../../common/breadcrumb";
+import SEO from "../../../../components/data/seo";
 import PortfolioDetailsMain from "./portfolio-details";
 import ScrollToTop from "../../common/scroll/scroll-to-top";
-import HeaderTwo from "@/components/layout/headers/header/header-two";
-import FooterTwo from "@/components/layout/footers/footer-two";
-import HeaderFour from "@/components/layout/headers/header/header-four";
-import FooterFour from "@/components/layout/footers/footer-four";
-import FooterThree from "@/components/layout/footers/footer-three";
+import HeaderTwo from "../../../../components/layout/headers/header/header-two";
+import FooterThree from "../../../../components/layout/footers/footer-three";
 
 const PortfolioDetails = ({singleData}) => {
     return (

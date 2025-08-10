@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import image2 from '../../../../public/assets/img/service/service-details.png';
 import { useParams } from 'next/navigation';
-import servicesData from '@/components/data/services-data';
+//import servicesData from '@/components/data/services-data';
 import BlogSidebar from '../../blogs/blog-sidebar/blog-sidebar';
 import WorkArea from '../../homes/home-4/work1';
 

@@ -1,4 +1,4 @@
-import teamData from '@/components/data/team-data';
+import teamData from '../../../components/data/team-data';
 import Link from 'next/link';
 
 const Team = () => {
