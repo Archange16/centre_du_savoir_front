@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/pages/from/SignUpForm.jsx", "components/pages/ui/button.jsx", "components/pages/ui/Navbar.jsx", "components/pages/ui/GoogleSignInButton.jsx", "components/pages/ui/label.jsx"  ],
   "exclude": [
     "node_modules"
   ]

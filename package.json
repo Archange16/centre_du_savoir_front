@@ -9,8 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
     "@prisma/client": "^6.13.0",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
     "bootstrap": "^5.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
     "next": "^15.0.3",
     "next-auth": "^4.24.11",
@@ -18,10 +25,12 @@
     "react": "^18",
     "react-countup": "^6.5.3",
     "react-dom": "^18",
+    "react-hook-form": "^7.62.0",
     "react-leaflet": "^4.2.1",
     "react-modal-video": "^2.0.2",
     "react-toastify": "^11.0.5",
-    "swiper": "^11.1.5"
+    "swiper": "^11.1.5",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@types/node": "24.1.0",

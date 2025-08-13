@@ -1,4 +1,5 @@
 "use client"
+import { SessionProvider } from "next-auth/react";
 import { useEffect } from 'react';
 import "./globals.css";
 
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
                 <link rel='icon' type='image/png' href='../favicon.ico' />
             </head>
             <body suppressHydrationWarning={true}>
-                {children}
+                <SessionProvider>{children}</SessionProvider>
             </body>
         </html>
     );

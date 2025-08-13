@@ -343,7 +343,55 @@ const servicesData = [
   prerequis: [
     "Connaissances de base en exploitation minière ou en gestion de projet"
   ]
+},
+{
+  id: 10,
+  documentId: "modgeo3d20h",
+  image: "services11", // Remplace par le chemin ou identifiant de l'image appropriée
+  brochure: "", // Ajoute ici le lien de la brochure si disponible
+  disponible: "n'est pas disponible",
+  titre: "Formation en Modélisation 3D en Géologie Minière – 20H",
+  slug: "formation-modelisation-3d-geologie-miniere",
+  description_courte: "Devenez un expert en modélisation géologique et géomécanique appliquée à l’industrie minière.",
+  description_longue: "Cette formation intensive et progressive vous plonge au cœur des techniques de modélisation 2D et 3D appliquées à la géologie minière, à la géomécanique et à l’estimation des ressources. À travers des cas pratiques et l’utilisation des logiciels professionnels les plus reconnus du secteur (Rocscience, Dips, Surfer, Datamine, Surpac, etc.), vous apprendrez à analyser la stabilité des massifs rocheux, à concevoir des modèles géologiques précis et à réaliser des estimations de ressources conformes aux standards internationaux.",
+  niveau: "Intermédiaire à Avancé",
+  duree_heures: 20,
+  prix: 550,
+  prix_promotionnel: 550,
+  langue: "Français",
+  est_actif: true,
+  public_cible: "Étudiants, ingénieurs et professionnels en géologie, géotechnique et exploitation minière",
+  domaine: "Géologie – Mines – Géotechnique",
+  profils_concernes: [
+    {
+      profil: "Étudiants et diplômés en géologie, géotechnique ou ingénierie minière",
+      competences: "Bases en géologie minière et modélisation"
+    },
+    {
+      profil: "Géologues et ingénieurs en exploration",
+      competences: "Analyse de données géologiques, estimation des ressources"
+    },
+    {
+      profil: "Techniciens en topographie et géomatique",
+      competences: "Intégration de données terrain dans les modèles"
+    },
+    {
+      profil: "Consultants et professionnels en reconversion",
+      competences: "Acquisition de compétences en modélisation 3D pour le secteur minier"
+    }
+  ],
+  logiciels: ["Rocscience", "Dips", "Surfer", "Datamine", "Surpac"],
+  objectifs: [
+    "Modéliser en 2D & 3D des structures géologiques et géomécaniques",
+    "Analyser la stabilité des excavations souterraines et à ciel ouvert",
+    "Effectuer un traitement géostatistique des données minières",
+    "Créer des modèles géologiques 3D précis",
+    "Estimer les ressources minières selon les standards internationaux",
+    "Concevoir des plans d’exploitation minière réalistes"
+  ],
+  prerequis: ["Notions de base en géologie et exploitation minière", "Connaissance des SIG ou logiciels techniques recommandée"]
 }
+
 
   /* {
   id: 9,
