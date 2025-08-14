@@ -258,7 +258,7 @@ export default function MultiStepForm({
                     fontWeight: 'bold',
                     fontSize: '1.2rem',
                     marginRight: '20px'
-                  }}>à partir de 350 €</span>
+                  }}>💶 À partir de 350 €</span>
                   <span 
                   style={{
                     backgroundColor: '#0f70b7',
@@ -268,7 +268,7 @@ export default function MultiStepForm({
                     display: 'inline-block',
                     fontWeight: 'bold',
                     fontSize: '1.2rem'
-                  }} >Certifiante</span>
+                  }} >✅ Certifiante</span>
                 </div>
                 <div className="col-md-12 text-center mt-3">
                       <span
@@ -280,7 +280,7 @@ export default function MultiStepForm({
                     display: 'inline-block',
                     fontWeight: 'bold',
                     fontSize: '1.2rem'
-                  }} className="">100% en ligne</span>
+                  }} className="">💻 100% en ligne</span>
                   </div>
              </div>
             </div>
