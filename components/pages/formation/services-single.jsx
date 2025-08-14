@@ -246,28 +246,29 @@ export default function MultiStepForm({
           <div className="form-container p-4 p-md-5">
             {/* En-tête avec titre et compte à rebours */}
             <div className="text-center mb-4">
-              <h2 className="mb-3">Accélérez votre carrière grâce à nos formations en <span style={{ color: '#f39200' }}>Génie Civil</span> et <span style={{ color: '#f39200' }}>Géologie Minière</span></h2>
+              <h2 className="mb-3 accroche">Accélérez votre carrière grâce à nos formations en <span style={{ color: '#f39200' }}>Génie Civil</span> et <span style={{ color: '#f39200' }}>Géologie Minière</span></h2>
              <div className="row">
-                <div className="col-md-12 text-center ">
-                  <span className="" style={{
+                <div className="col-md-12  text-center ">
+                  <span className="col-md-5" style={{
                     backgroundColor: '#198754',
                     color: '#ffffffff',
                     borderRadius: '50px',
-                    padding: '10px 20px',
+                    padding: '10px 10px',
                     display: 'inline-block',
                     fontWeight: 'bold',
-                    fontSize: '1.2rem',
+                    fontSize: '0.9rem',
                     marginRight: '20px'
                   }}>💶 À partir de 350 €</span>
                   <span 
+                  className='col-md-5'
                   style={{
                     backgroundColor: '#0f70b7',
                     color: '#ffffffff',
                     borderRadius: '50px',
-                    padding: '10px 20px',
+                    padding: '10px 10px',
                     display: 'inline-block',
                     fontWeight: 'bold',
-                    fontSize: '1.2rem'
+                    fontSize: '0.9rem'
                   }} >✅ Certifiante</span>
                 </div>
                 <div className="col-md-12 text-center mt-3">
@@ -279,7 +280,7 @@ export default function MultiStepForm({
                     padding: '10px 20px',
                     display: 'inline-block',
                     fontWeight: 'bold',
-                    fontSize: '1.2rem'
+                    fontSize: '1rem'
                   }} className="">💻 100% en ligne</span>
                   </div>
              </div>

@@ -11378,3 +11378,23 @@ body {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* styles.css ou Home.module.css */
+
+/* .accroche {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.highlight {
+  color: #f39200;
+} */
+
+/* Media query pour petit écran (moins de 640px) */
+@media (max-width: 640px) {
+  .accroche {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+}
