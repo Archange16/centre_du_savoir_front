@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import { buttonVariants } from './ui/button';
-import { HandMetal } from 'lucide-react';
+import { buttonVariants } from '../ui/button';
+//import { HandMetal } from 'lucide-react';
 import { authOptions } from '../../../lib/auth';
-import { Button } from './button';
-import { signOut } from 'next-auth/react';
 import UserAccountnav from './UserAccountnav';
 import { getServerSession } from 'next-auth/next';
 

@@ -3,6 +3,7 @@
 //import BreadCrumb from '../../common/breadcrumb';
 //import RequestQuoteMain from './request-quote';
 import ScrollToTop from '../../common/scroll/scroll-to-top';
+import Navbar from '../../ui/Navbar';
 //import FooterTwo from '@/components/layout/footers/footer-two';
 //import HeaderTwo from '@/components/layout/headers/header/header-two';
 //import HeaderFour from '@/components/layout/headers/header/header-four';

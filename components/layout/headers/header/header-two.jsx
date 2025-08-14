@@ -7,6 +7,7 @@ import logo1 from "../../../../public/assets/img/logo-1.png";
 import logo2 from "../../../../public/assets/img/logo-2.png";
 import MobileMenuPopup from '../mobile-menu/menu-area';
 import Link from 'next/link';
+import { Button } from '@/components/pages/ui/button';
 
 const HeaderTwo = ({variant}) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -107,11 +108,15 @@ const HeaderTwo = ({variant}) => {
                                 </div>
 
                                 <div className="header__area-menubar-right-box-help">
-                                    <i className="flaticon-phone-call"></i>
+                                     <i className="flaticon-phone-call ml-5"></i>
                                     <div className="header__area-menubar-right-box-help-info">
                                         <span>Appelez-nous</span>
                                         <Link href="tel:+242061234567">(+212) 780-223487</Link>
                                     </div>
+                                    <div>
+                                       <Button />
+                                    </div>
+                                    
                                 </div>
 
                                 <div className="header__area-menubar-right-responsive-menu menu__bar">
