@@ -14,7 +14,7 @@ const FORMATIONS_LIST = [
   'Structures et solidité des bâtiments',
   'Cartographie géologique et topographique',
   'Maîtrise des réseaux eaux usées',
-  'Projets miniers (3D)'
+  'Projets 3D'
 ];
 
 export default function MultiStepForm({ 
@@ -293,6 +293,8 @@ export default function MultiStepForm({
                     {['Ingénieur', 'Technicien', 'Étudiant', 'Autre'].map((option) => (
                       <div key={option} className="col-md-6">
                         <div className="form-check p-3 border rounded">
+                          <label htmlFor={`situation-${option}`} className="form-check cursor-pointer"
+                          style={{ cursor: 'pointer' }}>
                           <input
                             type="radio"
                             id={`situation-${option}`}
@@ -303,7 +305,6 @@ export default function MultiStepForm({
                             className="form-check-input"
                             required
                           />
-                          <label htmlFor={`situation-${option}`} className="form-check-label ms-2">
                             {option}
                           </label>
                         </div>
@@ -333,6 +334,11 @@ export default function MultiStepForm({
                     {FORMATIONS_LIST.map((formation) => (
                       <div key={formation} className="col-md-6">
                         <div className="form-check p-3 border rounded">
+                           <label 
+                            htmlFor={`formation-${formation.replace(/\s+/g, '-')}`} 
+                            className="form-check-label ms-2 form-check cursor-pointer"
+                            style={{ cursor: 'pointer' }}
+                          >
                           <input
                             type="checkbox"
                             id={`formation-${formation.replace(/\s+/g, '-')}`}
@@ -342,10 +348,6 @@ export default function MultiStepForm({
                             onChange={handleChange}
                             className="form-check-input"
                           />
-                          <label 
-                            htmlFor={`formation-${formation.replace(/\s+/g, '-')}`} 
-                            className="form-check-label ms-2"
-                          >
                             {formation}
                           </label>
                         </div>
@@ -383,6 +385,8 @@ export default function MultiStepForm({
                     {['Personnel', 'Entreprise', 'Dispositif État/ONG', 'À définir'].map((option) => (
                       <div key={option} className="col-md-6">
                         <div className="form-check p-3 border rounded">
+                           <label htmlFor={`financement-${option}`} className="form-check-label ms-2 form-check cursor-pointer"
+                            style={{ cursor: 'pointer' }}>
                           <input
                             type="radio"
                             id={`financement-${option}`}
@@ -393,7 +397,6 @@ export default function MultiStepForm({
                             className="form-check-input"
                             required
                           />
-                          <label htmlFor={`financement-${option}`} className="form-check-label ms-2">
                             {option}
                           </label>
                         </div>
