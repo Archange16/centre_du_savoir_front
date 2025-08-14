@@ -2,19 +2,33 @@ import { useState, useEffect } from 'react';
 import { pushToDataLayer } from '../../../lib/tracking';
 import Link from 'next/link';
 
+import more_152529 from "../../../public/assets/img/formulaire-lead/more_152529.png";
+import architecture_917572 from "../../../public/assets/img/formulaire-lead/architecture_917572.png";
+import plumber_2350398 from "../../../public/assets/img/formulaire-lead/plumber_2350398.png";
+import student_837825 from "../../../public/assets/img/formulaire-lead/student_837825.png";
+
+
+
 // Configuration par défaut
 const DEFAULT_FORM_NAME = 'CPF Génie Civil';
 const FORMATIONS_LIST = [
-  'Exploitation minière',
-  'Infrastructures routières',
-  'Ouvrages d\'art (ponts)',
-  'Formation en OPC',
-  'Gestion projets miniers',
-  'Formation avancée en V.R.D',
-  'Structures et solidité des bâtiments',
-  'Cartographie géologique et topographique',
-  'Maîtrise des réseaux eaux usées',
-  'Projets 3D'
+  '⛏️ Exploitation minière',
+  '🛣️ Infrastructures routières',
+  '🌉 Ouvrages d\'art (ponts)',
+  '📋 Formation en OPC',
+  '📊 Gestion projets miniers',
+  '🧱 Formation avancée en V.R.D',
+  '🏗️ Structures et solidité des bâtiments',
+  '🗺️ Cartographie géologique et topographique',
+  '🚰 Maîtrise des réseaux eaux usées',
+  '🧭 Projets 3D'
+];
+
+const SITUATION_OPTIONS = [
+  { label: 'Ingénieur', icon: architecture_917572 },
+  { label: 'Technicien', icon: plumber_2350398  },
+  { label: 'Étudiant', icon: student_837825 },
+  { label: 'Autre', icon: more_152529  },
 ];
 
 export default function MultiStepForm({ 
@@ -156,7 +170,7 @@ export default function MultiStepForm({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, formName }),
+        body: JSON.stringify({ ...formData, formName, telephone: `${formData.indicatif}${formData.telephone}` }),
       });
       
       const data = await response.json();
@@ -290,22 +304,24 @@ export default function MultiStepForm({
                 <div className="mb-4">
                   <h4 className="form-label fw-bold">Quelle est votre situation professionnelle ? *</h4>
                   <div className="row g-3">
-                    {['Ingénieur', 'Technicien', 'Étudiant', 'Autre'].map((option) => (
-                      <div key={option} className="col-md-6">
+                    {SITUATION_OPTIONS.map(({ label, icon } ) => (
+                      <div key={label} className="col-md-6">
                         <div className="form-check p-3 border rounded">
-                          <label htmlFor={`situation-${option}`} className="form-check cursor-pointer"
+                          <label htmlFor={`situation-${label}`} className="form-check cursor-pointer"
                           style={{ cursor: 'pointer' }}>
                           <input
                             type="radio"
-                            id={`situation-${option}`}
+                            id={`situation-${label}`}
                             name="situation"
-                            value={option}
-                            checked={formData.situation === option}
+                            value={label}
+                            checked={formData.situation === label}
                             onChange={handleChange}
                             className="form-check-input"
                             required
                           />
-                            {option}
+                          {/* Icône PNG devant chaque label */}
+                          <img src={icon.src} width="30" height="30" className="me-5" alt="image" />
+                            {label}
                           </label>
                         </div>
                       </div>
@@ -382,7 +398,10 @@ export default function MultiStepForm({
                 <div className="mb-4">
                   <h4 className="form-label fw-bold">Comment comptez-vous financer votre formation ? *</h4>
                   <div className="row g-3">
-                    {['Personnel', 'Entreprise', 'Dispositif État/ONG', 'À définir'].map((option) => (
+                    {['👤 Personnel',
+                      '🏢 Entreprise',
+                      '🏛️ Dispositif État/ONG',
+                      '❓ À définir'].map((option) => (
                       <div key={option} className="col-md-6">
                         <div className="form-check p-3 border rounded">
                            <label htmlFor={`financement-${option}`} className="form-check-label ms-2 form-check cursor-pointer"
@@ -444,15 +463,34 @@ export default function MultiStepForm({
                 
                 <div className="mb-3">
                   <label htmlFor="telephone" className="form-label fw-bold">Numéro de téléphone *</label>
-                  <input
-                    type="tel"
-                    id="telephone-field"
-                    name="telephone"
-                    value={formData.telephone}
-                    onChange={handleChange}
-                    className={`form-control ${errors.telephone ? 'is-invalid' : ''}`}
-                    required
-                  />
+                  <div className="input-group">
+                    <select
+                      className="form-select"
+                      style={{ maxWidth: '120px' }}
+                      name="indicatif"
+                      value={formData.indicatif || '+225'}
+                      onChange={(e) => setFormData(prev => ({ ...prev, indicatif: e.target.value }))}
+                      required
+                    >
+                      <option value="">Indicatif</option>
+                      <option value="+225">🇨🇮 +225</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+237">🇨🇲 +237</option>
+                      <option value="+221">🇸🇳 +221</option>
+                       <option value="+212">🇲🇦 +212</option>
+                      {/* Ajoute d'autres pays si besoin */}
+                    </select>
+                    <input
+                      type="tel"
+                      id="telephone-field"
+                      name="telephone"
+                      value={formData.telephone}
+                      onChange={handleChange}
+                      className={`form-control ${errors.telephone ? 'is-invalid' : ''}`}
+                      placeholder="Ex: 0700000000"
+                      required
+                    />
+                  </div>
                   {errors.telephone && <div className="invalid-feedback">{errors.telephone}</div>}
                 </div>
                 
