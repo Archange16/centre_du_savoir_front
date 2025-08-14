@@ -22,3 +22,18 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   }
+
+model Lead {
+  id          String   @id @default(uuid())
+  situation   String
+  formations  String[]
+  financement String
+  nom         String
+  telephone   String
+  email       String   
+  formName    String?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
