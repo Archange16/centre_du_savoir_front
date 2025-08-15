@@ -11,7 +11,7 @@ const RequestQuotePage = () => {
         <>
             <SEO pageTitle="Téléchargement de la plaquette" />
             <HeaderTwo />
-            <BreadCrumb title="Téléchargement de la plaquette" innerTitle="Téléchargement de la plaquette" />
+           {/*  <BreadCrumb title="Téléchargement de la plaquette" innerTitle="Téléchargement de la plaquette" /> */}
             <RequestQuoteMain />
             <FooterThree />
             <ScrollToTop />

@@ -114,7 +114,7 @@ const HeaderTwo = ({variant}) => {
                                         <Link href="tel:+242061234567">(+212) 780-223487</Link>
                                     </div>
                                     <div>
-                                       <Button />
+                                       
                                     </div>
                                     
                                 </div>
