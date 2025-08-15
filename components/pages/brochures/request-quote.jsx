@@ -127,6 +127,7 @@ const RequestQuoteMain = () => {
                                 <option value="bac+3">Bac+3</option>
                                 <option value="bac+4">Bac+4</option>
                                 <option value="bac+5">Bac+5</option>
+                                <option value="autre">Autre</option>
                             </select>
                             </div>
                             <div className="request-quote__area-input-field">

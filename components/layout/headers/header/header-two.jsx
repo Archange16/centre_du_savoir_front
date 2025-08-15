@@ -111,7 +111,7 @@ const HeaderTwo = ({variant}) => {
                                      <i className="flaticon-phone-call ml-5"></i>
                                     <div className="header__area-menubar-right-box-help-info">
                                         <span>Appelez-nous</span>
-                                        <Link href="tel:+242061234567">(+212) 780-223487</Link>
+                                        <Link href="https://wa.me/212780223487">(+212) 780-223487</Link>
                                     </div>
                                     <div>
                                        

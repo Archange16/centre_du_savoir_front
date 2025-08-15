@@ -12,17 +12,18 @@ import student_837825 from "../../../public/assets/img/formulaire-lead/student_8
 // Configuration par défaut
 const DEFAULT_FORM_NAME = 'CPF Génie Civil';
 const FORMATIONS_LIST = [
-  '⛏️ Exploitation minière',
-  '🛣️ Infrastructures routières',
-  '🌉 Ouvrages d\'art (ponts)',
-  '📋 Formation en OPC',
-  '📊 Gestion projets miniers',
-  '🧱 Formation avancée en V.R.D',
-  '🏗️ Structures et solidité des bâtiments',
-  '🗺️ Cartographie géologique et topographique',
-  '🚰 Maîtrise des réseaux eaux usées',
-  '🧊 Modélisation 3D'
+  '🌉 Formation ouvrages d’art (ponts)',
+  '⛏️ Exploitation minière à ciel ouvert',
+  '🛣️ Conception et réalisation des infrastructures routières avancées (route)',
+  '🗺️ Cartographie géologique et topographique avancée',
+  '🏗️ Calcul des structures et solidité des bâtiments',
+  '📋 OPC : Pilotage et Planification BTP',
+  '🧱 Formation avancée en V.R.D (Voirie urbaine)',
+  '🚰 Assainissement (Maîtrise des réseaux eaux usées et pluviales)',
+  '📊 Gestion intégrée des projets miniers',
+  '🧊 Modélisation 3D (Géologie minière)'
 ];
+
 
 const SITUATION_OPTIONS = [
   { label: 'Ingénieur', icon: architecture_917572 },
@@ -152,7 +153,7 @@ export default function MultiStepForm({
     // Validation finale
     const finalErrors = {};
     if (!formData.nom) finalErrors.nom = 'Veuillez entrer votre nom';
-    if (!formData.telephone || !/^[0-9]{10,15}$/.test(formData.telephone)) {
+    if (!formData.telephone || !/^[0-9]{9,15}$/.test(formData.telephone)) {
       finalErrors.telephone = 'Veuillez entrer un numéro valide';
     }
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -258,7 +259,7 @@ export default function MultiStepForm({
                     fontWeight: 'bold',
                     fontSize: '0.9rem',
                     marginRight: '20px'
-                  }}>💶 À partir de 350 €</span>
+                  }}>💶 À partir de 490 €</span>
                   <span 
                   className='col-md-5'
                   style={{
@@ -463,7 +464,7 @@ export default function MultiStepForm({
                 </div>
                 
                 <div className="mb-3">
-                  <label htmlFor="telephone" className="form-label fw-bold">Numéro de téléphone *</label>
+                  <label htmlFor="telephone" className="form-label fw-bold">Numéro de whatsapp *</label>
                   <div className="input-group">
                     <select
                       className="form-select"

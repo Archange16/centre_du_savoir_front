@@ -86,7 +86,7 @@ console.log('Service Title:', titre);
         </div>
 
         <div className="col-md-6 mb-30">
-          <input type="tel" name="autreTel" placeholder="Autre n° de téléphone" value={formData.autreTel} onChange={handleChange} />
+          <input type="tel" name="autreTel" placeholder="Vutre n° Whatsapp" value={formData.autreTel} onChange={handleChange} />
         </div>
 
         {/* Email */}
