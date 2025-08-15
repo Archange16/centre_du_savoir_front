@@ -351,7 +351,7 @@ const servicesData = [
   image: services1, // Remplace par le chemin ou identifiant de l'image appropriée
   brochure: brochure10, // Ajoute ici le lien de la brochure si disponible
   disponible: "n'est pas disponible",
-  titre: "Formation en Modélisation 3D en Géologie Minière – 20H",
+  titre: "Formation en Modélisation 3D en Géologie Minière",
   slug: "formation-modelisation-3d-geologie-miniere",
   description_courte: "Devenez un expert en modélisation géologique et géomécanique appliquée à l’industrie minière.",
   description_longue: "Cette formation intensive et progressive vous plonge au cœur des techniques de modélisation 2D et 3D appliquées à la géologie minière, à la géomécanique et à l’estimation des ressources. À travers des cas pratiques et l’utilisation des logiciels professionnels les plus reconnus du secteur (Rocscience, Dips, Surfer, Datamine, Surpac, etc.), vous apprendrez à analyser la stabilité des massifs rocheux, à concevoir des modèles géologiques précis et à réaliser des estimations de ressources conformes aux standards internationaux.",
