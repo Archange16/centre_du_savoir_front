@@ -14,14 +14,14 @@ const DEFAULT_FORM_NAME = 'CPF Génie Civil';
 const FORMATIONS_LIST = [
   '🌉 Formation ouvrages d’art (ponts)',
   '⛏️ Exploitation minière à ciel ouvert',
+  '📊 Gestion intégrée des projets miniers',
+  '🧊 Modélisation 3D (Géologie minière)',
   '🛣️ Conception et réalisation des infrastructures routières avancées (route)',
   '🗺️ Cartographie géologique et topographique avancée',
   '🏗️ Calcul des structures et solidité des bâtiments',
   '📋 OPC : Pilotage et Planification BTP',
   '🧱 Formation avancée en V.R.D (Voirie urbaine)',
-  '🚰 Assainissement (Maîtrise des réseaux eaux usées et pluviales)',
-  '📊 Gestion intégrée des projets miniers',
-  '🧊 Modélisation 3D (Géologie minière)'
+  '🚰 Assainissement (Maîtrise des réseaux eaux usées et pluviales)'
 ];
 
 
