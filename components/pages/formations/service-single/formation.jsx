@@ -41,7 +41,7 @@ const FormationSingleMain = ({selectedFormation}) => {
                                 </span>
                                 <span>
                                     <i className="fas fa-signal"></i> {/* Niveau */}
-                                    {service?.niveau} Niveau
+                                    {service?.niveau}
                                 </span>
                             </div>
                             <h2>{service?.titre}</h2>

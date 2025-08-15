@@ -1,4 +1,4 @@
-import services1 from "../../public/assets/img/service/Formation pour Connaître et Maîtriser le Métré dans le BTP.jpg";
+import services1 from "../../public/assets/img/service/formation-modelisation-3d-geologie-miniere.jpg";
 import services2 from "../../public/assets/img/service/Formation en Assainissement.jpg";
 import services3 from "../../public/assets/img/service/Formation en Cartographie Géologique et Topographique Avancée.jpg";
 import services4 from "../../public/assets/img/service/Formation en Conception et Réalisation des Infrastructures Routières avancé.jpg";
@@ -18,6 +18,7 @@ const brochure6 = "/assets/img/brochure/MAÎTRISE DE L'ORDONNNCEMENT, PILOTAGE E
 const brochure7 = "/assets/img/brochure/ASSAINISSEMENT MAÎTRISE DES EAUX USÉES ET PLUVIALES.pdf";
 const brochure8 = "/assets/img/brochure/V.R.D VOIRIE URBAINE.pdf";
 const brochure9 = "/assets/img/brochure/BROCHURE GESTION INTEGRÉE DES PROJETS MINIERS.pdf";
+const brochure10 = "/assets/img/brochure/BROCHURE_CPS_MODELISATION 3D_2025 (1).pdf";
 
 
 
@@ -32,7 +33,7 @@ const servicesData = [
     slug: "techniques-avancees-exploitation-miniere",
     description_courte: "Optimisez les processus d’extraction minière modernes.",
     description_longue: "Cette formation offre des compétences de pointe pour optimiser les processus d’extraction et de gestion des mines. Elle permet de maîtriser les dernières technologies et méthodes pour améliorer la sécurité, la rentabilité et la durabilité.",
-    niveau: "Avancé",
+    niveau: "Niveau avancé",
     duree_heures: 32,
     prix: 490,
     prix_promotionnel: 490,
@@ -64,7 +65,7 @@ const servicesData = [
     slug: "formation-infrastructures-routieres-avancee",
     description_courte: "Acquérir une expertise approfondie dans la conception et réalisation de routes modernes.",
     description_longue: "Cette formation permet aux apprenants d’acquérir les compétences techniques nécessaires pour concevoir, planifier et réaliser des infrastructures routières de qualité, en optimisant les coûts, la sécurité et la durabilité.",
-    niveau: "Avancé",
+    niveau: "Niveau avancé",
     duree_heures: 40,
     prix: 490,
     prix_promotionnel: 490,
@@ -96,7 +97,7 @@ const servicesData = [
     slug: "formation-avancee-vrd",
     description_courte: "Maîtriser la conception et gestion des infrastructures urbaines modernes.",
     description_longue: "Cette formation permet d’acquérir des compétences pointues dans la conception, la réalisation et la gestion des infrastructures urbaines : voirie, assainissement, réseaux d’eau potable et aménagements publics.",
-    niveau: "Avancé",
+    niveau: "Niveau avancé",
     duree_heures: 32,
     prix: 350,
     prix_promotionnel: 350,
@@ -130,7 +131,7 @@ const servicesData = [
     slug: "formation-ouvrages-art-ponts",
     description_courte: "Maîtriser la conception, la réalisation et l’entretien des ouvrages d’art tels que les ponts.",
     description_longue: "Cette formation approfondie couvre les aspects techniques de la conception, de la réalisation et de la maintenance des ouvrages d’art, notamment les ponts. Elle permet d’acquérir une expertise sur les types de structures, les matériaux utilisés, les méthodes de dimensionnement et les normes de sécurité.",
-    niveau: "Avancé",
+    niveau: "Niveau avancé",
     duree_heures: 40,
     prix: 490,
     prix_promotionnel: 490,
@@ -169,7 +170,7 @@ const servicesData = [
     slug: "formation-cartographie-geologique-topographique",
     description_courte: "Exploitez des données géospatiales complexes pour vos projets d'infrastructure.",
     description_longue: "Cette formation permet d’acquérir des compétences avancées en cartographie géologique et topographique, indispensables pour la conception de projets d’infrastructures et d’aménagement du territoire.",
-    niveau: "Intermédiaire",
+    niveau: "Niveau intermédiaire",
     duree_heures: 32,
     prix: 450,
     prix_promotionnel: 450,
@@ -201,7 +202,7 @@ const servicesData = [
     slug: "formation-calcul-structures-solidite-batiments",
     description_courte: "Acquérir les compétences pour analyser et concevoir des structures de bâtiment robustes et sécurisées.",
     description_longue: "Cette formation permet d'acquérir les compétences nécessaires pour analyser et concevoir des structures de bâtiment robustes et sécurisées. Elle offre une compréhension approfondie des principes de résistance des matériaux, des méthodes de calcul et des normes en vigueur, essentielles pour garantir la stabilité et la sécurité des constructions.",
-    niveau: "Intermédiaire",
+    niveau: "Niveau intermédiaire",
     duree_heures: 32,
     prix: 490,
     prix_promotionnel: 490,
@@ -240,7 +241,7 @@ const servicesData = [
     slug: "formation-opc-pilotage-planification-btp",
     description_courte: "Maîtriser la gestion de projet dans le BTP : délais, ressources, coûts.",
     description_longue: "Cette formation permet de maîtriser les techniques de gestion de projet dans le secteur du bâtiment et des travaux publics. Elle offre les compétences nécessaires pour coordonner efficacement les différentes étapes d’un projet, gérer les délais, les ressources et les coûts.",
-    niveau: "Intermédiaire",
+    niveau: "Niveau intermédiaire",
     duree_heures: 32,
     prix: 350,
     prix_promotionnel: 350,
@@ -278,7 +279,7 @@ const servicesData = [
     slug: "formation-assainissement-eaux-usees-pluviales",
     description_courte: "Concevoir et gérer des réseaux d’assainissement durables et efficaces.",
     description_longue: "Cette formation vous permet d’acquérir les compétences essentielles pour concevoir, gérer et entretenir des réseaux d’assainissement efficaces, tout en garantissant la protection de l’environnement et la santé publique.",
-    niveau: "Intermédiaire",
+    niveau: "Niveau intermédiaire",
     duree_heures: 32,
     prix: 350,
     prix_promotionnel: 350,
@@ -312,7 +313,7 @@ const servicesData = [
   slug: "formation-gestion-projets-miniers",
   description_courte: "Maîtriser la gestion intégrée des projets miniers, de la planification à l’impact environnemental.",
   description_longue: "Cette formation vise à doter les participants des compétences nécessaires pour gérer efficacement les projets miniers de manière intégrée, en tenant compte des aspects techniques, économiques, environnementaux et sociaux.",
-  niveau: "Intermédiaire",
+  niveau: "Niveau intermédiaire",
   duree_heures: 32,
   prix: 490,
   prix_promotionnel: 490,
@@ -347,14 +348,14 @@ const servicesData = [
 {
   id: 10,
   documentId: "modgeo3d20h",
-  image: "services11", // Remplace par le chemin ou identifiant de l'image appropriée
-  brochure: "", // Ajoute ici le lien de la brochure si disponible
+  image: services1, // Remplace par le chemin ou identifiant de l'image appropriée
+  brochure: brochure10, // Ajoute ici le lien de la brochure si disponible
   disponible: "n'est pas disponible",
   titre: "Formation en Modélisation 3D en Géologie Minière – 20H",
   slug: "formation-modelisation-3d-geologie-miniere",
   description_courte: "Devenez un expert en modélisation géologique et géomécanique appliquée à l’industrie minière.",
   description_longue: "Cette formation intensive et progressive vous plonge au cœur des techniques de modélisation 2D et 3D appliquées à la géologie minière, à la géomécanique et à l’estimation des ressources. À travers des cas pratiques et l’utilisation des logiciels professionnels les plus reconnus du secteur (Rocscience, Dips, Surfer, Datamine, Surpac, etc.), vous apprendrez à analyser la stabilité des massifs rocheux, à concevoir des modèles géologiques précis et à réaliser des estimations de ressources conformes aux standards internationaux.",
-  niveau: "Intermédiaire à Avancé",
+  niveau: "Niveau intermédiaire",
   duree_heures: 20,
   prix: 550,
   prix_promotionnel: 550,
