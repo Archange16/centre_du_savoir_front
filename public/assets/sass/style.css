@@ -11398,3 +11398,8 @@ body {
     line-height: 1.4;
   }
 }
+
+/* Styles pour le formulaire de contact */
+.navbarbg {
+  background-color: var(--text-heading-color);
+}
