@@ -44,7 +44,7 @@ const SidebarAdmin = ({openSidebarToggle, OpenSidebar, onComponentChange, active
                 </li>
                 <li className={`sidebar-list-item ${activeComponent === 'setting' ? 'active' : ''}`}>
                     <a href="#" onClick={(e) => { e.preventDefault(); onComponentChange('setting'); }}>
-                        <BsFillGearFill className='icon'/> Setting
+                        <BsFillGearFill className='icon'/> Settings
                     </a>
                 </li>
             </ul>
