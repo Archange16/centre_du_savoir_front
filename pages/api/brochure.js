@@ -5,11 +5,27 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Méthode non autorisée' });
   }
 
-  const { firstName, lastName, email, phone, pays, experience, niveauEtudes } = req.body;
+  const formData = req.body;
 
-  if (!firstName || !lastName || !email || !phone || !pays || !experience || !niveauEtudes) {
-    return res.status(400).json({ message: 'Champs requis manquants' });
+  // Vérification simple des champs requis, tu peux l'ajuster
+  const requiredFields = ['firstName', 'lastName', 'email', 'phone'];
+  for (const field of requiredFields) {
+    if (!formData[field]) {
+      return res.status(400).json({ message: `Champ requis manquant: ${field}` });
+    }
   }
+
+  // Générer dynamiquement le contenu HTML en fonction de toutes les clés reçues
+  const htmlContent = `
+    <h3>Nouvelle demande de brochure</h3>
+    ${Object.entries(formData).map(([key, value]) => {
+      // Pour un tableau (ex: services), on affiche une liste à part
+      if (Array.isArray(value)) {
+        return `<p><strong>${key} :</strong> ${value.join(', ') || 'Aucun'}</p>`;
+      }
+      return `<p><strong>${key} :</strong> ${value || 'Non spécifié'}</p>`;
+    }).join('')}
+  `;
 
   try {
     const transporter = nodemailer.createTransport({
@@ -22,21 +38,10 @@ export default async function handler(req, res) {
       },
     });
 
-    const htmlContent = `
-      <h3>Nouvelle demande de brochure</h3>
-      <p><strong>Prénom :</strong> ${firstName}</p>
-      <p><strong>Nom :</strong> ${lastName}</p>
-      <p><strong>Email :</strong> ${email}</p>
-      <p><strong>Téléphone :</strong> ${phone}</p>
-      <p><strong>Pays :</strong> ${pays}</p>
-      <p><strong>Expérience :</strong> ${experience} an(s)</p>
-      <p><strong>Niveau d'études :</strong> ${niveauEtudes}</p>
-    `;
-
     await transporter.sendMail({
-      from: `"${firstName} ${lastName}" <${process.env.SMTP_USER}>`,
+      from: `"${formData.firstName} ${formData.lastName}" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
-      replyTo: email,
+      replyTo: formData.email,
       subject: 'Nouvelle demande de brochure',
       html: htmlContent,
     });
