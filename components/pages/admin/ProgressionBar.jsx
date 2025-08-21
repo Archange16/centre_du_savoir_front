@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 import { useEffect, useState } from "react";
 
 // Composant pour afficher la barre de progression d'une formation

@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 import Layout from '../../../components/Dashboard/Layout';
 import StatsCards from '../../../components/Dashboard/StatsCards';
 import Charts from '../../../components/Dashboard/Charts';
