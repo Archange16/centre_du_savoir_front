@@ -167,7 +167,7 @@ const LeadManager = () => {
                 <tr key={lead.id}>
                     <td>{(currentPage - 1) * pageSize + index + 1}</td>
                     <td>{lead.nom}</td>
-                    <td>{Array.isArray(lead.formations) ? lead.formations.join(', ') : '-'}</td>
+                    <td>{Array.isArray(lead.formations) ? lead.formations.join(' | ') : '-'}</td>
                     <td>{lead.telephone || '-'}</td>
                     <td>{lead.email}</td>
                     <td>{new Date(lead.createdAt).toLocaleDateString()}</td>
