@@ -1,3 +1,4 @@
+"use client";
 // app/%28dashboard%29/page.jsx
 import HeaderIndex from "@/components/pages/admin";
 import { authOptions } from "../../../lib/auth";

@@ -1,3 +1,4 @@
+"use client";
 // app/%28dashboard%29/page.jsx
 import HeaderFour from "@/components/layout/headers/header/header-four";
 import { authOptions } from "../../lib/auth";

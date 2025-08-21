@@ -1,3 +1,4 @@
+"use client";
 // Page publique pour afficher toutes les formations aux apprenants
 import { useEffect, useState } from "react";
 import Link from "next/link";
