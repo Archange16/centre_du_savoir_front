@@ -14,14 +14,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  APPRENANT
+}
+
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  username String   @unique
-  password String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  }
+  id         Int                     @id @default(autoincrement())
+  email      String                  @unique
+  username   String                  @unique
+  password   String
+  role       Role                    @default(APPRENANT)
+  createdAt  DateTime                @default(now())
+  updatedAt  DateTime                @updatedAt
+
+  formationAssignments FormationAssignment[]
+  progressions         Progression[]
+}
 
 model Lead {
   id          String   @id @default(uuid())
@@ -36,4 +45,58 @@ model Lead {
   userAgent   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Formation {
+  id             String        @id @default(uuid())
+  titre          String
+  description    String
+  modules        Module[]
+  assignments    FormationAssignment[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt // Ajouté pour la cohérence
+}
+
+model Module {
+  id             String     @id @default(uuid())
+  titre          String
+  ordre          Int
+  formationId    String
+  formation      Formation  @relation(fields: [formationId], references: [id], onDelete: Cascade)
+  titres         Titre[]
+  createdAt      DateTime   @default(now()) // Ajouté pour la cohérence
+  updatedAt      DateTime   @updatedAt // Ajouté pour la cohérence
+}
+
+model Titre {
+  id         String    @id @default(uuid())
+  nom        String
+  videoUrl   String
+  ordre      Int
+  moduleId   String
+  module     Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  progressions Progression[]
+  createdAt  DateTime  @default(now()) // Ajouté pour la cohérence
+  updatedAt  DateTime  @updatedAt // Ajouté pour la cohérence
+}
+
+model FormationAssignment {
+  id           String     @id @default(uuid())
+  userId       Int // Corrigé: doit correspondre au type de User.id (Int)
+  formationId  String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  formation    Formation  @relation(fields: [formationId], references: [id], onDelete: Cascade)
+  assignedAt   DateTime   @default(now())
+}
+
+model Progression {
+  id         String   @id @default(uuid())
+  userId     Int // Corrigé: doit correspondre au type de User.id (Int)
+  titreId    String
+  completed  Boolean  @default(false)
+  completedAt DateTime?
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titre      Titre    @relation(fields: [titreId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now()) // Ajouté pour la cohérence
+  updatedAt  DateTime @updatedAt // Ajouté pour la cohérence
 }

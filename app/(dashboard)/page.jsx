@@ -4,14 +4,15 @@ import { authOptions } from "../../lib/auth";
 
 import { getServerSession } from "next-auth/next";
 import SidebarAdmin from "../../components/pages/admin/sidebar-admin";
+import DashboardPage from "@/components/pages/admin/dashboard";
 const Admin = async () => {
 
     const session = await getServerSession(authOptions);
     if (session?.user) {
         return (
                  <div>
-                    <HeaderFour />
-                    <SidebarAdmin />
+                   {/*  <HeaderFour />
+                    <SidebarAdmin /> */}
                     {/* <h1>Admin Page</h1>
                     <h2>Admin page - welcome back {session?.user.name}</h2> */}
                 </div>           

@@ -1,10 +1,7 @@
-// pages/api/leads.ts
-import  { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '../../lib/db'; // adapte ce chemin à ton projet
-
+import { db } from '../../lib/db'; // adapte ce chemin si besoin
 import { z } from 'zod';
 
-// Schéma de validation avec Zod
+// Schéma de validation pour POST/PUT
 const leadSchema = z.object({
   situation: z.string().min(1, 'Situation professionnelle requise'),
   formations: z.array(z.string()).min(1, 'Au moins une formation requise'),
@@ -16,49 +13,47 @@ const leadSchema = z.object({
 });
 
 export default async function handler(req, res) {
+  // ✅ GET : liste paginée des leads
   if (req.method === 'GET') {
     try {
-      const leads = await db.lead.findMany({
-        select: {
-          id: true,
-          nom: true,
-          email: true,
-          createdAt: true,
-          formName: true
-        },
-        orderBy: {
-          createdAt: 'desc'
-        }
-      });
-      return res.status(200).json({ success: true, data: leads });
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const skip = (page - 1) * limit;
+
+      const [leads, total] = await Promise.all([
+        db.lead.findMany({
+          skip,
+          take: limit,
+          select: {
+            id: true,
+            nom: true,
+            email: true,
+            telephone: true,       
+            formations: true,    
+            createdAt: true,
+            formName: true
+          },
+          orderBy: { createdAt: 'desc' }
+        }),
+        db.lead.count()
+      ]);
+
+      return res.status(200).json({ success: true, data: leads, total });
     } catch (error) {
       console.error('Database error:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
+      return res.status(500).json({ error: 'Erreur serveur' });
     }
   }
 
+  // ✅ POST : création d’un nouveau lead
   if (req.method === 'POST') {
     try {
-      // Validation des données
       const body = leadSchema.parse(req.body);
 
-      // Vérification si l'email existe déjà
-      /* const existingLead = await db.lead.findUnique({
-        where: { email: body.email }
-      });
-
-      if (existingLead) {
-        return res.status(400).json({ 
-          success: false, 
-          error: 'Un lead avec cet email existe déjà' 
-        });
-      } */
-
-      // Création du lead dans la base de données
       const newLead = await db.lead.create({
         data: {
           situation: body.situation,
-          formations: body.formations, // PostgreSQL gère nativement les tableaux
+          formations: body.formations,
           financement: body.financement,
           nom: body.nom,
           telephone: body.telephone,
@@ -75,10 +70,10 @@ export default async function handler(req, res) {
         }
       });
 
-      return res.status(201).json({ 
-        success: true, 
+      return res.status(201).json({
+        success: true,
         data: newLead,
-        message: 'Lead enregistré avec succès' 
+        message: 'Lead enregistré avec succès'
       });
 
     } catch (error) {
@@ -91,18 +86,73 @@ export default async function handler(req, res) {
           }))
         });
       }
-      
+
       console.error('Database error:', error);
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Erreur serveur lors de l\'enregistrement' 
-      });
+      return res.status(500).json({ error: 'Erreur serveur lors de l\'enregistrement' });
     }
   }
 
- /*  res.setHeader('Allow', ['GET', 'POST']);
-  return res.status(405).json({ 
-    success: false, 
-    error: `Méthode ${req.method} non autorisée` 
-  }); */
+  // ✅ PUT : mise à jour d’un lead
+  if (req.method === 'PUT') {
+    try {
+      const { id, ...data } = req.body;
+
+      if (!id) {
+        return res.status(400).json({ error: 'ID du lead requis pour la mise à jour' });
+      }
+
+      const validatedData = leadSchema.parse(data);
+
+      const updatedLead = await db.lead.update({
+        where: { id },
+        data: validatedData
+      });
+
+      return res.status(200).json({
+        success: true,
+        data: updatedLead,
+        message: 'Lead mis à jour avec succès'
+      });
+
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({
+          success: false,
+          errors: error.errors.map(e => ({
+            field: e.path.join('.'),
+            message: e.message
+          }))
+        });
+      }
+
+      console.error('Update error:', error);
+      return res.status(500).json({ error: 'Erreur lors de la mise à jour' });
+    }
+  }
+
+  // ✅ DELETE : suppression d’un lead
+  if (req.method === 'DELETE') {
+    try {
+      const { id } = req.body;
+
+      if (!id) {
+        return res.status(400).json({ error: 'ID du lead requis pour suppression' });
+      }
+
+      await db.lead.delete({
+        where: { id }
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: 'Lead supprimé avec succès'
+      });
+    } catch (error) {
+      console.error('Delete error:', error);
+      return res.status(500).json({ error: 'Erreur lors de la suppression' });
+    }
+  }
+
+  // ❌ Méthode non supportée
+  return res.status(405).json({ error: `Méthode ${req.method} non autorisée` });
 }

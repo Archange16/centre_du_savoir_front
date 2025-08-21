@@ -42,6 +42,7 @@ export default function MultiStepForm({
     formations: [],
     financement: '',
     nom: '',
+    indicatif: '+212', // <- valeur par défaut
     telephone: '',
     email: ''
   });
@@ -54,6 +55,12 @@ export default function MultiStepForm({
     minutes: 21,
     seconds: 59
   });
+  
+const getFullPhoneNumber = () => {
+  const indicatif = formData.indicatif?.trim() || '';
+  const numero = formData.telephone?.trim() || '';
+  return `${indicatif}${numero}`;
+};
 
   // Barre de progression
   const progressPercentage = (step / 4) * 100;
@@ -171,7 +178,7 @@ export default function MultiStepForm({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, formName, telephone: `${formData.indicatif}${formData.telephone}` }),
+        body: JSON.stringify({ ...formData, formName, telephone: getFullPhoneNumber() }),
       });
       
       const data = await response.json();

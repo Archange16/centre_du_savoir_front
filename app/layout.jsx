@@ -2,6 +2,8 @@
 import { SessionProvider } from "next-auth/react";
 import { useEffect } from 'react';
 import "./globals.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function RootLayout({ children }) {
     useEffect(() => {
