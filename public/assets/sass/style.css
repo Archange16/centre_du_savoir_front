@@ -11730,3 +11730,17 @@ display: grid;
   background-color: #95a5a6;
 }
 /* Form container */
+.btnconnexion{
+  background-color: var(--primary-color-1);
+  color: var(--text-white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.btnconnexion:hover {
+  background-color: var(--text-heading-color);
+  color: var(--text-white);
+}

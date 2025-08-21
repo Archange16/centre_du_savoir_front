@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
+import image2 from '../../../../public/assets/img/logo-1.png';
 // 🔐 Schéma de validation : email et mot de passe
 const FormSchema = z.object({
   email: z.string().min(1, 'Email requis').email('Email invalide'),
@@ -19,6 +20,7 @@ const FormSchema = z.object({
 
 const SignInForm = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -34,6 +36,7 @@ const SignInForm = () => {
 
   // ⚙️ Soumission du formulaire
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const res = await signIn('credentials', {
       redirect: false, // On gère la redirection manuellement
       email: data.email,
@@ -44,39 +47,88 @@ const SignInForm = () => {
       // Connexion réussie → redirection
       router.push('/admin');
     } else {
-      // Échec → message d’erreur
+      // Échec → message d'erreur
       alert('Échec de la connexion. Vérifie tes identifiants.');
     }
+    setIsLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      {/* Champ Email */}
-      <input
-        type="email"
-        placeholder="Email"
-        {...register('email')}
-      />
-      {errors.email && <p className="error">{errors.email.message}</p>}
+    <div className="d-flex align-items-center py-4 bg-body-tertiary min-vh-100">
+      <main className="form-signin w-100 m-auto" style={{ maxWidth: '400px' }}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <div className="text-center">
+            
+             <img className="img__full" src={image2?.src} alt="logo" />
+            <h4>Connectez-vous</h4>
+          </div>
 
-      {/* Champ Mot de passe */}
-      <input
-        type="password"
-        placeholder="Mot de passe"
-        {...register('password')}
-      />
-      {errors.password && <p className="error">{errors.password.message}</p>}
+          {/* Champ Email */}
+          <div className="form-floating mb-2">
+            <input
+              type="email"
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+              id="floatingInput"
+              placeholder="name@example.com"
+              {...register('email')}
+            />
+            <label htmlFor="floatingInput">Adresse email</label>
+            {errors.email && (
+              <div className="invalid-feedback">{errors.email.message}</div>
+            )}
+          </div>
 
-      {/* Bouton connexion */}
-      <button type="submit">Se connecter</button>
+          {/* Champ Mot de passe */}
+          <div className="form-floating mb-3">
+            <input
+              type="password"
+              className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+              id="floatingPassword"
+              placeholder="Mot de passe"
+              {...register('password')}
+            />
+            <label htmlFor="floatingPassword">Mot de passe</label>
+            {errors.password && (
+              <div className="invalid-feedback">{errors.password.message}</div>
+            )}
+          </div>
 
-      <p className="text-center text-sm text-gray-600 mt-2">
-        Pas encore de compte ?{' '}
-        <Link className="text-blue-500 hover:underline" href="/sign-up">
-          Inscris-toi
-        </Link>
-      </p>
-    </form>
+          <div className="form-check text-start my-3">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value="remember-me"
+              id="checkDefault"
+            />
+            <label className="form-check-label" htmlFor="checkDefault">
+              Se souvenir de moi
+            </label>
+          </div>
+
+          {/* Bouton connexion */}
+          <button
+            className="btn btnconnexion w-100 py-2"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Connexion...' : 'Se connecter'}
+          </button>
+
+          <div className="text-center mt-3">
+            <p className="mt-4 mb-3 text-body-secondary">
+              Pas encore de compte?{' '}
+              <Link 
+                href="/sign-up"
+                className="text-primary text-decoration-none"
+              >
+                Inscrivez-vous
+              </Link>
+            </p>
+            <p className="mt-5 mb-3 text-body-secondary">&copy; 2024–2025</p>
+          </div>
+        </form>
+      </main>
+    </div>
   );
 };
 
