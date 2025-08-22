@@ -23,6 +23,7 @@ const LeadManager = () => {
       const res = await fetch(`/api/leads?page=${page}&limit=${pageSize}`);
       if (!res.ok) throw new Error("Erreur HTTP");
       const data = await res.json();
+      console.log("Leads reçus:", data.data);
       setLeads(data.data);
       setTotalLeads(data.total); // 👈 total leads from API
     } catch (err) {
@@ -155,6 +156,7 @@ const LeadManager = () => {
                 <tr>
                 <th>N°</th>
                 <th>Nom</th>
+                <th>Situation</th>
                 <th>Formations</th>
                 <th>Téléphone</th>
                 <th>Email</th>
@@ -167,6 +169,7 @@ const LeadManager = () => {
                 <tr key={lead.id}>
                     <td>{(currentPage - 1) * pageSize + index + 1}</td>
                     <td>{lead.nom}</td>
+                    <td>{lead.situation}</td>
                     <td>{Array.isArray(lead.formations) ? lead.formations.join(' | ') : '-'}</td>
                     <td>{lead.telephone || '-'}</td>
                     <td>{lead.email}</td>

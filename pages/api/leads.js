@@ -28,7 +28,8 @@ export default async function handler(req, res) {
             id: true,
             nom: true,
             email: true,
-            telephone: true,       
+            telephone: true, 
+            situation: true,      
             formations: true,    
             createdAt: true,
             formName: true

@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
+import { getSession } from 'next-auth/react'; // 🔁 pour récupérer la session
+
 import image2 from '../../../../public/assets/img/logo-1.png';
 // 🔐 Schéma de validation : email et mot de passe
 const FormSchema = z.object({
@@ -44,13 +46,22 @@ const SignInForm = () => {
     });
 
     if (res?.ok) {
-      // Connexion réussie → redirection
+    // 🔁 Récupère la session mise à jour après connexion
+    const session = await getSession();
+
+    const role = session?.user?.role;
+    console.log('Rôle utilisateur:', role);
+
+    if (role === 'ADMIN') {
       router.push('/admin');
     } else {
-      // Échec → message d'erreur
-      alert('Échec de la connexion. Vérifie tes identifiants.');
+      router.push('/apprenant'); // ou une autre page pour apprenants
     }
-    setIsLoading(false);
+  } else {
+    alert('Échec de la connexion. Vérifie tes identifiants.');
+  }
+
+  setIsLoading(false);
   };
 
   return (
