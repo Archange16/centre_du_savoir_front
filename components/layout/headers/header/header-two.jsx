@@ -118,7 +118,6 @@ const HeaderTwo = ({variant}) => {
                                             Connexion
                                         </Link>
                                     </div>
-                                    
                                 </div>
 
                                 <div className="header__area-menubar-right-responsive-menu menu__bar">
