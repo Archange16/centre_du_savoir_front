@@ -42,6 +42,7 @@ const ResponsiveMenu = () => {
                 <li className='menu-item-has-children'><Link href='/accompagnement'>Suivi de projet</Link>
                 </li>
                 <li><Link href="/contact">Contact</Link></li>   
+                <li><Link href="/sign-in">Connexion</Link></li>   
             </ul>  
         </>
     );

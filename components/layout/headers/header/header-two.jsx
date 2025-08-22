@@ -113,8 +113,10 @@ const HeaderTwo = ({variant}) => {
                                         <span>Appelez-nous</span>
                                         <Link href="https://wa.me/212780223487">(+212) 780-223487</Link>
                                     </div>
-                                    <div>
-                                       
+                                    <div className="header__area-menubar-right-box-help-info">
+                                       <Link className="btn-one" href="http://localhost:3000/sign-in">
+                                            Connexion
+                                        </Link>
                                     </div>
                                     
                                 </div>
