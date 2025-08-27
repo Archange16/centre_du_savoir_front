@@ -111,19 +111,30 @@ const getFullPhoneNumber = () => {
   }, [step, formName]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    
-    if (type === 'checkbox') {
-      setFormData(prev => ({
+  const { name, value, type, checked } = e.target;
+
+  if (type === 'checkbox' && name === 'formations') {
+    setFormData(prev => {
+      const currentFormations = prev.formations || [];
+
+      // Si on essaie de cocher une case alors que déjà 2 sont cochées
+      if (checked && currentFormations.length >= 2) {
+        return prev; // Ne rien faire (ignore le clic)
+      }
+
+      const updatedFormations = checked
+        ? [...currentFormations, value]
+        : currentFormations.filter(item => item !== value);
+
+      return {
         ...prev,
-        formations: checked
-          ? [...prev.formations, value]
-          : prev.formations.filter(item => item !== value)
-      }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-    }
-  };
+        formations: updatedFormations,
+      };
+    });
+  } else {
+    setFormData(prev => ({ ...prev, [name]: value }));
+  }
+};
 
   const validateStep = (currentStep) => {
     const newErrors = {};
@@ -372,6 +383,10 @@ const getFullPhoneNumber = () => {
                             checked={formData.formations.includes(formation)}
                             onChange={handleChange}
                             className="form-check-input"
+                            disabled={
+                              !formData.formations.includes(formation) &&
+                              formData.formations.length >= 2
+                            }
                           />
                             {formation}
                           </label>

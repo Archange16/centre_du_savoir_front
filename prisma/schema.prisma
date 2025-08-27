@@ -51,6 +51,7 @@ model Formation {
   id             String        @id @default(uuid())
   titre          String
   description    String
+  image          String? 
   modules        Module[]
   assignments    FormationAssignment[]
   createdAt      DateTime      @default(now())
@@ -84,6 +85,9 @@ model FormationAssignment {
   id           String     @id @default(uuid())
   userId       Int // Corrigé: doit correspondre au type de User.id (Int)
   formationId  String
+  titre        String?
+  description  String?
+  image        String?
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   formation    Formation  @relation(fields: [formationId], references: [id], onDelete: Cascade)
   assignedAt   DateTime   @default(now())

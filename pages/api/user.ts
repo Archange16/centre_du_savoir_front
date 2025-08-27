@@ -19,8 +19,21 @@ const userSchema = z
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
-    return res.status(200).json({ success: true, message: "User API is working!" });
+  try {
+    const users = await db.user.findMany({
+      select: {
+        id: true,
+        username: true,
+        email: true,
+      },
+    });
+
+    return res.status(200).json(users); // 🔥 Retourne un tableau, pas un objet
+  } catch (error) {
+    console.error('Erreur récupération utilisateurs:', error);
+    return res.status(500).json({ error: 'Erreur serveur' });
   }
+}
 
   if (req.method === 'POST') {
     try {
