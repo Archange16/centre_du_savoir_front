@@ -51,7 +51,7 @@ model Formation {
   id             String        @id @default(uuid())
   titre          String
   description    String
-  image          String? 
+  image          String?       @db.Text
   modules        Module[]
   assignments    FormationAssignment[]
   createdAt      DateTime      @default(now())

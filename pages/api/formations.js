@@ -1,3 +1,4 @@
+// pages/api/formations.js
 import { db } from '../../lib/db';
 import { z } from 'zod';
 
@@ -8,6 +9,9 @@ const FormationCreateSchema = z.object({
     .max(255, "Le titre ne peut pas dépasser 255 caractères"),
   description: z.string()
     .max(1000, "La description ne peut pas dépasser 1000 caractères")
+    .optional()
+    .nullable(),
+  image: z.string()
     .optional()
     .nullable(),
 });
@@ -54,12 +58,13 @@ export default async function handler(req, res) {
         });
       }
 
-      const { titre, description } = validationResult.data;
+      const { titre, description, image } = validationResult.data;
       
       const formation = await db.formation.create({
         data: { 
           titre, 
-          description: description || null 
+          description: description || null,
+          image: image || null
         }
       });
       

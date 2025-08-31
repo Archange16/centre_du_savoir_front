@@ -246,16 +246,16 @@ const UserTable = () => {
                 <table className="table table-striped table-hover">
                   <thead className="table-dark">
                     <tr>
-                      <th scope="col">#ID</th>
+                      <th scope="col">N°</th>
                       <th scope="col">Nom d'utilisateur</th>
                       <th scope="col">Email</th>
                       <th scope="col" className="text-center">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {currentUsers.map((user) => (
+                    {currentUsers.map((user, index) => (
                       <tr key={user.id}>
-                        <th scope="row">{user.id}</th>
+                        <th scope="row">{indexOfFirstItem + index + 1}</th>
                         <td>{user.username}</td>
                         <td>{user.email}</td>
                         <td className="text-center">

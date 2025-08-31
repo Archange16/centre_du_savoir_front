@@ -1,143 +1,120 @@
-"use client"
-//import React from 'react';
-import React, { createContext } from 'react';
-
-import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+"use client";
+import React, { useEffect, useState } from 'react';
+import {
+  BsFillArchiveFill,
+  BsFillGrid3X3GapFill,
+  BsPeopleFill,
+  BsFillBellFill
+} from 'react-icons/bs';
+import {
+  BarChart, Bar, LineChart, Line,
+  XAxis, YAxis, CartesianGrid,
+  Tooltip, Legend, ResponsiveContainer
+} from 'recharts';
 
 const HomeAdmin = () => {
- 
-        const data = [
-        {
-          name: 'Page A',
-          uv: 4000,
-          pv: 2400,
-          amt: 2400,
-        },
-        {
-          name: 'Page B',
-          uv: 3000,
-          pv: 1398,
-          amt: 2210,
-        },
-        {
-          name: 'Page C',
-          uv: 2000,
-          pv: 9800,
-          amt: 2290,
-        },
-        {
-          name: 'Page D',
-          uv: 2780,
-          pv: 3908,
-          amt: 2000,
-        },
-        {
-          name: 'Page E',
-          uv: 1890,
-          pv: 4800,
-          amt: 2181,
-        },
-        {
-          name: 'Page F',
-          uv: 2390,
-          pv: 3800,
-          amt: 2500,
-        },
-        {
-          name: 'Page G',
-          uv: 3490,
-          pv: 4300,
-          amt: 2100,
-        },
-      ];
-     
+  const [stats, setStats] = useState({
+    formations: 0,
+    users: 0,
+    leads: 0,
+    // alerts: 0
+  });
+
+  useEffect(() => {
+    // Charger les données au montage
+    const fetchStats = async () => {
+      try {
+        const res = await fetch('/api/dashboard-stats');
+        const data = await res.json();
+        if (res.ok) {
+          setStats({
+            formations: data.formations,
+            users: data.users,
+            leads: data.leads,
+            // alerts: data.alerts,
+          });
+        } else {
+          console.error('Erreur API stats:', data);
+        }
+      } catch (err) {
+        console.error('Erreur fetch stats:', err);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
+  // Exemple de données graphiques dynamiques, basées sur stats
+  const data = [
+    { name: 'Formations', value: stats.formations },
+    { name: 'Users', value: stats.users },
+    { name: 'Leads', value: stats.leads },
+    // { name: 'Alerts', value: stats.alerts },
+  ];
 
   return (
-    <main className='main-container'>
-        <div className='main-title'>
-            <h3>DASHBOARD</h3>
+    <main className="main-container">
+      <div className="main-title">
+        <h3>DASHBOARD</h3>
+      </div>
+
+      <div className="main-cards">
+        <div className="card">
+          <div className="card-inner">
+            <h3>Cours</h3>
+            <BsFillArchiveFill className="card_icon" />
+          </div>
+          <h1>{stats.formations}</h1>
         </div>
-
-        <div className='main-cards'>
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>Cours</h3>
-                    <BsFillArchiveFill className='card_icon'/>
-                </div>
-                <h1>300</h1>
-            </div>
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>Apprenants</h3>
-                    <BsFillGrid3X3GapFill className='card_icon'/>
-                </div>
-                <h1>12</h1>
-            </div>
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>Leads</h3>
-                    <BsPeopleFill className='card_icon'/>
-                </div>
-                <h1>33</h1>
-            </div>
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>ALERTS</h3>
-                    <BsFillBellFill className='card_icon'/>
-                </div>
-                <h1>42</h1>
-            </div>
+        <div className="card">
+          <div className="card-inner">
+            <h3 className="light">Apprenants</h3>
+            <BsFillGrid3X3GapFill className="card_icon" />
+          </div>
+          <h1>{stats.users}</h1>
         </div>
-
-        <div className='charts'>
-            <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-            }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
-                </BarChart>
-            </ResponsiveContainer>
-
-            <ResponsiveContainer width="100%" height="100%">
-                <LineChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-                >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                </LineChart>
-            </ResponsiveContainer>
-
+        <div className="card">
+          <div className="card-inner">
+            <h3>Leads</h3>
+            <BsPeopleFill className="card_icon" />
+          </div>
+          <h1>{stats.leads}</h1>
         </div>
+        <div className="card">
+          <div className="card-inner">
+            <h3>ALERTS</h3>
+            <BsFillBellFill className="card_icon" />
+          </div>
+          {/* Placeholder si aucun modèle Alert n'existe */}
+          <h1>{stats.alerts ?? '-'}</h1>
+        </div>
+      </div>
+
+      <div className="charts" style={{ width: '100%', height: 400 }}>
+        <ResponsiveContainer>
+          <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="value" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+
+        <ResponsiveContainer>
+          <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="value" stroke="#82ca9d" activeDot={{ r: 8 }} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </main>
-  )
+  );
 };
 
 export default HomeAdmin;

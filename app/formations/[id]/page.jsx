@@ -35,7 +35,7 @@ const FormationDetailPage = ({ params }) => {
       
       try {
         setLoading(true);
-        console.log("Chargement des données pour la formation:", id);
+        //console.log("Chargement des données pour la formation:", id);
         
         // Charger la formation
         const formationRes = await fetch(`/api/formations/${id}`);
@@ -247,8 +247,8 @@ const FormationDetailPage = ({ params }) => {
           <p className="text-muted">Module: {currentTitre?.moduleTitre}</p>
 
           {currentTitre?.videoUrl ? (
-            <div className="border rounded p-3">
-              <div className="ratio ratio-16x9">
+            <div className="border rounded">
+              <div className="ratio ratio-16x9" style={{ height: "500px", width: "100%" }}>
                 <iframe
                   src={convertGoogleDriveLink(currentTitre.videoUrl)}
                   title={currentTitre.nom}

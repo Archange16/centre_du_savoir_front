@@ -50,44 +50,51 @@ const FormationsPage = () => {
       {assignments.length === 0 ? (
         <p>Aucune formation assignée.</p>
       ) : (
-        <div className="row">
-          {assignments.map((assignment) => {
-            const { id, titre, description, image, formationId, formation } = assignment;
+        <div className="row gy-4">
+  {assignments.map((assignment) => {
+    const { id, titre, description, image, formationId, formation } = assignment;
 
-            return (
-              <div className="col-md-6 mb-4" key={id}>
-                <div className="card shadow-sm h-100">
-                  {image || formation?.image ? (
-                    <img
-                      src={image || formation.image}
-                      className="card-img-top"
-                      alt="Image de la formation"
-                      style={{ objectFit: "cover", height: "200px" }}
-                    />
-                  ) : null}
+    return (
+      <div className="col-xl-4 col-lg-6" key={id}>
+        <div className="blog__four-single-blog-content1">
+          
+          <div className="blog__four-single-blog-img">
+            <Link href={`/formations/${formationId}`}>
+              <img
+                src={image || formation?.image || '/default-image.jpg'}
+                alt={titre || formation?.titre || 'Formation'}
+                style={{ height: '250px', objectFit: 'cover', width: '100%' }}
+              />
+            </Link>
+          </div>
 
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {titre || formation?.titre || "Formation sans titre"}
-                    </h5>
-                    <p className="card-text">
-                      {description || formation?.description || "Aucune description fournie."}
-                    </p>
+          <div className="p-2">
+            <h4 className="blog__four-single-blog-content-title" style={{ color: '#f39200' }}>
+              {titre || formation?.titre || 'Formation sans titre'}
+            </h4>
+            <p className="mb-3">
+              {(description || formation?.description || 'Aucune description fournie.').length > 100
+                ? `${(description || formation?.description).substring(0, 100)}...`
+                : (description || formation?.description || 'Aucune description fournie.')}
+            </p>
 
-                    <ProgressionBar userId={session.user.id} formationId={formationId} />
+            <div className="d-grid gap-2">
+               <ProgressionBar userId={session.user.id} formationId={formationId} />
+              <Link
+                href={`/formations/${formationId}`}
+                className="btn-two"
+              >
+                ▶️ Accéder à la formation <i className="fas fa-angle-right"></i>
+              </Link>
+            </div>
+          </div>
 
-                    <Link
-                      href={`/formations/${formationId}`}
-                      className="btn btn-primary mt-2"
-                    >
-                      ▶️ Accéder à la formation
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
         </div>
+      </div>
+    );
+  })}
+</div>
+
       )}
     </div>
   );
