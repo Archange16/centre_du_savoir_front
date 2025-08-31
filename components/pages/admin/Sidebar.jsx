@@ -1,13 +1,15 @@
 //"use client";
 import React from 'react';
+import Link from "next/link";
 import { BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill} from 'react-icons/bs'
+import logo from "../../../public/assets/img/logo-2.png";
 
 const SidebarAdmin = ({openSidebarToggle, OpenSidebar, onComponentChange, activeComponent}) => {
     return (
         <aside  id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
             <div className='sidebar-title'>
                 <div className='sidebar-brand'>
-                    <BsCart3  className='icon_header'/> CPS
+                    {/* <BsCart3 />  */}<Link href="/"><img src={logo.src} alt="image" /></Link>
                 </div>
                 <span className='icon close_icon' onClick={OpenSidebar}>X</span>
             </div>
