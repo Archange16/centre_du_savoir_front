@@ -43,7 +43,7 @@ const FormationsPage = () => {
                   <p className="card-text">{formation.description}</p>
 
                   {/* Barre de progression liée à l'utilisateur */}
-                  <ProgressionBar userId={userId} formationId={formation.id} />
+                 {/*  <ProgressionBar userId={userId} formationId={formation.id} /> */}
 
                   <Link
                     href={`/formations/${formation.id}`}

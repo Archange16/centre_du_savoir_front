@@ -42,7 +42,12 @@ const AssignFormationModal = ({ formationId }) => {
 
   return (
     <>
-      <Button variant="outline-primary" size="sm" onClick={open}>
+      <Button variant="outline" size="sm" onClick={open}
+        style={{
+        borderColor: "#f39200",
+        color: "#fff",
+      }}
+      >
         🎯 Assigner à un utilisateur
       </Button>
 
