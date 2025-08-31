@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { useState } from "react";
 
 const VideoPlayer = ({ videoUrl, titreId, userId }) => {
+  console.log("VideoPlayer videoUrl:", videoUrl);
   const [completed, setCompleted] = useState(false);
 
   const handleVideoEnd = async () => {
@@ -18,7 +19,7 @@ const VideoPlayer = ({ videoUrl, titreId, userId }) => {
   };
 
   return (
-    <div>
+    <div className="border rounded p-3">
       <ReactPlayer
         url={videoUrl}
         controls

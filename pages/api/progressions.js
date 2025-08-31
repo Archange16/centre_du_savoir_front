@@ -1,39 +1,115 @@
-import { db } from '../../lib/db'; // adapte ce chemin si besoin
+import { db } from '../../lib/db';
 
-// GET /api/progressions/:userId/:formationId
 export default async function handler(req, res) {
-  const { userId, formationId } = req.query;
+  // Extraire les paramètres de l'URL
+  const { query, method } = req;
+  const { userId, formationId, action } = query;
 
-  if (req.method === 'GET') {
+  console.log("API Progressions:", { method, userId, formationId, action, body: req.body });
+
+  // GET /api/progressions?userId=1&formationId=abc
+  if (method === 'GET' && userId && formationId) {
     try {
-      // Titres (vidéos) dans la formation
+      // Récupérer tous les titres de la formation
       const titres = await db.titre.findMany({
         where: {
-          module: { formationId },
+          module: { 
+            formationId: formationId 
+          },
         },
         select: { id: true },
       });
 
-      const total = titres.length;
-      if (total === 0) return res.status(200).json({ percentage: 0 });
+      const totalTitres = titres.length;
+      console.log("Total des titres:", totalTitres);
 
-      const titreIds = titres.map((t) => t.id);
+      if (totalTitres === 0) {
+        return res.status(200).json({ 
+          percentage: 0,
+          completedTitres: [],
+          totalTitres: 0
+        });
+      }
 
-      // Progressions utilisateur
-      const completed = await db.progression.findMany({
+      // Récupérer les progressions complétées
+      const completedProgressions = await db.progression.findMany({
         where: {
-          userId,
-          titreId: { in: titreIds },
+          userId: parseInt(userId),
+          titreId: { in: titres.map(t => t.id) },
           completed: true,
         },
+        select: { titreId: true }
       });
 
-      const percentage = Math.round((completed.length / total) * 100);
+      const completedTitreIds = completedProgressions.map(p => p.titreId);
+      const percentage = Math.round((completedTitreIds.length / totalTitres) * 100);
+      
+      console.log("Progression calculée:", { 
+        completed: completedTitreIds.length, 
+        total: totalTitres, 
+        percentage 
+      });
 
-      return res.status(200).json({ percentage });
+      return res.status(200).json({ 
+        percentage,
+        completedTitres: completedTitreIds,
+        totalTitres
+      });
     } catch (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Erreur progression" });
+      console.error("Erreur API progressions GET:", err);
+      return res.status(500).json({ error: "Erreur serveur" });
     }
+  }
+  
+  // POST /api/progressions
+  else if (method === 'POST') {
+    try {
+      const { titreId, userId } = req.body;
+      console.log("API Progressions - POST:", { titreId, userId });
+
+      if (!titreId || !userId) {
+        return res.status(400).json({ error: "Paramètres manquants" });
+      }
+
+      // Vérifier si la progression existe déjà
+      const existingProgression = await db.progression.findFirst({
+        where: {
+          userId: parseInt(userId),
+          titreId: titreId
+        }
+      });
+
+      if (existingProgression) {
+        // Mettre à jour si elle existe déjà
+        await db.progression.update({
+          where: { id: existingProgression.id },
+          data: { 
+            completed: true,
+            completedAt: new Date()
+          }
+        });
+        console.log("Progression mise à jour:", existingProgression.id);
+      } else {
+        // Créer une nouvelle progression
+        const newProgression = await db.progression.create({
+          data: {
+            userId: parseInt(userId),
+            titreId: titreId,
+            completed: true,
+            completedAt: new Date()
+          }
+        });
+        console.log("Nouvelle progression créée:", newProgression.id);
+      }
+
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      console.error("Erreur API progressions POST:", err);
+      return res.status(500).json({ error: "Erreur serveur" });
+    }
+  }
+  
+  else {
+    return res.status(404).json({ error: "Endpoint non trouvé" });
   }
 }
