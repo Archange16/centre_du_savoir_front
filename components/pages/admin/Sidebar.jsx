@@ -1,8 +1,9 @@
 //"use client";
 import React from 'react';
-import Link from "next/link";
 import { BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill} from 'react-icons/bs'
 import logo from "../../../public/assets/img/logo-2.png";
+import Link from "next/link";
+
 
 const SidebarAdmin = ({openSidebarToggle, OpenSidebar, onComponentChange, activeComponent}) => {
     return (
