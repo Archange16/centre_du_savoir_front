@@ -43,8 +43,8 @@ const SignUpForm = () => {
     const { confirmPassword, ...userData } = values;
 
     try {
-      // Appel API vers /api/user pour créer un nouvel utilisateur
-      const res = await fetch('/api/user', {
+      // Appel API vers /api/utilisateur pour créer un nouvel utilisateur
+      const res = await fetch('/api/utilisateur', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
