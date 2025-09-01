@@ -5,6 +5,7 @@ import { hash } from 'bcrypt';
 import { db } from '../../lib/db'; // adapte ce chemin à ton projet
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+//import { hash } from 'bcryptjs';
 
 const userSchema = z
   .object({
