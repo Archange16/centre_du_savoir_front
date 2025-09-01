@@ -1,4 +1,4 @@
-// pages/api/user.ts
+// pages/api/utilisateur.ts
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { hash } from 'bcrypt';

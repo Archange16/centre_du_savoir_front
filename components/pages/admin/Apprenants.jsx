@@ -130,7 +130,7 @@ const UserTable = () => {
     setSubmitLoading(true);
     
     try {
-      const url = showAddModal ? '/api/user' : `/api/user/${selectedUser.id}`;
+      const url = showAddModal ? '/api/userid' : `/api/userid/${selectedUser.id}`;
       const method = showAddModal ? 'POST' : 'PUT';
       
       // Préparer les données à envoyer
@@ -174,7 +174,7 @@ const UserTable = () => {
 
     try {
       setDeleteLoading(userId);
-      const response = await fetch(`/api/user/${userId}`, {
+      const response = await fetch(`/api/userid/${userId}`, {
         method: 'DELETE',
       });
 
