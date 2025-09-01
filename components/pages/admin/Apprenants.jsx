@@ -37,7 +37,7 @@ const UserTable = () => {
       const response = await fetch('/api/utilisateur');
       
       if (!response.ok) {
-        throw new Error('Erreur lors du chargement des utilisateurs1');
+        throw new Error('Erreur lors du chargement des utilisateurs');
       }
       
       const data = await response.json();
