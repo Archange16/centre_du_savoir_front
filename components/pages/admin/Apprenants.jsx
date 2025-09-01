@@ -130,7 +130,7 @@ const UserTable = () => {
     setSubmitLoading(true);
     
     try {
-      const url = showAddModal ? '/api/user' : `/api/user/${selectedUser.id}`;
+      const url = showAddModal ? '/api/users' : `/api/users/${selectedUser.id}`;
       const method = showAddModal ? 'POST' : 'PUT';
       
       // Préparer les données à envoyer
