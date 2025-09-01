@@ -35,7 +35,6 @@ const FormationDetailPage = ({ params }) => {
       
       try {
         setLoading(true);
-        //console.log("Chargement des données pour la formation:", id);
         
         // Charger la formation
         const formationRes = await fetch(`/api/formations/${id}`);
@@ -43,7 +42,6 @@ const FormationDetailPage = ({ params }) => {
         
         const formationData = await formationRes.json();
         setFormation(formationData);
-        console.log("Formation chargée:", formationData);
 
         // Organiser les titres
         const titres = formationData.modules
@@ -58,15 +56,12 @@ const FormationDetailPage = ({ params }) => {
           );
 
         setVideoList(titres);
-        console.log("Liste des vidéos créée:", titres.length, "éléments");
 
         // Charger la progression si l'utilisateur est connecté
         if (userId) {
-          console.log("Chargement de la progression pour l'utilisateur:", userId);
           const progressionRes = await fetch(`/api/progressions/${userId}/${id}`);
           if (progressionRes.ok) {
             const progressionData = await progressionRes.json();
-            console.log("Données de progression:", progressionData);
             
             if (progressionData.completedTitres) {
               setCompletedTitres(new Set(progressionData.completedTitres));
@@ -115,7 +110,6 @@ const FormationDetailPage = ({ params }) => {
     }
     
     try {
-      console.log("Marquage comme terminé:", { titreId, userId });
       const response = await fetch('/api/progressions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -123,7 +117,6 @@ const FormationDetailPage = ({ params }) => {
       });
       
       if (response.ok) {
-        console.log("Succès du marquage");
         setCompletedTitres(prev => {
           const newSet = new Set(prev);
           newSet.add(titreId);
@@ -148,7 +141,6 @@ const FormationDetailPage = ({ params }) => {
     
     // Marquer la vidéo actuelle comme terminée avant de changer
     if (currentTitre && userId && !completedTitres.has(currentTitre.id)) {
-      console.log("Marquage automatique de la vidéo avant changement");
       await markAsCompleted(currentTitre.id);
     }
     
@@ -156,11 +148,16 @@ const FormationDetailPage = ({ params }) => {
     setCurrentTitre(videoList[index]);
   };
 
-  const handleNext = () => {
-    if (currentIndex < videoList.length - 1) {
-      goToTitre(currentIndex + 1);
+  const handleNext = async () => {
+  if (currentIndex < videoList.length - 1) {
+    if (currentTitre && userId && !completedTitres.has(currentTitre.id)) {
+      const success = await markAsCompleted(currentTitre.id);
+      if (!success) return;
     }
-  };
+    setCurrentIndex(currentIndex + 1);
+    setCurrentTitre(videoList[currentIndex + 1]);
+  }
+};
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
@@ -169,6 +166,13 @@ const FormationDetailPage = ({ params }) => {
   };
 
   const handleManualCompletion = async () => {
+    if (currentTitre && !completedTitres.has(currentTitre.id)) {
+      await markAsCompleted(currentTitre.id);
+    }
+  };
+
+  // Nouvelle fonction pour gérer le clic sur le label
+  const handleLabelClick = async () => {
     if (currentTitre && !completedTitres.has(currentTitre.id)) {
       await markAsCompleted(currentTitre.id);
     }
@@ -247,7 +251,7 @@ const FormationDetailPage = ({ params }) => {
           <p className="text-muted">Module: {currentTitre?.moduleTitre}</p>
 
           {currentTitre?.videoUrl ? (
-            <div className="border rounded">
+            <div className="">
               <div className="ratio ratio-16x9" style={{ height: "500px", width: "100%" }}>
                 <iframe
                   src={convertGoogleDriveLink(currentTitre.videoUrl)}
@@ -266,7 +270,12 @@ const FormationDetailPage = ({ params }) => {
                   onChange={handleManualCompletion}
                   disabled={completedTitres.has(currentTitre.id)}
                 />
-                <label className="form-check-label" htmlFor="completedCheck">
+                <label 
+                  className="form-check-label" 
+                  htmlFor="completedCheck"
+                  onClick={handleLabelClick}
+                  style={{ cursor: "pointer" }}
+                >
                   {completedTitres.has(currentTitre.id) 
                     ? "✅ Vidéo complétée" 
                     : "Marquer comme terminé"}
@@ -279,7 +288,7 @@ const FormationDetailPage = ({ params }) => {
             </div>
           )}
 
-          <div className="d-flex justify-content-between mt-4">
+         {/*  <div className="d-flex justify-content-between mt-4">
             <button
               className="btn btn-outline-primary"
               onClick={handlePrevious}
@@ -292,14 +301,15 @@ const FormationDetailPage = ({ params }) => {
               Vidéo {currentIndex + 1} sur {videoList.length}
             </span>
 
-            <button
+            <button type="button"
               className="btn btn-outline-primary"
               onClick={handleNext}
               disabled={currentIndex === videoList.length - 1}
             >
               Suivant ➡
             </button>
-          </div>
+          </div> */}
+
         </main>
       </div>
     </div>
