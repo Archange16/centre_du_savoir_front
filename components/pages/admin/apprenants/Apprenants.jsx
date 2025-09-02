@@ -25,7 +25,7 @@ const Apprenants = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/utilisateur?page=${pagination.page}&limit=${pagination.limit}`)
+      const response = await fetch(`/api/lesusers?page=${pagination.page}&limit=${pagination.limit}`)
       
       if (!response.ok) {
         throw new Error('Failed to fetch users')
@@ -55,7 +55,7 @@ const Apprenants = () => {
 
   const handleAddUser = async (userData) => {
     try {
-      const response = await fetch('/api/utilisateur', {
+      const response = await fetch('/api/lesusers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
