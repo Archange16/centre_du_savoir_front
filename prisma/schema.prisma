@@ -20,7 +20,7 @@ enum Role {
 }
 
 model User {
-  id         Int                     @id @default(autoincrement())
+  id         String                  @id @default(uuid())
   email      String                  @unique
   username   String                  @unique
   password   String
@@ -55,7 +55,7 @@ model Formation {
   modules        Module[]
   assignments    FormationAssignment[]
   createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt // Ajouté pour la cohérence
+  updatedAt      DateTime      @updatedAt
 }
 
 model Module {
@@ -65,25 +65,25 @@ model Module {
   formationId    String
   formation      Formation  @relation(fields: [formationId], references: [id], onDelete: Cascade)
   titres         Titre[]
-  createdAt      DateTime   @default(now()) // Ajouté pour la cohérence
-  updatedAt      DateTime   @updatedAt // Ajouté pour la cohérence
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
 
 model Titre {
-  id         String    @id @default(uuid())
-  nom        String
-  videoUrl   String
-  ordre      Int
-  moduleId   String
-  module     Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  id          String     @id @default(uuid())
+  nom         String
+  videoUrl    String
+  ordre       Int
+  moduleId    String
+  module      Module     @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   progressions Progression[]
-  createdAt  DateTime  @default(now()) // Ajouté pour la cohérence
-  updatedAt  DateTime  @updatedAt // Ajouté pour la cohérence
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 model FormationAssignment {
   id           String     @id @default(uuid())
-  userId       Int // Corrigé: doit correspondre au type de User.id (Int)
+  userId       String     // corrigé : String pour UUID
   formationId  String
   titre        String?
   description  String?
@@ -94,13 +94,13 @@ model FormationAssignment {
 }
 
 model Progression {
-  id         String   @id @default(uuid())
-  userId     Int // Corrigé: doit correspondre au type de User.id (Int)
-  titreId    String
-  completed  Boolean  @default(false)
+  id          String   @id @default(uuid())
+  userId      String   // corrigé : String pour UUID
+  titreId     String
+  completed   Boolean  @default(false)
   completedAt DateTime?
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  titre      Titre    @relation(fields: [titreId], references: [id], onDelete: Cascade)
-  createdAt  DateTime @default(now()) // Ajouté pour la cohérence
-  updatedAt  DateTime @updatedAt // Ajouté pour la cohérence
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titre       Titre    @relation(fields: [titreId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
