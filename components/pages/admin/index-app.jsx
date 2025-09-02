@@ -1,13 +1,6 @@
 "use client";
 import React from 'react';
 import HeaderAdmin from './Header';
-import HomeAdmin from './Home';
-import LeadManager from './LeadManager';
-import Categories from './Categories';
-//import Cours from './Cours';
-import Apprenants from './Apprenants';
-import Reports from './Reports';
-import Setting from './Setting';
 import SidebarApp from './Sidebar-app';
 import FormationsAppPage from './index-formation-app';
 
