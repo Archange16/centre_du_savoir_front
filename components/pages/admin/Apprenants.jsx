@@ -31,14 +31,15 @@ const UserTable = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/utilisateur');
+      const response = await fetch('/api/apprenant');
       console.log('Response:', response);
       if (!response.ok) {
         throw new Error('Erreur lors du chargement des utilisateurs');
       }
       
       const data = await response.json();
-      setUsers(data);
+      //setUsers(data);
+      setUsers(data.data);
     } catch (err) {
       setError(err.message);
       console.error('Erreur:', err);
@@ -121,7 +122,7 @@ const UserTable = () => {
     
     try {
       // CORRECTION ICI : Utiliser '/api/utilisateur' pour l'ajout
-      const url = showAddModal ? '/api/utilisateur' : `/api/userid/${selectedUser.id}`;
+      const url = showAddModal ? '/api/apprenant' : `/api/userid/${selectedUser.id}`;
       const method = showAddModal ? 'POST' : 'PUT';
       
       const submitData = showAddModal 
