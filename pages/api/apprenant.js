@@ -2,7 +2,7 @@ import { db } from '../../lib/db'; // adapte ce chemin si besoin
 import { z } from 'zod';
 
 // Schéma de validation pour POST/PUT
-const userSchema = z.object({
+/* const userSchema = z.object({
   email: z.string().email('Email invalide'),
   username: z.string().min(1, 'Nom d\'utilisateur requis'),
   password: z.string().min(6, 'Mot de passe trop court'),
@@ -148,3 +148,4 @@ export default async function handler(req, res) {
   // ❌ Méthode non supportée
   return res.status(405).json({ error: `Méthode ${req.method} non autorisée` });
 }
+ */

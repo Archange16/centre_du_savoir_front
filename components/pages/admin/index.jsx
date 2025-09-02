@@ -6,7 +6,7 @@ import HomeAdmin from './Home';
 import LeadManager from './LeadManager';
 import Categories from './Categories';
 //import Cours from './Cours';
-import Apprenants from './Apprenants';
+import Apprenants from './apprenants/Apprenants';
 import Reports from './Reports';
 import Setting from './Setting';
 import FormationsPage from './index-formation';
