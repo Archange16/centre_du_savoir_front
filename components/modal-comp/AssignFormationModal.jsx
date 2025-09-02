@@ -10,15 +10,24 @@ const AssignFormationModal = ({ formationId }) => {
   const open = () => setShow(true);
   const close = () => setShow(false);
 
-  useEffect(() => {
+ useEffect(() => {
   const fetchUsers = async () => {
-    const res = await fetch("/api/apprenant");
-    const data = await res.json();
-    setUsers(Array.isArray(data) ? data : []);
+    try {
+      const res = await fetch("/api/apprenant");
+      const data = await res.json();
+      console.log("Données reçues:", data);
+
+      const usersArray = Array.isArray(data.data) ? data.data : [];
+      setUsers(usersArray);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des utilisateurs:", error);
+      setUsers([]);
+    }
   };
 
   fetchUsers();
 }, []);
+
 
   const handleAssign = async () => {
     if (!selectedUser) return;
@@ -58,7 +67,7 @@ const AssignFormationModal = ({ formationId }) => {
               onChange={(e) => setSelectedUser(e.target.value)}
             >
               <option value="">-- Sélectionner un utilisateur --</option>
-              {users?.map((user) => (
+              {users.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.username || `Utilisateur #${user.id}`}
                 </option>
