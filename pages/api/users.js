@@ -37,10 +37,26 @@ export default async function handler(req, res) {
         db.user.count()
       ]);
 
-       return res.status(200).json({ success: true, data: users, total });
+      console.log('Users found:', users.length);
+      console.log('Total users:', total);
+
+      return res.status(200).json({ 
+        success: true, 
+        data: users, 
+        total,
+        pagination: {
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit)
+        }
+      });
     } catch (error) {
-      console.error('Database error:', error);
-      return res.status(500).json({ error: 'Erreur serveur' });
+      console.error('Database error in GET /api/utilisateur:', error);
+      return res.status(500).json({ 
+        success: false,
+        error: 'Erreur serveur',
+        message: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 
