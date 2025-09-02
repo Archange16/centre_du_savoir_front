@@ -25,8 +25,28 @@ const UserTable = () => {
   const [submitLoading, setSubmitLoading] = useState(false);
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch("/api/apprenant");
+      const data = await res.json();
+      console.log("Données reçues:", data);
+
+      // ✅ Supporte les 2 formats de réponse
+      const usersArray = Array.isArray(data)
+        ? data
+        : Array.isArray(data.data)
+        ? data.data
+        : [];
+
+      setUsers(usersArray);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des utilisateurs:", error);
+      setUsers([]);
+    }
+  };
+
+  fetchUsers();
+}, []);
 
   const fetchUsers = async () => {
     try {
@@ -155,29 +175,31 @@ const UserTable = () => {
   };
 
   const handleDelete = async (userId) => {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
-      return;
+  if (!confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
+    return;
+  }
+
+  try {
+    setDeleteLoading(userId);
+    const response = await fetch(`/api/userid/${userId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Erreur serveur:", errorData); // ✅ Affiche la vraie erreur
+      throw new Error(errorData.error || 'Erreur lors de la suppression');
     }
 
-    try {
-      setDeleteLoading(userId);
-      const response = await fetch(`/api/userid/${userId}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error('Erreur lors de la suppression');
-      }
-
-      setUsers(users.filter(user => user.id !== userId));
-      alert('Utilisateur supprimé avec succès');
-    } catch (err) {
-      alert('Erreur lors de la suppression: ' + err.message);
-      console.error('Erreur:', err);
-    } finally {
-      setDeleteLoading(null);
-    }
-  };
+    setUsers(users.filter(user => user.id !== userId));
+    alert('Utilisateur supprimé avec succès');
+  } catch (err) {
+    alert('Erreur lors de la suppression: ' + err.message);
+    console.error('Erreur front-end:', err);
+  } finally {
+    setDeleteLoading(null);
+  }
+};
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
