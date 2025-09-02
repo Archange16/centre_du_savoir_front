@@ -5,10 +5,10 @@ const UserTable = ({ users, onEdit, onDelete }) => {
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th>Username</th>
+          <th>Nom</th>
           <th>Email</th>
           <th>Role</th>
-          <th>Created At</th>
+          <th>Date de création</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -26,14 +26,14 @@ const UserTable = ({ users, onEdit, onDelete }) => {
                 className="me-2"
                 onClick={() => onEdit(user)}
               >
-                Edit
+                Modifier
               </Button>
               <Button 
                 variant="outline-danger" 
                 size="sm"
                 onClick={() => onDelete(user.id)}
               >
-                Delete
+                Supprimer
               </Button>
             </td>
           </tr>
