@@ -11,12 +11,10 @@ const UserTable = () => {
   const [itemsPerPage] = useState(10);
   const [deleteLoading, setDeleteLoading] = useState(null);
   
-  // États pour les modals
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   
-  // États pour les formulaires
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -26,7 +24,6 @@ const UserTable = () => {
   const [formErrors, setFormErrors] = useState({});
   const [submitLoading, setSubmitLoading] = useState(false);
 
-  // Charger les utilisateurs
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -35,7 +32,7 @@ const UserTable = () => {
     try {
       setLoading(true);
       const response = await fetch('/api/utilisateur');
-      
+      console.log('Response:', response);
       if (!response.ok) {
         throw new Error('Erreur lors du chargement des utilisateurs');
       }
@@ -50,7 +47,6 @@ const UserTable = () => {
     }
   };
 
-  // Ouvrir le modal d'édition
   const handleEdit = (user) => {
     setSelectedUser(user);
     setFormData({
@@ -63,7 +59,6 @@ const UserTable = () => {
     setShowEditModal(true);
   };
 
-  // Ouvrir le modal d'ajout
   const handleAdd = () => {
     setSelectedUser(null);
     setFormData({
@@ -76,14 +71,12 @@ const UserTable = () => {
     setShowAddModal(true);
   };
 
-  // Fermer les modals
   const handleCloseModals = () => {
     setShowAddModal(false);
     setShowEditModal(false);
     setFormErrors({});
   };
 
-  // Gérer les changements dans les formulaires
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -91,7 +84,6 @@ const UserTable = () => {
       [name]: value
     }));
     
-    // Effacer l'erreur du champ lorsqu'on commence à taper
     if (formErrors[name]) {
       setFormErrors(prev => ({
         ...prev,
@@ -100,7 +92,6 @@ const UserTable = () => {
     }
   };
 
-  // Valider le formulaire
   const validateForm = () => {
     const errors = {};
     
@@ -121,7 +112,6 @@ const UserTable = () => {
     return Object.keys(errors).length === 0;
   };
 
-  // Soumettre le formulaire (ajout ou modification)
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -130,10 +120,10 @@ const UserTable = () => {
     setSubmitLoading(true);
     
     try {
+      // CORRECTION ICI : Utiliser '/api/utilisateur' pour l'ajout
       const url = showAddModal ? '/api/utilisateur' : `/api/userid/${selectedUser.id}`;
       const method = showAddModal ? 'POST' : 'PUT';
       
-      // Préparer les données à envoyer
       const submitData = showAddModal 
         ? { username: formData.username, email: formData.email, password: formData.password }
         : { username: formData.username, email: formData.email };
@@ -151,10 +141,7 @@ const UserTable = () => {
         throw new Error(errorData.error || 'Erreur lors de la sauvegarde');
       }
       
-      // Recharger la liste des utilisateurs
       await fetchUsers();
-      
-      // Fermer le modal et réinitialiser le formulaire
       handleCloseModals();
       alert(showAddModal ? 'Utilisateur ajouté avec succès!' : 'Utilisateur modifié avec succès!');
       
@@ -166,7 +153,6 @@ const UserTable = () => {
     }
   };
 
-  // Supprimer un utilisateur
   const handleDelete = async (userId) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
       return;
@@ -182,9 +168,7 @@ const UserTable = () => {
         throw new Error('Erreur lors de la suppression');
       }
 
-      // Mettre à jour la liste des utilisateurs
       setUsers(users.filter(user => user.id !== userId));
-      
       alert('Utilisateur supprimé avec succès');
     } catch (err) {
       alert('Erreur lors de la suppression: ' + err.message);
@@ -194,13 +178,11 @@ const UserTable = () => {
     }
   };
 
-  // Calcul de la pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentUsers = users.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(users.length / itemsPerPage);
 
-  // Changer de page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   if (loading) {
@@ -290,7 +272,6 @@ const UserTable = () => {
                 </table>
               </div>
 
-              {/* Pagination */}
               {totalPages > 1 && (
                 <nav aria-label="Page navigation">
                   <ul className="pagination justify-content-center">
@@ -338,7 +319,6 @@ const UserTable = () => {
         </small>
       </div>
 
-      {/* Modal d'ajout */}
       {showAddModal && (
         <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
           <div className="modal-dialog">
@@ -422,7 +402,6 @@ const UserTable = () => {
         </div>
       )}
 
-      {/* Modal de modification */}
       {showEditModal && (
         <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
           <div className="modal-dialog">

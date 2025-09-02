@@ -1,110 +1,95 @@
-// pages/api/user/[id].js
-import { db } from '../../../lib/db';
+// pages/api/userid/[id].js
 import { hash } from 'bcrypt';
+import { db } from '../../../lib/db';
+import { z } from 'zod';
+
+const updateUserSchema = z.object({
+  username: z.string().min(1, 'Username is required').max(100),
+  email: z.string().min(1, 'Email is required').email('Invalid email'),
+  password: z.string().optional(),
+});
 
 export default async function handler(req, res) {
   const { id } = req.query;
 
-  if (req.method === 'GET') {
-    try {
-      const user = await db.user.findUnique({
-        where: { id: parseInt(id) },
-        select: {
-          id: true,
-          username: true,
-          email: true,
-        },
-      });
-
-      if (!user) {
-        return res.status(404).json({ error: 'Utilisateur non trouvé' });
-      }
-
-      return res.status(200).json(user);
-    } catch (error) {
-      console.error('Erreur récupération utilisateur:', error);
-      return res.status(500).json({ error: 'Erreur serveur' });
-    }
-  }
-
   if (req.method === 'PUT') {
     try {
-      const { username, email, password } = req.body;
+      const body = req.body;
+      const { email, username, password } = updateUserSchema.parse(body);
 
-      // Vérifier si l'utilisateur existe
-      const user = await db.user.findUnique({
-        where: { id: parseInt(id) }
+      const existingUser = await db.user.findUnique({ where: { id: id } });
+      if (!existingUser) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+
+      const existingEmail = await db.user.findFirst({ 
+        where: { 
+          email, 
+          id: { not: id } 
+        } 
       });
-
-      if (!user) {
-        return res.status(404).json({ error: 'Utilisateur non trouvé' });
+      if (existingEmail) {
+        return res.status(400).json({ error: 'Email already exists' });
       }
 
-      // Vérifier si l'email est déjà utilisé par un autre utilisateur
-      if (email !== user.email) {
-        const existingEmail = await db.user.findUnique({ where: { email } });
-        if (existingEmail) {
-          return res.status(400).json({ error: 'Email déjà utilisé' });
-        }
+      const existingUsername = await db.user.findFirst({ 
+        where: { 
+          username, 
+          id: { not: id } 
+        } 
+      });
+      if (existingUsername) {
+        return res.status(400).json({ error: 'Username already exists' });
       }
 
-      // Vérifier si le username est déjà utilisé par un autre utilisateur
-      if (username !== user.username) {
-        const existingUsername = await db.user.findUnique({ where: { username } });
-        if (existingUsername) {
-          return res.status(400).json({ error: 'Nom d\'utilisateur déjà utilisé' });
-        }
-      }
+      const updateData = {
+        email,
+        username,
+      };
 
-      // Préparer les données de mise à jour
-      const updateData = { username, email };
-      
-      // Hasher le mot de passe s'il est fourni
-      if (password) {
+      if (password && password.length > 0) {
         updateData.password = await hash(password, 10);
       }
 
-      // Mettre à jour l'utilisateur
       const updatedUser = await db.user.update({
-        where: { id: parseInt(id) },
+        where: { id: id },
         data: updateData,
-        select: {
-          id: true,
-          username: true,
-          email: true,
-        },
       });
 
-      return res.status(200).json(updatedUser);
+      const { password: _, ...userWithoutPassword } = updatedUser;
+
+      return res.status(200).json({ 
+        success: true, 
+        user: userWithoutPassword, 
+        message: 'User updated successfully' 
+      });
     } catch (error) {
-      console.error('Erreur modification utilisateur:', error);
-      return res.status(500).json({ error: 'Erreur serveur' });
+      console.error('Database error:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
   }
 
   if (req.method === 'DELETE') {
     try {
-      // Vérifier si l'utilisateur existe
-      const user = await db.user.findUnique({
-        where: { id: parseInt(id) }
-      });
-
-      if (!user) {
-        return res.status(404).json({ error: 'Utilisateur non trouvé' });
+      const existingUser = await db.user.findUnique({ where: { id: id } });
+      if (!existingUser) {
+        return res.status(404).json({ error: 'User not found' });
       }
 
-      // Supprimer l'utilisateur
       await db.user.delete({
-        where: { id: parseInt(id) }
+        where: { id: id },
       });
 
-      return res.status(200).json({ message: 'Utilisateur supprimé avec succès' });
+      return res.status(200).json({ 
+        success: true, 
+        message: 'User deleted successfully' 
+      });
     } catch (error) {
-      console.error('Erreur suppression utilisateur:', error);
-      return res.status(500).json({ error: 'Erreur serveur' });
+      console.error('Database error:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
   }
 
-  res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
-  res.status(405).end(`Method ${req.method} Not Allowed`);
+  res.setHeader('Allow', ['PUT', 'DELETE']);
+  return res.status(405).end(`Method ${req.method} Not Allowed`);
 }
