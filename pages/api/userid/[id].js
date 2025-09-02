@@ -1,4 +1,3 @@
-// pages/api/userid/[id].js
 import { hash } from 'bcrypt';
 import { db } from '../../../lib/db';
 import { z } from 'zod';
@@ -11,13 +10,18 @@ const updateUserSchema = z.object({
 
 export default async function handler(req, res) {
   const { id } = req.query;
+  const userId = parseInt(id);
+
+  if (isNaN(userId)) {
+    return res.status(400).json({ error: 'Invalid user ID' });
+  }
 
   if (req.method === 'PUT') {
     try {
       const body = req.body;
       const { email, username, password } = updateUserSchema.parse(body);
 
-      const existingUser = await db.user.findUnique({ where: { id: id } });
+      const existingUser = await db.user.findUnique({ where: { id: userId } });
       if (!existingUser) {
         return res.status(404).json({ error: 'User not found' });
       }
@@ -25,7 +29,7 @@ export default async function handler(req, res) {
       const existingEmail = await db.user.findFirst({ 
         where: { 
           email, 
-          id: { not: id } 
+          id: { not: userId } 
         } 
       });
       if (existingEmail) {
@@ -35,7 +39,7 @@ export default async function handler(req, res) {
       const existingUsername = await db.user.findFirst({ 
         where: { 
           username, 
-          id: { not: id } 
+          id: { not: userId } 
         } 
       });
       if (existingUsername) {
@@ -52,7 +56,7 @@ export default async function handler(req, res) {
       }
 
       const updatedUser = await db.user.update({
-        where: { id: id },
+        where: { id: userId },
         data: updateData,
       });
 
@@ -71,13 +75,13 @@ export default async function handler(req, res) {
 
   if (req.method === 'DELETE') {
     try {
-      const existingUser = await db.user.findUnique({ where: { id: id } });
+      const existingUser = await db.user.findUnique({ where: { id: userId } });
       if (!existingUser) {
         return res.status(404).json({ error: 'User not found' });
       }
 
       await db.user.delete({
-        where: { id: id },
+        where: { id: userId },
       });
 
       return res.status(200).json({ 
