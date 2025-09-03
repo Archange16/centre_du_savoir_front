@@ -80,9 +80,9 @@ export default async function handler(req, res) {
               id: true,
               email: true,
               username: true,
-              role: true,
+             /*  role: true,
               createdAt: true,
-              updatedAt: true
+              updatedAt: true */
             },
             orderBy: { createdAt: 'desc' }
           }),
