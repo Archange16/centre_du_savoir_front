@@ -2,7 +2,7 @@ import { db } from '@/lib/db';
 
 export default async function handler(req, res) {
   const { userId, formationId } = req.query;
-  console.log("API Progressions - GET:", { userId, formationId });
+  //console.log("API Progressions - GET:", { userId, formationId });
 
   if (req.method === 'GET') {
     try {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       // Récupérer les progressions complétées
       const completedProgressions = await db.progression.findMany({
         where: {
-          userId: parseInt(userId),
+          userId: userId,
           titreId: { in: titres.map(t => t.id) },
           completed: true,
         },

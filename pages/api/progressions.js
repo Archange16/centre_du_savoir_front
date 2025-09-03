@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       // Récupérer les progressions complétées
       const completedProgressions = await db.progression.findMany({
         where: {
-          userId: parseInt(userId),
+          userId: userId,
           titreId: { in: titres.map(t => t.id) },
           completed: true,
         },
@@ -74,7 +74,7 @@ export default async function handler(req, res) {
       // Vérifier si la progression existe déjà
       const existingProgression = await db.progression.findFirst({
         where: {
-          userId: parseInt(userId),
+          userId: userId,
           titreId: titreId
         }
       });
@@ -93,7 +93,7 @@ export default async function handler(req, res) {
         // Créer une nouvelle progression
         const newProgression = await db.progression.create({
           data: {
-            userId: parseInt(userId),
+            userId: userId,
             titreId: titreId,
             completed: true,
             completedAt: new Date()
