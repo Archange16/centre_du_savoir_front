@@ -373,7 +373,7 @@ const FormationDetailPage = ({ params }) => {
               />
               
               {/* Barre de progression visuelle */}
-              <div className="progress mt-2" style={{height: '20px'}}>
+              {/* <div className="progress mt-2" style={{height: '20px'}}>
                 <div 
                   className="progress-bar bg-success" 
                   role="progressbar" 
@@ -384,7 +384,7 @@ const FormationDetailPage = ({ params }) => {
                 >
                   {progressionPercentage}%
                 </div>
-              </div>
+              </div> */}
               
               {/* Message de completion */}
               {progressionPercentage === 100 && (
