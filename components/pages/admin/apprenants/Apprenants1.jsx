@@ -1,480 +1,250 @@
-// components/UserTable.jsx
-"use client";
+import { useState, useEffect } from 'react'
+import { Container, Button, Alert, Row, Col, Pagination, Spinner, Card } from 'react-bootstrap'
+import UserTable from './UserTable'
+import AddUserModal from './AddUserModal'
+import EditUserModal from './EditUserModal'
 
-import { useState, useEffect } from 'react';
-
-const UserTable = () => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
-  const [deleteLoading, setDeleteLoading] = useState(null);
-  
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
-  
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  const [formErrors, setFormErrors] = useState({});
-  const [submitLoading, setSubmitLoading] = useState(false);
+const Apprenants = () => {
+  const [users, setUsers] = useState([])
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
+  const [selectedUser, setSelectedUser] = useState(null)
+  const [alert, setAlert] = useState({ show: false, message: '', type: '' })
+  const [loading, setLoading] = useState(true)
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 1
+  })
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers()
+  }, [pagination.page])
 
   const fetchUsers = async () => {
     try {
-      setLoading(true);
-      const response = await fetch('/api/apprenant');
-      console.log('Response:', response);
-      if (!response.ok) {
-        throw new Error('Erreur lors du chargement des utilisateurs1');
-      }
-      
-      const data = await response.json();
-      setUsers(data);
-      setUsers(data.data);
-    } catch (err) {
-      setError(err.message);
-      console.error('Erreur:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleEdit = (user) => {
-    setSelectedUser(user);
-    setFormData({
-      username: user.username,
-      email: user.email,
-      password: '',
-      confirmPassword: ''
-    });
-    setFormErrors({});
-    setShowEditModal(true);
-  };
-
-  const handleAdd = () => {
-    setSelectedUser(null);
-    setFormData({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-    setFormErrors({});
-    setShowAddModal(true);
-  };
-
-  const handleCloseModals = () => {
-    setShowAddModal(false);
-    setShowEditModal(false);
-    setFormErrors({});
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    if (formErrors[name]) {
-      setFormErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
-
-  const validateForm = () => {
-    const errors = {};
-    
-    if (!formData.username.trim()) errors.username = 'Le nom d\'utilisateur est requis';
-    if (!formData.email.trim()) errors.email = 'L\'email est requis';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Email invalide';
-    
-    if (showAddModal) {
-      if (!formData.password) errors.password = 'Le mot de passe est requis';
-      else if (formData.password.length < 8) errors.password = 'Le mot de passe doit avoir au moins 8 caractères';
-      
-      if (formData.password !== formData.confirmPassword) {
-        errors.confirmPassword = 'Les mots de passe ne correspondent pas';
-      }
-    }
-    
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-    
-    setSubmitLoading(true);
-    
-    try {
-      // CORRECTION ICI : Utiliser '/api/utilisateur' pour l'ajout
-      const url = showAddModal ? '/api/apprenant' : `/api/userid/${selectedUser.id}`;
-      const method = showAddModal ? 'POST' : 'PUT';
-      
-      const submitData = showAddModal 
-        ? { username: formData.username, email: formData.email, password: formData.password }
-        : { username: formData.username, email: formData.email };
-      
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submitData),
-      });
+      setLoading(true)
+      const response = await fetch(`/api/users?page=${pagination.page}&limit=${pagination.limit}`)
       
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Erreur lors de la sauvegarde');
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
       
-      await fetchUsers();
-      handleCloseModals();
-      alert(showAddModal ? 'Utilisateur ajouté avec succès!' : 'Utilisateur modifié avec succès!');
+      const data = await response.json()
       
-    } catch (err) {
-      alert('Erreur: ' + err.message);
-      console.error('Erreur:', err);
-    } finally {
-      setSubmitLoading(false);
-    }
-  };
-
-  const handleDelete = async (userId) => {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
-      return;
-    }
-
-    try {
-      setDeleteLoading(userId);
-      const response = await fetch(`/api/userid/${userId}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error('Erreur lors de la suppression');
+      if (data.success) {
+        setUsers(Array.isArray(data.data) ? data.data : [])
+        setPagination(prev => ({
+          ...prev,
+          total: data.total || 0,
+          totalPages: data.pagination?.totalPages || 1
+        }))
+      } else {
+        showAlert('Erreur lors de la récupération des utilisateurs', 'danger')
       }
-
-      setUsers(users.filter(user => user.id !== userId));
-      alert('Utilisateur supprimé avec succès');
-    } catch (err) {
-      alert('Erreur lors de la suppression: ' + err.message);
-      console.error('Erreur:', err);
+    } catch (error) {
+      console.error('Fetch error:', error)
+      showAlert('Erreur de connexion au serveur', 'danger')
     } finally {
-      setDeleteLoading(null);
+      setLoading(false)
     }
-  };
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentUsers = users.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(users.length / itemsPerPage);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  if (loading) {
-    return (
-      <div className="d-flex justify-content-center my-5">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Chargement...</span>
-        </div>
-      </div>
-    );
   }
 
-  if (error) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        Erreur: {error}
-      </div>
-    );
+  const handleAddUser = async (userData) => {
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      const result = await response.json()
+      
+      if (result.success) {
+        setShowAddModal(false)
+        fetchUsers()
+        showAlert(result.message || 'Utilisateur ajouté avec succès', 'success')
+      } else {
+        const errorMsg = result.errors
+          ? result.errors.map(e => e.message).join(', ')
+          : result.error || 'Échec de l\'ajout de l\'utilisateur'
+        showAlert(errorMsg, 'danger')
+      }
+    } catch (error) {
+      console.error('Error adding user:', error)
+      showAlert('Erreur lors de l\'ajout de l\'utilisateur', 'danger')
+    }
+  }
+
+  const handleEditUser = async (userData) => {
+    try {
+      const response = await fetch(`/api/users/${selectedUser.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      const result = await response.json()
+      
+      if (result.success) {
+        setShowEditModal(false)
+        setSelectedUser(null)
+        fetchUsers()
+        showAlert(result.message || 'Utilisateur modifié avec succès', 'success')
+      } else {
+        const errorMsg = result.errors
+          ? result.errors.map(e => e.message).join(', ')
+          : result.error || 'Échec de la modification de l\'utilisateur'
+        showAlert(errorMsg, 'danger')
+      }
+    } catch (error) {
+      console.error('Error updating user:', error)
+      showAlert('Erreur lors de la modification de l\'utilisateur', 'danger')
+    }
+  }
+
+  const handleDeleteUser = async (id) => {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
+      try {
+        const response = await fetch(`/api/users/${id}`, { method: 'DELETE' })
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
+        const result = await response.json()
+        
+        if (result.success) {
+          fetchUsers()
+          showAlert(result.message || 'Utilisateur supprimé avec succès', 'success')
+        } else {
+          showAlert(result.error || 'Échec de la suppression de l\'utilisateur', 'danger')
+        }
+      } catch (error) {
+        console.error('Error deleting user:', error)
+        showAlert('Erreur lors de la suppression de l\'utilisateur', 'danger')
+      }
+    }
+  }
+
+  const showAlert = (message, type) => {
+    setAlert({ show: true, message, type })
+    setTimeout(() => setAlert({ show: false, message: '', type: '' }), 5000)
+  }
+
+  const openEditModal = (user) => {
+    setSelectedUser(user)
+    setShowEditModal(true)
+  }
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= pagination.totalPages) {
+      setPagination(prev => ({ ...prev, page: newPage }))
+    }
   }
 
   return (
-    <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Gestion des Apprenants</h2>
-        <button 
-          className="btn btn-primary"
-          onClick={handleAdd}
-        >
-          <i className="bi bi-plus-circle me-2"></i>
-          Ajouter Utilisateur
-        </button>
-      </div>
-
-      <div className="">
-        <div className="card-body">
+    <Container className="py-4">
+      <h1 className="text-center mb-4">Gestion des Apprenants</h1>
+      
+      {alert.show && (
+        <Alert variant={alert.type} onClose={() => setAlert({ show: false, message: '', type: '' })} dismissible>
+          {alert.message}
+        </Alert>
+      )}
+      
+      <Row className="mb-3">
+        <Col>
+          <h2>Liste des Utilisateurs</h2>
+        </Col>
+        <Col xs="auto">
+          <Button variant="primary" onClick={() => setShowAddModal(true)}>
+            Ajouter un Utilisateur
+          </Button>
+        </Col>
+      </Row>
+      
+      {loading ? (
+        <div className="text-center py-4">
+          <Spinner animation="border" role="status" variant="primary">
+            <span className="visually-hidden">Chargement...</span>
+          </Spinner>
+          <p className="mt-2">Chargement des utilisateurs...</p>
+        </div>
+      ) : (
+        <>
           {users.length === 0 ? (
-            <div className="text-center py-4">
-              <p className="text-muted">Aucun utilisateur trouvé</p>
-            </div>
+            <Card>
+              <Card.Body className="text-center py-5">
+                <h5>Aucun utilisateur trouvé</h5>
+                <p className="text-muted">Aucun utilisateur n'a été trouvé dans la base de données.</p>
+                <Button variant="primary" onClick={fetchUsers}>
+                  Réessayer
+                </Button>
+              </Card.Body>
+            </Card>
           ) : (
             <>
-              <div className="table-responsive rounded">
-                <table className="table table-striped table-hover">
-                  <thead className="table-dark">
-                    <tr>
-                      <th scope="col">N°</th>
-                      <th scope="col">Nom d'utilisateur</th>
-                      <th scope="col">Email</th>
-                      <th scope="col" className="text-center">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {currentUsers.map((user, index) => (
-                      <tr key={user.id}>
-                        <th scope="row">{indexOfFirstItem + index + 1}</th>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                        <td className="text-center">
-                          <div className="btn-group" role="group">
-                            <button
-                              onClick={() => handleEdit(user)}
-                              className="btn btn-outline-primary btn-sm me-2"
-                            >
-                              <i className="bi bi-pencil"></i> Modifier
-                            </button>
-                            <button
-                              onClick={() => handleDelete(user.id)}
-                              disabled={deleteLoading === user.id}
-                              className="btn btn-outline-danger btn-sm"
-                            >
-                              {deleteLoading === user.id ? (
-                                <>
-                                  <span className="spinner-border spinner-border-sm me-1" />
-                                  Suppression...
-                                </>
-                              ) : (
-                                <>
-                                  <i className="bi bi-trash"></i> Supprimer
-                                </>
-                              )}
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {totalPages > 1 && (
-                <nav aria-label="Page navigation">
-                  <ul className="pagination justify-content-center">
-                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                      <button
-                        className="page-link"
-                        onClick={() => paginate(currentPage - 1)}
-                        disabled={currentPage === 1}
+              <UserTable 
+                users={users} 
+                onEdit={openEditModal} 
+                onDelete={handleDeleteUser} 
+              />
+              
+              {pagination.totalPages > 1 && (
+                <div className="d-flex justify-content-center mt-4">
+                  <Pagination>
+                    <Pagination.Prev 
+                      disabled={pagination.page === 1} 
+                      onClick={() => handlePageChange(pagination.page - 1)} 
+                    />
+                    {[...Array(pagination.totalPages)].map((_, i) => (
+                      <Pagination.Item
+                        key={i + 1}
+                        active={i + 1 === pagination.page}
+                        onClick={() => handlePageChange(i + 1)}
                       >
-                        Précédent
-                      </button>
-                    </li>
-
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
-                      <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-                        <button
-                          className="page-link"
-                          onClick={() => paginate(number)}
-                        >
-                          {number}
-                        </button>
-                      </li>
+                        {i + 1}
+                      </Pagination.Item>
                     ))}
-
-                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                      <button
-                        className="page-link"
-                        onClick={() => paginate(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                      >
-                        Suivant
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
+                    <Pagination.Next 
+                      disabled={pagination.page === pagination.totalPages} 
+                      onClick={() => handlePageChange(pagination.page + 1)} 
+                    />
+                  </Pagination>
+                </div>
               )}
             </>
           )}
-        </div>
-      </div>
-
-      <div className="mt-3">
-        <small className="text-muted">
-          Affichage de {indexOfFirstItem + 1} à {Math.min(indexOfLastItem, users.length)} sur {users.length} utilisateurs
-        </small>
-      </div>
-
-      {showAddModal && (
-        <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Ajouter un utilisateur</h5>
-                <button type="button" className="btn-close" onClick={handleCloseModals}></button>
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div className="modal-body">
-                  <div className="mb-3">
-                    <label htmlFor="username" className="form-label">Nom d'utilisateur</label>
-                    <input
-                      type="text"
-                      className={`form-control ${formErrors.username ? 'is-invalid' : ''}`}
-                      id="username"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.username && <div className="invalid-feedback">{formErrors.username}</div>}
-                  </div>
-                  
-                  <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input
-                      type="email"
-                      className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
-                  </div>
-                  
-                  <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Mot de passe</label>
-                    <input
-                      type="password"
-                      className={`form-control ${formErrors.password ? 'is-invalid' : ''}`}
-                      id="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.password && <div className="invalid-feedback">{formErrors.password}</div>}
-                  </div>
-                  
-                  <div className="mb-3">
-                    <label htmlFor="confirmPassword" className="form-label">Confirmer le mot de passe</label>
-                    <input
-                      type="password"
-                      className={`form-control ${formErrors.confirmPassword ? 'is-invalid' : ''}`}
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.confirmPassword && <div className="invalid-feedback">{formErrors.confirmPassword}</div>}
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" onClick={handleCloseModals}>
-                    Annuler
-                  </button>
-                  <button type="submit" className="btn btn-primary" disabled={submitLoading}>
-                    {submitLoading ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2"></span>
-                        Ajout...
-                      </>
-                    ) : (
-                      'Ajouter'
-                    )}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        </>
       )}
+      
+      <AddUserModal 
+        show={showAddModal} 
+        onHide={() => setShowAddModal(false)} 
+        onSave={handleAddUser} 
+      />
+      
+      <EditUserModal 
+        show={showEditModal} 
+        onHide={() => {
+          setShowEditModal(false)
+          setSelectedUser(null)
+        }} 
+        onSave={handleEditUser} 
+        user={selectedUser} 
+      />
+    </Container>
+  )
+}
 
-      {showEditModal && (
-        <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Modifier l'utilisateur</h5>
-                <button type="button" className="btn-close" onClick={handleCloseModals}></button>
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div className="modal-body">
-                  <div className="mb-3">
-                    <label htmlFor="editUsername" className="form-label">Nom d'utilisateur</label>
-                    <input
-                      type="text"
-                      className={`form-control ${formErrors.username ? 'is-invalid' : ''}`}
-                      id="editUsername"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.username && <div className="invalid-feedback">{formErrors.username}</div>}
-                  </div>
-                  
-                  <div className="mb-3">
-                    <label htmlFor="editEmail" className="form-label">Email</label>
-                    <input
-                      type="email"
-                      className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
-                      id="editEmail"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
-                  </div>
-                  
-                  <div className="mb-3">
-                    <label htmlFor="editPassword" className="form-label">Nouveau mot de passe (laisser vide pour ne pas changer)</label>
-                    <input
-                      type="password"
-                      className={`form-control ${formErrors.password ? 'is-invalid' : ''}`}
-                      id="editPassword"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      placeholder="Laisser vide pour ne pas changer"
-                    />
-                    {formErrors.password && <div className="invalid-feedback">{formErrors.password}</div>}
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" onClick={handleCloseModals}>
-                    Annuler
-                  </button>
-                  <button type="submit" className="btn btn-primary" disabled={submitLoading}>
-                    {submitLoading ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2"></span>
-                        Modification...
-                      </>
-                    ) : (
-                      'Modifier'
-                    )}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default UserTable;
+export default Apprenants
