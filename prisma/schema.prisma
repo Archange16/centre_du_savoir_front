@@ -1,12 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  //output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -16,20 +9,24 @@ datasource db {
 
 enum Role {
   ADMIN
+  FORMATEUR
   APPRENANT
 }
 
 model User {
-  id         String                  @id @default(uuid())
-  email      String                  @unique
-  username   String                  @unique
-  password   String
-  role       Role                    @default(APPRENANT)
-  createdAt  DateTime                @default(now())
-  updatedAt  DateTime                @updatedAt
+  id        String   @id @default(uuid())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  role      Role     @default(APPRENANT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  formationAssignments FormationAssignment[]
-  progressions         Progression[]
+  // Relations avec noms explicites
+  formationAssignments FormationAssignment[] @relation("UserAssignments")
+  progressions         Progression[]         @relation("UserProgressions")
+
+  @@map("User")
 }
 
 model Lead {
@@ -39,68 +36,90 @@ model Lead {
   financement String
   nom         String
   telephone   String
-  email       String   
+  email       String
   formName    String?
   ipAddress   String?
   userAgent   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@map("Lead")
 }
 
 model Formation {
-  id             String        @id @default(uuid())
-  titre          String
-  description    String
-  image          String?       @db.Text
-  modules        Module[]
-  assignments    FormationAssignment[]
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  id          String   @id @default(uuid())
+  titre       String
+  description String
+  image       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations avec noms explicites
+  modules     Module[]              @relation("FormationModules")
+  assignments FormationAssignment[] @relation("FormationAssignments")
+
+  @@map("Formation")
 }
 
 model Module {
-  id             String     @id @default(uuid())
-  titre          String
-  ordre          Int
-  formationId    String
-  formation      Formation  @relation(fields: [formationId], references: [id], onDelete: Cascade)
-  titres         Titre[]
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
+  id          String   @id @default(uuid())
+  titre       String
+  ordre       Int
+  formationId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations avec noms explicites
+  formation Formation @relation(fields: [formationId], references: [id], onDelete: Cascade, name: "FormationModules")
+  titres    Titre[]   @relation("ModuleTitres")
+
+  @@map("Module")
 }
 
 model Titre {
-  id          String     @id @default(uuid())
-  nom         String
-  videoUrl    String
-  ordre       Int
-  moduleId    String
-  module      Module     @relation(fields: [moduleId], references: [id], onDelete: Cascade)
-  progressions Progression[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id        String   @id @default(uuid())
+  nom       String
+  videoUrl  String
+  ordre     Int
+  moduleId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations avec noms explicites
+  module       Module        @relation(fields: [moduleId], references: [id], onDelete: Cascade, name: "ModuleTitres")
+  progressions Progression[] @relation("TitreProgressions")
+
+  @@map("Titre")
 }
 
 model FormationAssignment {
-  id           String     @id @default(uuid())
-  userId       String     // corrigé : String pour UUID
-  formationId  String
-  titre        String?
-  description  String?
-  image        String?
-  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  formation    Formation  @relation(fields: [formationId], references: [id], onDelete: Cascade)
-  assignedAt   DateTime   @default(now())
+  id          String   @id @default(uuid())
+  userId      String
+  formationId String
+  titre       String?
+  description String?
+  image       String?
+  assignedAt  DateTime @default(now())
+
+  // Relations avec noms explicites
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserAssignments")
+  formation Formation @relation(fields: [formationId], references: [id], onDelete: Cascade, name: "FormationAssignments")
+
+  @@map("FormationAssignment")
 }
 
 model Progression {
-  id          String   @id @default(uuid())
-  userId      String   // corrigé : String pour UUID
+  id          String    @id @default(uuid())
+  userId      String
   titreId     String
-  completed   Boolean  @default(false)
+  completed   Boolean   @default(false)
   completedAt DateTime?
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  titre       Titre    @relation(fields: [titreId], references: [id], onDelete: Cascade)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations avec noms explicites
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserProgressions")
+  titre Titre @relation(fields: [titreId], references: [id], onDelete: Cascade, name: "TitreProgressions")
+
+  @@map("Progression")
 }
