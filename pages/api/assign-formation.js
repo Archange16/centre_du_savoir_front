@@ -9,14 +9,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Champs manquants" });
     }
 
-    const userIdInt = parseInt(userId, 10);
-    if (isNaN(userIdInt)) {
-      return res.status(400).json({ error: "userId invalide" });
-    }
-
     try {
       const exists = await db.formationAssignment.findFirst({
-        where: { userId: userIdInt, formationId },
+        where: { userId, formationId },
       });
 
       if (exists) {
@@ -24,7 +19,7 @@ export default async function handler(req, res) {
       }
 
       const assignment = await db.formationAssignment.create({
-        data: { userId: userIdInt, formationId },
+        data: { userId, formationId },
       });
 
       return res.status(200).json({ success: true, assignment });
@@ -37,14 +32,13 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     const { userId } = req.query;
 
-    const userIdInt = parseInt(userId, 10);
-    if (!userId || isNaN(userIdInt)) {
+    if (!userId || typeof userId !== "string") {
       return res.status(400).json({ error: "Paramètre userId invalide" });
     }
 
     try {
       const assignments = await db.formationAssignment.findMany({
-        where: { userId: userIdInt },
+        where: { userId },
         include: { formation: true },
         orderBy: { assignedAt: "desc" },
       });
