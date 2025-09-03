@@ -1,6 +1,6 @@
 import { db } from '../../lib/db';
 import { z } from 'zod'
-import { hash } from 'bcrypt'
+import { hash } from 'bcryptjs'
 
 // Schéma de validation corrigé pour PUT
 const userUpdateSchema = z.object({
