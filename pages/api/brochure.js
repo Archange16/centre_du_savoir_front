@@ -7,7 +7,6 @@ export default async function handler(req, res) {
 
   const formData = req.body;
 
-  // Vérification simple des champs requis, tu peux l'ajuster
   const requiredFields = ['firstName', 'lastName', 'email', 'phone'];
   for (const field of requiredFields) {
     if (!formData[field]) {
@@ -15,16 +14,25 @@ export default async function handler(req, res) {
     }
   }
 
-  // Générer dynamiquement le contenu HTML en fonction de toutes les clés reçues
+  // Générer dynamiquement le contenu HTML
   const htmlContent = `
     <h3>Nouvelle demande de brochure</h3>
     ${Object.entries(formData).map(([key, value]) => {
-      // Pour un tableau (ex: services), on affiche une liste à part
       if (Array.isArray(value)) {
         return `<p><strong>${key} :</strong> ${value.join(', ') || 'Aucun'}</p>`;
       }
       return `<p><strong>${key} :</strong> ${value || 'Non spécifié'}</p>`;
     }).join('')}
+  `;
+
+  // Contenu HTML pour l'utilisateur
+  const userHtmlContent = `
+    <h3>Merci pour votre demande de brochure</h3>
+    <p>Bonjour ${formData.firstName},</p>
+    <p>Nous avons bien reçu votre demande de brochure. Voici un récapitulatif des informations transmises :</p>
+    ${htmlContent}
+    <p>Nous vous contacterons prochainement si nécessaire.</p>
+    <p>Direction CPS,<br>centre professionnel du savoir</p>
   `;
 
   try {
@@ -38,6 +46,7 @@ export default async function handler(req, res) {
       },
     });
 
+    // 1. Envoi à l'équipe
     await transporter.sendMail({
       from: `"${formData.firstName} ${formData.lastName}" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
@@ -46,9 +55,17 @@ export default async function handler(req, res) {
       html: htmlContent,
     });
 
-    return res.status(200).json({ message: 'Email envoyé avec succès !' });
+    // 2. Envoi de confirmation à l'utilisateur
+    await transporter.sendMail({
+      from: `"L'équipe" <${process.env.SMTP_USER}>`,
+      to: formData.email,
+      subject: 'Confirmation de votre demande de brochure',
+      html: userHtmlContent,
+    });
+
+    return res.status(200).json({ message: 'Emails envoyés avec succès !' });
   } catch (error) {
     console.error('Erreur SMTP:', error);
-    return res.status(500).json({ message: "Erreur d'envoi de l'email", error: error.message });
+    return res.status(500).json({ message: "Erreur d'envoi des emails", error: error.message });
   }
 }
