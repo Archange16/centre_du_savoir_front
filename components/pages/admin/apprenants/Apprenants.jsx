@@ -243,7 +243,7 @@ const Apprenants = () => {
 
   return (
     <Container className="py-4">
-      <h1 className="text-center mb-4">Gestion des Apprenants</h1>
+     {/*  <h1 className="text-center mb-4">Gestion des Apprenants</h1> */}
       
       {alert.show && (
         <Alert variant={alert.type} onClose={() => setAlert({ show: false, message: '', type: '' })} dismissible>
