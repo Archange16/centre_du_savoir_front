@@ -405,6 +405,7 @@ const FormationsPage = () => {
                       <button 
                         type="button" 
                         className="btn btn-outline-info"
+                        style={{ color: '#ffffffff' }}
                         onClick={() => handleAddModule(formation.id)}
                       >
                         ➕ Module
@@ -414,7 +415,7 @@ const FormationsPage = () => {
 
                   {/* Liste des modules et titres */}
                   <div className="mt-3">
-                    <h6 className="mb-2">Modules et titres:</h6>
+                    <h4 className="mb-3" style={{ color: '#f39200' }}>Modules et titres:</h4>
                     {formation.modules?.sort((a, b) => a.ordre - b.ordre).map((module) => (
                       <div key={module.id} className="card mb-2">
                         <div className="card-header py-2 d-flex justify-content-between align-items-center">
@@ -503,7 +504,7 @@ const FormationsPage = () => {
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Modifier la formation</h5>
+              <h5 className="modal-title" >Modifier la formation</h5>
               <button type="button" className="btn-close" onClick={() => setShowEditModal(false)}></button>
             </div>
             <form onSubmit={handleEditSubmit}>
