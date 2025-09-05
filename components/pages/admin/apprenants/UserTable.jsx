@@ -1,26 +1,67 @@
-import { Table, Button, Badge } from 'react-bootstrap'
+import { Table, Button, Badge, Spinner } from 'react-bootstrap';
+import { useState } from 'react';
 
-const UserTable = ({ users, onEdit, onDelete }) => {
-  // S'assurer que users est toujours un tableau
-  const userList = Array.isArray(users) ? users : []
-  
+const UserTable = ({ users, onEdit, onDelete, onStatusChange }) => {
+  const userList = Array.isArray(users) ? users : [];
+
+  const [loadingIds, setLoadingIds] = useState(new Set());
+
   const getRoleVariant = (role) => {
     switch (role) {
-      case 'ADMIN': return 'danger'
-      case 'FORMATEUR': return 'warning'
-      case 'APPRENANT': return 'info'
-      default: return 'secondary'
+      case 'ADMIN': return 'danger';
+      case 'FORMATEUR': return 'warning';
+      case 'APPRENANT': return 'info';
+      default: return 'secondary';
     }
-  }
+  };
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'N/A'
+    if (!dateString) return 'N/A';
     return new Date(dateString).toLocaleDateString('fr-FR', {
       year: 'numeric',
       month: 'short',
       day: 'numeric'
-    })
-  }
+    });
+  };
+
+  const toggleStatus = async (user) => {
+    const newStatus = !user.status;
+    // Ajouter l'id à la liste de loading
+    setLoadingIds((prev) => new Set(prev).add(user.id));
+
+    try {
+      const res = await fetch(`/api/users/${user.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        alert(data.error || 'Erreur lors de la mise à jour du statut');
+        return;
+      }
+
+      alert(`Utilisateur ${newStatus ? 'activé' : 'désactivé'} avec succès !`);
+
+      if (onStatusChange) {
+        await onStatusChange();
+      }
+    } catch (error) {
+      console.error('Erreur réseau lors du changement de statut :', error);
+      alert('Erreur réseau');
+    } finally {
+      // Retirer l'id de loading
+      setLoadingIds((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(user.id);
+        return newSet;
+      });
+    }
+  };
 
   return (
     <Table striped bordered hover responsive>
@@ -29,6 +70,7 @@ const UserTable = ({ users, onEdit, onDelete }) => {
           <th>Username</th>
           <th>Email</th>
           <th>Role</th>
+          <th>Statut</th>
           <th>Created At</th>
           <th>Updated At</th>
           <th>Actions</th>
@@ -37,45 +79,80 @@ const UserTable = ({ users, onEdit, onDelete }) => {
       <tbody>
         {userList.length === 0 ? (
           <tr>
-            <td colSpan="6" className="text-center py-4">
-              No users found
+            <td colSpan="7" className="text-center py-4">
+              Aucun utilisateur trouvé
             </td>
           </tr>
         ) : (
-          userList.map((user) => (
-            <tr key={user.id}>
-              <td className="fw-bold">{user.username || 'N/A'}</td>
-              <td>{user.email || 'N/A'}</td>
-              <td>
-                <Badge bg={getRoleVariant(user.role)}>
-                  {user.role || 'N/A'}
-                </Badge>
-              </td>
-              <td>{formatDate(user.createdAt)}</td>
-              <td>{formatDate(user.updatedAt)}</td>
-              <td>
-                <Button 
-                  variant="outline-primary" 
-                  size="sm" 
-                  className="me-2"
-                  onClick={() => onEdit(user)}
-                >
-                  Edit
-                </Button>
-                <Button 
-                  variant="outline-danger" 
-                  size="sm"
-                  onClick={() => onDelete(user.id)}
-                >
-                  Delete
-                </Button>
-              </td>
-            </tr>
-          ))
+          userList.map((user) => {
+            const isLoading = loadingIds.has(user.id);
+            return (
+              <tr key={user.id}>
+                <td className="fw-bold">{user.username || 'N/A'}</td>
+                <td>{user.email || 'N/A'}</td>
+                <td>
+                  <Badge bg={getRoleVariant(user.role)}>
+                    {user.role || 'N/A'}
+                  </Badge>
+                </td>
+                <td>
+                  {user.status ? (
+                    <Badge bg="success">Actif</Badge>
+                  ) : (
+                    <Badge bg="secondary">Inactif</Badge>
+                  )}
+                </td>
+                <td>{formatDate(user.createdAt)}</td>
+                <td>{formatDate(user.updatedAt)}</td>
+                <td>
+                  <Button
+                    variant="outline-primary"
+                    size="sm"
+                    className="me-2"
+                    onClick={() => onEdit(user)}
+                    disabled={isLoading}
+                  >
+                    Éditer
+                  </Button>
+                  <Button
+                    variant="outline-danger"
+                    size="sm"
+                    className="me-2"
+                    onClick={() => onDelete(user.id)}
+                    disabled={isLoading}
+                  >
+                    Supprimer
+                  </Button>
+                  {user.role === 'APPRENANT' && (
+                    <Button
+                      variant={user.status ? 'warning' : 'success'}
+                      size="sm"
+                      onClick={() => toggleStatus(user)}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                            className="me-1"
+                          />
+                          Chargement...
+                        </>
+                      ) : user.status ? 'Désactiver' : 'Activer'}
+                    </Button>
+                  )}
+                </td>
+              </tr>
+            );
+          })
         )}
       </tbody>
     </Table>
-  )
-}
+  );
+};
 
-export default UserTable
+export default UserTable;

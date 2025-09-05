@@ -1,14 +1,10 @@
 "use client";
-// Page publique pour afficher toutes les formations aux apprenants
 import { useEffect, useState } from "react";
 import Link from "next/link";
-//import ProgressionBar from "./ProgressionBar";
-//import FormationCompleteAdmin from "./adminContent/formation";
 import AssignFormationModal from "@/components/modal-comp/AssignFormationModal";
 
 const FormationsPage = () => {
   const [formations, setFormations] = useState([]);
-  const [userId, setUserId] = useState("demo-user");
   const [selectedFormation, setSelectedFormation] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -22,6 +18,19 @@ const FormationsPage = () => {
   const [editImage, setEditImage] = useState(null);
   const [editImagePreview, setEditImagePreview] = useState(null);
 
+  // États pour la gestion des modules et titres
+  const [showModuleForm, setShowModuleForm] = useState(false);
+  const [showTitreForm, setShowTitreForm] = useState(false);
+  const [editingModule, setEditingModule] = useState(null);
+  const [editingTitre, setEditingTitre] = useState(null);
+  const [moduleFormData, setModuleFormData] = useState({ titre: "", ordre: 0 });
+  const [titreFormData, setTitreFormData] = useState({ 
+    nom: "", 
+    videoUrl: "", 
+    ordre: 0, 
+    moduleId: "" 
+  });
+
   // Appel API pour récupérer les formations disponibles
   useEffect(() => {
     fetchFormations();
@@ -31,11 +40,14 @@ const FormationsPage = () => {
     try {
       setLoading(true);
       const res = await fetch("/api/index-formation");
+      if (!res.ok) {
+        throw new Error('Erreur lors de la récupération des formations');
+      }
       const data = await res.json();
       setFormations(data);
       setLoading(false);
     } catch (err) {
-      setError('Erreur lors du chargement des formations');
+      setError('Erreur lors du chargement des formations: ' + err.message);
       setLoading(false);
     }
   };
@@ -138,6 +150,170 @@ const FormationsPage = () => {
     });
   };
 
+  // Fonctions pour gérer les modules
+  const handleAddModule = (formationId) => {
+    const formation = formations.find(f => f.id === formationId);
+    if (!formation) return;
+    
+    setSelectedFormation(formation);
+    setEditingModule(null);
+    setModuleFormData({ 
+      titre: "", 
+      ordre: formation.modules ? formation.modules.length + 1 : 1 
+    });
+    setShowModuleForm(true);
+  };
+
+  const handleEditModule = (formationId, module) => {
+    const formation = formations.find(f => f.id === formationId);
+    if (!formation) return;
+    
+    setSelectedFormation(formation);
+    setEditingModule(module);
+    setModuleFormData({ 
+      titre: module.titre, 
+      ordre: module.ordre 
+    });
+    setShowModuleForm(true);
+  };
+
+  const handleDeleteModule = async (formationId, moduleId) => {
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce module ? Tous ses titres seront également supprimés.")) {
+      try {
+        const response = await fetch(`/api/modules/${moduleId}`, {
+          method: 'DELETE'
+        });
+        
+        if (response.ok) {
+          setSuccess('Module supprimé avec succès');
+          await fetchFormations(); // Recharger la liste
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Erreur lors de la suppression du module");
+        }
+      } catch (error) {
+        setError("Erreur lors de la suppression du module: " + error.message);
+      }
+    }
+  };
+
+  const handleSubmitModule = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const url = editingModule 
+        ? `/api/modules/${editingModule.id}`
+        : '/api/modules';
+      
+      const method = editingModule ? 'PUT' : 'POST';
+      
+      const response = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...moduleFormData,
+          formationId: selectedFormation.id
+        })
+      });
+      
+      if (response.ok) {
+        setSuccess(editingModule ? 'Module modifié avec succès' : 'Module ajouté avec succès');
+        setShowModuleForm(false);
+        await fetchFormations(); // Recharger la liste
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Erreur lors de l'opération sur le module");
+      }
+    } catch (error) {
+      setError("Erreur lors de l'ajout/modification du module: " + error.message);
+    }
+  };
+
+  // Fonctions pour gérer les titres
+  const handleAddTitre = (formationId, moduleId) => {
+    const formation = formations.find(f => f.id === formationId);
+    if (!formation) return;
+    
+    const module = formation.modules.find(m => m.id === moduleId);
+    if (!module) return;
+    
+    const ordre = module.titres ? module.titres.length + 1 : 1;
+    
+    setSelectedFormation(formation);
+    setTitreFormData({ 
+      nom: "", 
+      videoUrl: "", 
+      ordre, 
+      moduleId 
+    });
+    setEditingTitre(null);
+    setShowTitreForm(true);
+  };
+
+  const handleEditTitre = (formationId, titre) => {
+    const formation = formations.find(f => f.id === formationId);
+    if (!formation) return;
+    
+    setSelectedFormation(formation);
+    setEditingTitre(titre);
+    setTitreFormData({ 
+      nom: titre.nom, 
+      videoUrl: titre.videoUrl, 
+      ordre: titre.ordre, 
+      moduleId: titre.moduleId 
+    });
+    setShowTitreForm(true);
+  };
+
+  const handleDeleteTitre = async (formationId, titreId) => {
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce titre ?")) {
+      try {
+        const response = await fetch(`/api/titres/${titreId}`, {
+          method: 'DELETE'
+        });
+        
+        if (response.ok) {
+          setSuccess('Titre supprimé avec succès');
+          await fetchFormations(); // Recharger la liste
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Erreur lors de la suppression du titre");
+        }
+      } catch (error) {
+        setError("Erreur lors de la suppression du titre: " + error.message);
+      }
+    }
+  };
+
+  const handleSubmitTitre = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const url = editingTitre 
+        ? `/api/titres/${editingTitre.id}`
+        : '/api/titres';
+      
+      const method = editingTitre ? 'PUT' : 'POST';
+      
+      const response = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(titreFormData)
+      });
+      
+      if (response.ok) {
+        setSuccess(editingTitre ? 'Titre modifié avec succès' : 'Titre ajouté avec succès');
+        setShowTitreForm(false);
+        await fetchFormations(); // Recharger la liste
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Erreur lors de l'opération sur le titre");
+      }
+    } catch (error) {
+      setError("Erreur lors de l'ajout/modification du titre: " + error.message);
+    }
+  };
+
   if (loading) {
     return (
       <div className="main-container container mt-4">
@@ -177,7 +353,7 @@ const FormationsPage = () => {
       ) : (
         <div className="row gy-4">
           {formations?.map((formation) => (
-            <div className="col-xl-4 col-lg-6" key={formation.id}>
+            <div className="col-xl-6 col-lg-6" key={formation.id}>
               <div className="blog__four-single-blog-content1 ">
                 
                 <div className="blog__four-single-blog-img">
@@ -199,6 +375,8 @@ const FormationsPage = () => {
                       ? `${formation.description.substring(0, 100)}...` 
                       : formation.description}
                   </p>
+
+                  {/* Boutons d'action pour la formation */}
                   <div className="d-grid gap-2">
                     <Link
                       href={`/formations/${formation.id}`}
@@ -224,7 +402,69 @@ const FormationsPage = () => {
                       >
                         🗑️ Supprimer
                       </button>
+                      <button 
+                        type="button" 
+                        className="btn btn-outline-info"
+                        onClick={() => handleAddModule(formation.id)}
+                      >
+                        ➕ Module
+                      </button>
                     </div>
+                  </div>
+
+                  {/* Liste des modules et titres */}
+                  <div className="mt-3">
+                    <h6 className="mb-2">Modules et titres:</h6>
+                    {formation.modules?.sort((a, b) => a.ordre - b.ordre).map((module) => (
+                      <div key={module.id} className="card mb-2">
+                        <div className="card-header py-2 d-flex justify-content-between align-items-center">
+                          <strong>{module.titre}</strong>
+                          <div>
+                            <button 
+                              className="btn btn-sm btn-outline-secondary me-1"
+                              onClick={() => handleEditModule(formation.id, module)}
+                            >
+                              ✏️
+                            </button>
+                            <button 
+                              className="btn btn-sm btn-outline-danger me-1"
+                              onClick={() => handleDeleteModule(formation.id, module.id)}
+                            >
+                              🗑️
+                            </button>
+                            <button 
+                              className="btn btn-sm btn-outline-success"
+                              onClick={() => handleAddTitre(formation.id, module.id)}
+                            >
+                              ➕ Titre
+                            </button>
+                          </div>
+                        </div>
+                        <div className="card-body py-2">
+                          <ul className="list-group list-group-flush">
+                            {module.titres?.sort((a, b) => a.ordre - b.ordre).map((titre) => (
+                              <li key={titre.id} className="list-group-item d-flex justify-content-between align-items-center py-1">
+                                <span>{titre.nom}</span>
+                                <div>
+                                  <button 
+                                    className="btn btn-sm btn-outline-secondary me-1"
+                                    onClick={() => handleEditTitre(formation.id, titre)}
+                                  >
+                                    ✏️
+                                  </button>
+                                  <button 
+                                    className="btn btn-sm btn-outline-danger"
+                                    onClick={() => handleDeleteTitre(formation.id, titre.id)}
+                                  >
+                                    🗑️
+                                  </button>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 
@@ -232,10 +472,9 @@ const FormationsPage = () => {
             </div>
           ))}
         </div>
-
       )}
 
-      {/* Modal de suppression */}
+      {/* Modal de suppression de formation */}
       <div className={`modal fade ${showDeleteModal ? 'show' : ''}`} style={{ display: showDeleteModal ? 'block' : 'none' }}>
         <div className="modal-dialog">
           <div className="modal-content">
@@ -259,7 +498,7 @@ const FormationsPage = () => {
         </div>
       </div>
 
-      {/* Modal d'édition */}
+      {/* Modal d'édition de formation */}
       <div className={`modal fade ${showEditModal ? 'show' : ''}`} style={{ display: showEditModal ? 'block' : 'none' }}>
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
@@ -327,8 +566,98 @@ const FormationsPage = () => {
         </div>
       </div>
 
+      {/* Modal pour ajouter/modifier un module */}
+      <div className={`modal fade ${showModuleForm ? 'show' : ''}`} style={{ display: showModuleForm ? 'block' : 'none' }}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">{editingModule ? 'Modifier le module' : 'Ajouter un module'}</h5>
+              <button type="button" className="btn-close" onClick={() => setShowModuleForm(false)}></button>
+            </div>
+            <form onSubmit={handleSubmitModule}>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label className="form-label">Titre du module *</label>
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    value={moduleFormData.titre}
+                    onChange={(e) => setModuleFormData({...moduleFormData, titre: e.target.value})}
+                    required 
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Ordre *</label>
+                  <input 
+                    type="number" 
+                    className="form-control" 
+                    value={moduleFormData.ordre}
+                    onChange={(e) => setModuleFormData({...moduleFormData, ordre: parseInt(e.target.value)})}
+                    required 
+                  />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowModuleForm(false)}>Annuler</button>
+                <button type="submit" className="btn btn-primary">{editingModule ? 'Modifier' : 'Ajouter'}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Modal pour ajouter/modifier un titre */}
+      <div className={`modal fade ${showTitreForm ? 'show' : ''}`} style={{ display: showTitreForm ? 'block' : 'none' }}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">{editingTitre ? 'Modifier le titre' : 'Ajouter un titre'}</h5>
+              <button type="button" className="btn-close" onClick={() => setShowTitreForm(false)}></button>
+            </div>
+            <form onSubmit={handleSubmitTitre}>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label className="form-label">Nom du titre *</label>
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    value={titreFormData.nom}
+                    onChange={(e) => setTitreFormData({...titreFormData, nom: e.target.value})}
+                    required 
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">URL de la vidéo *</label>
+                  <input 
+                    type="url" 
+                    className="form-control" 
+                    value={titreFormData.videoUrl}
+                    onChange={(e) => setTitreFormData({...titreFormData, videoUrl: e.target.value})}
+                    required 
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Ordre *</label>
+                  <input 
+                    type="number" 
+                    className="form-control" 
+                    value={titreFormData.ordre}
+                    onChange={(e) => setTitreFormData({...titreFormData, ordre: parseInt(e.target.value)})}
+                    required 
+                  />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowTitreForm(false)}>Annuler</button>
+                <button type="submit" className="btn btn-primary">{editingTitre ? 'Modifier' : 'Ajouter'}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       {/* Overlay pour les modals */}
-      {(showDeleteModal || showEditModal) && (
+      {(showDeleteModal || showEditModal || showModuleForm || showTitreForm) && (
         <div className="modal-backdrop fade show"></div>
       )}
     </div>

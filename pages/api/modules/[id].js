@@ -1,29 +1,35 @@
-import { db } from "../../lib/db";
+import { db } from "../../../lib/db";
 
 export default async function handler(req, res) {
-  // POST - Créer un module
-  if (req.method === "POST") {
-    const { titre, ordre, formationId } = req.body;
+  const { id } = req.query;
 
+  // GET - Récupérer un module spécifique
+  if (req.method === "GET") {
     try {
-      const module = await db.module.create({
-        data: {
-          titre,
-          ordre,
-          formationId,
-        },
+      const module = await db.module.findUnique({
+        where: { id },
+        include: {
+          titres: {
+            orderBy: { ordre: 'asc' }
+          }
+        }
       });
+      
+      if (!module) {
+        return res.status(404).json({ error: "Module non trouvé" });
+      }
+      
       res.status(200).json(module);
     } catch (error) {
-      console.error("Erreur création module:", error);
-      res.status(500).json({ error: "Erreur création module" });
+      console.error("Erreur récupération module:", error);
+      res.status(500).json({ error: "Erreur récupération module" });
     }
   }
   // PUT - Modifier un module
   else if (req.method === "PUT") {
-    const { id, titre, ordre } = req.body;
-
     try {
+      const { titre, ordre } = req.body;
+
       const updatedModule = await db.module.update({
         where: { id },
         data: {
@@ -31,6 +37,7 @@ export default async function handler(req, res) {
           ordre,
         },
       });
+      
       res.status(200).json(updatedModule);
     } catch (error) {
       console.error("Erreur modification module:", error);
@@ -39,8 +46,6 @@ export default async function handler(req, res) {
   }
   // DELETE - Supprimer un module
   else if (req.method === "DELETE") {
-    const { id } = req.body;
-
     try {
       // D'abord supprimer tous les titres associés à ce module
       await db.titre.deleteMany({

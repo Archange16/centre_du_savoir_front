@@ -4,9 +4,18 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import ProgressionBar from "@/components/pages/admin/ProgressionBar";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const FormationDetailPage = ({ params }) => {
   const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/sign-in");
+    }
+  }, [status, router]);
+
   const { id } = params;
   const userId = session?.user?.id;
   const userEmail = session?.user?.email;
@@ -60,7 +69,7 @@ const FormationDetailPage = ({ params }) => {
   /**
    * Vérifie si la formation est complétée à 100% et envoie un email
    */
-  const checkAndSendCompletionEmail = useCallback(async (percentage, completedSet, totalVideos) => {
+  /* const checkAndSendCompletionEmail = useCallback(async (percentage, completedSet, totalVideos) => {
     // Vérifier si la formation est complète et si l'email n'a pas déjà été envoyé
     if (percentage === 100 && !emailSentRef.current && userId && userEmail && formation) {
       try {
@@ -93,7 +102,7 @@ const FormationDetailPage = ({ params }) => {
         emailSentRef.current = false; // Réactiver en cas d'erreur
       }
     }
-  }, [userId, userEmail, userName, formation]);
+  }, [userId, userEmail, userName, formation]); */
 
   /**
    * Charge les données de la formation et la progression utilisateur
@@ -187,7 +196,7 @@ const FormationDetailPage = ({ params }) => {
   /**
    * Effet pour vérifier l'envoi d'email après le chargement des données
    */
-  useEffect(() => {
+  /* useEffect(() => {
     if (formation && videoList.length > 0 && completedTitres.size > 0) {
       const percentage = calculateProgress(completedTitres, videoList.length);
       
@@ -196,7 +205,7 @@ const FormationDetailPage = ({ params }) => {
         checkAndSendCompletionEmail(percentage, completedTitres, videoList.length);
       }
     }
-  }, [formation, videoList.length, completedTitres, calculateProgress, checkAndSendCompletionEmail]);
+  }, [formation, videoList.length, completedTitres, calculateProgress, checkAndSendCompletionEmail]); */
 
   /**
    * Sauvegarde la position actuelle dans le localStorage
@@ -372,20 +381,6 @@ const FormationDetailPage = ({ params }) => {
                 formationId={formation.id} 
               />
               
-              {/* Barre de progression visuelle */}
-              {/* <div className="progress mt-2" style={{height: '20px'}}>
-                <div 
-                  className="progress-bar bg-success" 
-                  role="progressbar" 
-                  style={{width: `${progressionPercentage}%`}}
-                  aria-valuenow={progressionPercentage} 
-                  aria-valuemin="0" 
-                  aria-valuemax="100"
-                >
-                  {progressionPercentage}%
-                </div>
-              </div> */}
-              
               {/* Message de completion */}
               {progressionPercentage === 100 && (
                 <div className="alert alert-success mt-2 mb-0 p-2">
@@ -478,27 +473,29 @@ const FormationDetailPage = ({ params }) => {
               )}
 
               {/* Navigation entre les vidéos */}
-             {/*  <div className="d-flex justify-content-between mt-4">
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={handlePrevious}
-                  disabled={currentIndex === 0}
-                >
-                  ⬅ Précédent
-                </button>
+              <div className="d-flex justify-content-between align-items-center mt-4">
+          <button
+            className="btn-one flex-grow-0"
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            style={{ minWidth: '120px' }}
+          >
+            ⬅ Précédent
+          </button>
 
-                <span className="my-auto">
-                  Vidéo {currentIndex + 1} sur {videoList.length}
-                </span>
+          <span className="my-auto mx-3">
+            Vidéo {currentIndex + 1} sur {videoList.length}
+          </span>
 
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={handleNext}
-                  disabled={currentIndex === videoList.length - 1}
-                >
-                  Suivant ➡
-                </button>
-              </div> */}
+          <button
+            className="btn-one flex-grow-0"
+            onClick={handleNext}
+            disabled={currentIndex === videoList.length - 1}
+            style={{ minWidth: '120px' }}
+          >
+            Suivant ➡
+          </button>
+        </div>
             </>
           )}
         </main>

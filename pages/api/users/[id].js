@@ -1,9 +1,8 @@
-// pages/api/[users].js
 import { db } from '../../../lib/db'
 import { z } from 'zod'
 import { hash } from 'bcryptjs'
 
-// Schéma de validation pour PUT
+// ✅ Schéma de validation pour PUT (mise à jour utilisateur)
 const userUpdateSchema = z.object({
   email: z.string().email('Email invalide').optional(),
   username: z.string().min(1, 'Nom d\'utilisateur requis').optional(),
@@ -12,23 +11,25 @@ const userUpdateSchema = z.object({
     .optional()
     .transform(val => val === '' ? undefined : val)
     .nullable(),
-  role: z.enum(['APPRENANT', 'FORMATEUR', 'ADMIN']).optional()
+  role: z.enum(['APPRENANT', 'FORMATEUR', 'ADMIN']).optional(),
+  status: z.boolean().optional() // 👈 Ajout du champ status
 })
 
 export default async function handler(req, res) {
   const { method } = req
-  const { id } = req.query // ✅ id est une string (UUID)
+  const { id } = req.query
 
   // ✅ GET : Récupérer un utilisateur
   if (method === 'GET') {
     try {
       const user = await db.user.findUnique({
-        where: { id }, // id est une string
+        where: { id },
         select: {
           id: true,
           email: true,
           username: true,
           role: true,
+          status: true, // 👈 Ajout du statut ici
           createdAt: true,
           updatedAt: true
         }
@@ -37,7 +38,6 @@ export default async function handler(req, res) {
       if (!user) {
         return res.status(404).json({ success: false, error: 'Utilisateur non trouvé' })
       }
-
       return res.status(200).json({ success: true, data: user })
     } catch (error) {
       console.error('GET error:', error)
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     }
   }
 
-  // ✅ PUT : Mettre à jour un utilisateur
+  // ✅ PUT : Mise à jour
   if (method === 'PUT') {
     try {
       const requestData = {
@@ -55,9 +55,7 @@ export default async function handler(req, res) {
 
       const validatedData = userUpdateSchema.parse(requestData)
 
-      const existingUser = await db.user.findUnique({
-        where: { id } // id string
-      })
+      const existingUser = await db.user.findUnique({ where: { id } })
 
       if (!existingUser) {
         return res.status(404).json({ success: false, error: 'Utilisateur non trouvé' })
@@ -109,6 +107,7 @@ export default async function handler(req, res) {
           email: true,
           username: true,
           role: true,
+          status: true, // 👈 Inclure le champ status dans la réponse
           createdAt: true,
           updatedAt: true
         }
@@ -120,7 +119,7 @@ export default async function handler(req, res) {
         message: 'Utilisateur mis à jour avec succès'
       })
     } catch (error) {
-      console.error('Update error:', error)
+      console.error('PUT error:', error)
 
       if (error instanceof z.ZodError) {
         return res.status(400).json({
@@ -143,28 +142,27 @@ export default async function handler(req, res) {
   // ✅ DELETE : Supprimer un utilisateur
   if (method === 'DELETE') {
     try {
-      const existingUser = await db.user.findUnique({
-        where: { id }
-      })
+      const existingUser = await db.user.findUnique({ where: { id } })
 
       if (!existingUser) {
         return res.status(404).json({ success: false, error: 'Utilisateur non trouvé' })
       }
 
-      await db.user.delete({
-        where: { id }
-      })
+      await db.user.delete({ where: { id } })
 
       return res.status(200).json({
         success: true,
         message: 'Utilisateur supprimé avec succès'
       })
     } catch (error) {
-      console.error('Delete error:', error)
+      console.error('DELETE error:', error)
       return res.status(500).json({ success: false, error: 'Erreur lors de la suppression' })
     }
   }
 
   // ❌ Méthode non autorisée
-  return res.status(405).json({ success: false, error: `Méthode ${method} non autorisée` })
+  return res.status(405).json({
+    success: false,
+    error: `Méthode ${method} non autorisée`
+  })
 }

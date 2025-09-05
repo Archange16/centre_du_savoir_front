@@ -1,19 +1,16 @@
-// pages/api/users.js
 import { db } from '../../lib/db'
 import { z } from 'zod'
 import { hash } from 'bcryptjs'
 
-// Validation schema
 const userSchema = z.object({
   email: z.string().email('Email invalide'),
   username: z.string().min(1, 'Nom d\'utilisateur requis'),
   password: z.string().min(6, 'Mot de passe trop court'),
-  role: z.enum(['APPRENANT', 'FORMATEUR', 'ADMIN']).optional()
+  role: z.enum(['APPRENANT', 'FORMATEUR', 'ADMIN']).optional(),
+  status: z.boolean().optional() // 👈 Ajout ici
 })
 
-// GET + POST Handler
 export default async function handler(req, res) {
-  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
@@ -35,6 +32,7 @@ export default async function handler(req, res) {
             email: true,
             username: true,
             role: true,
+            status: true,
             createdAt: true,
             updatedAt: true
           },
@@ -67,7 +65,6 @@ export default async function handler(req, res) {
     try {
       const body = userSchema.parse(req.body)
 
-      // Vérifier si l'email existe déjà
       const existing = await db.user.findUnique({
         where: { email: body.email }
       })
@@ -86,13 +83,15 @@ export default async function handler(req, res) {
           email: body.email,
           username: body.username,
           password: hashedPassword,
-          role: body.role || 'APPRENANT'
+          role: body.role || 'APPRENANT',
+          status: body.status ?? true // 👈 Définir par défaut à true
         },
         select: {
           id: true,
           email: true,
           username: true,
           role: true,
+          status: true,
           createdAt: true,
           updatedAt: true
         }
