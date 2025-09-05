@@ -1,10 +1,15 @@
 import { Table, Button, Badge, Spinner } from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const UserTable = ({ users, onEdit, onDelete, onStatusChange }) => {
-  const userList = Array.isArray(users) ? users : [];
-
+const UserTable = ({ users, onEdit, onDelete }) => {
+  const [userList, setUserList] = useState([]);
   const [loadingIds, setLoadingIds] = useState(new Set());
+
+  useEffect(() => {
+    if (Array.isArray(users)) {
+      setUserList(users);
+    }
+  }, [users]);
 
   const getRoleVariant = (role) => {
     switch (role) {
@@ -26,7 +31,6 @@ const UserTable = ({ users, onEdit, onDelete, onStatusChange }) => {
 
   const toggleStatus = async (user) => {
     const newStatus = !user.status;
-    // Ajouter l'id à la liste de loading
     setLoadingIds((prev) => new Set(prev).add(user.id));
 
     try {
@@ -47,14 +51,16 @@ const UserTable = ({ users, onEdit, onDelete, onStatusChange }) => {
 
       alert(`Utilisateur ${newStatus ? 'activé' : 'désactivé'} avec succès !`);
 
-      if (onStatusChange) {
-        await onStatusChange();
-      }
+      // ✅ Mettre à jour l'utilisateur localement dans la liste
+      setUserList((prevList) =>
+        prevList.map((u) =>
+          u.id === user.id ? { ...u, status: newStatus, updatedAt: new Date().toISOString() } : u
+        )
+      );
     } catch (error) {
       console.error('Erreur réseau lors du changement de statut :', error);
       alert('Erreur réseau');
     } finally {
-      // Retirer l'id de loading
       setLoadingIds((prev) => {
         const newSet = new Set(prev);
         newSet.delete(user.id);
