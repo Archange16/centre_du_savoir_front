@@ -42,7 +42,7 @@ const HeaderIndex = () => {
             case 'reports':
                 return <Reports />;
             case 'setting':
-                return <Setting />;
+                return 
             default:
                 return <HomeAdmin />;
         }
