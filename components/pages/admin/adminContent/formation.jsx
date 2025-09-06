@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button, Modal, Form, Alert, Image, Spinner } from "react-bootstrap";
 
-const FormationCompleteAdmin = () => {
+const FormationCompleteAdmin = ({ onRefresh }) => {
   const [titre, setTitre] = useState("");
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState(null);
@@ -154,6 +154,9 @@ const FormationCompleteAdmin = () => {
 
       setSuccess(true);
       resetForm();
+      if (onRefresh) {
+        onRefresh();
+      }
       setTimeout(() => {
         setShow(false);
         setSuccess(false);
