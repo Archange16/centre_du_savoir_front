@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
 
 const FormationsPage = ({onComponentChange}) => {
@@ -8,6 +9,7 @@ const FormationsPage = ({onComponentChange}) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const router = useRouter();
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     if (status === "unauthenticated") {
