@@ -14,6 +14,7 @@ const FormationDetailPage = ({ params }) => {
     if (status === "unauthenticated") {
       router.push("/sign-in");
     }
+    
   }, [status, router]);
 
   const { id } = params;
