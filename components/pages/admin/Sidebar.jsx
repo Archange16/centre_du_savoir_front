@@ -16,8 +16,8 @@ const SidebarAdmin = ({openSidebarToggle, OpenSidebar, onComponentChange, active
             </div>
 
             <ul className='sidebar-list'>
-                <li className={`sidebar-list-item ${activeComponent === 'dashboard' ? 'active' : ''}`}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); onComponentChange('dashboard'); }}>
+                <li className={`sidebar-list-item ${activeComponent === 'dashboard' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); onComponentChange('dashboard'); }}>
+                    <a href="#" >
                         <BsGrid1X2Fill className='icon'/> Dashboard
                     </a>
                 </li>
@@ -26,18 +26,18 @@ const SidebarAdmin = ({openSidebarToggle, OpenSidebar, onComponentChange, active
                         <BsFillArchiveFill className='icon'/> Categories
                     </a>
                 </li> */}
-                <li className={`sidebar-list-item ${activeComponent === 'cours' ? 'active' : ''}`}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); onComponentChange('cours'); }}>
+                <li className={`sidebar-list-item ${activeComponent === 'cours' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); onComponentChange('cours'); }}>
+                    <a href="#" >
                         <BsFillGrid3X3GapFill className='icon'/> Formations
                     </a>
                 </li>
-                <li className={`sidebar-list-item ${activeComponent === 'leads' ? 'active' : ''}`}>
+                <li className={`sidebar-list-item ${activeComponent === 'leads' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); onComponentChange('leads'); }}>
                     <a href="#" onClick={(e) => { e.preventDefault(); onComponentChange('leads'); }}>
                         <BsPeopleFill className='icon'/> Leads
                     </a>
                 </li>
-                <li className={`sidebar-list-item ${activeComponent === 'apprenants' ? 'active' : ''}`}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); onComponentChange('apprenants'); }}>
+                <li className={`sidebar-list-item ${activeComponent === 'apprenants' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); onComponentChange('apprenants'); }}>
+                    <a href="#" >
                         <BsListCheck className='icon'/> Apprenants
                     </a>
                 </li>
@@ -46,8 +46,8 @@ const SidebarAdmin = ({openSidebarToggle, OpenSidebar, onComponentChange, active
                         <BsMenuButtonWideFill className='icon'/> Reports
                     </a>
                 </li> */}
-                <li className={`sidebar-list-item ${activeComponent === 'setting' ? 'active' : ''}`}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); onComponentChange('setting'); }}>
+                <li className={`sidebar-list-item ${activeComponent === 'setting' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); onComponentChange('setting'); }}>
+                    <a href="#" >
                         <BsFillGearFill className='icon'/> Settings
                     </a>
                 </li>
