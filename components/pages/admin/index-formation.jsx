@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
+import FormationCompleteAdmin from "./adminContent/formation";
 
 const FormationsPage = ({onComponentChange}) => {
   const [formations, setFormations] = useState([]);
@@ -54,9 +55,7 @@ const FormationsPage = ({onComponentChange}) => {
     <div className="main-container container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="h4 m-0">📚 Formations disponibles</h2>
-        <Link href="/admin/formations/create" className="btn btn-primary">
-          ➕ Ajouter une formation
-        </Link>
+        <FormationCompleteAdmin />
       </div>
 
       {error && (
