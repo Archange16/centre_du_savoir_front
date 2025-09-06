@@ -87,7 +87,8 @@ const FormationDetailPage = ({ id, onBack }) => {
 
       setSuccess('Formation supprimée avec succès');
       setShowDeleteModal(false);
-      router.push('/formations'); // Rediriger vers la liste des formations
+      onBack(); // Appeler la fonction de retour pour revenir à la liste
+      //router.push('/admin'); // Rediriger vers la liste des formations
     } catch (err) {
       setError(err.message);
     }
