@@ -59,6 +59,10 @@ const FormationDetailPage = ({ params }) => {
     return driveUrl;
   };
 
+  if (status !== "authenticated") {
+    return <p>Veuillez vous connecter pour voir vos formations.</p>;
+  }
+
   /**
    * Calcule le pourcentage de progression
    */
