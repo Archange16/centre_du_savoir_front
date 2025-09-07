@@ -149,7 +149,8 @@ const servicesData = [
         competences: "Inspection et entretien des ouvrages"
       }
     ],
-    logiciels: ["Robot Structural Analysis", "AutoCAD", "Revit", "SAP2000"],
+    logiciels: ["AUTOCAD", "AUTOPISTE", "COVADIS", "GLOBAL", "MAPPER",
+"FLOWMASTER", "ROBOT", "STRUCTURAL", "ANALYSIS", "GOOGLE EARTH", "EXCEL"],
     objectifs: [
       "Connaître les types de ponts et leurs spécificités",
       "Maîtriser les principes de conception des ouvrages d’art",
