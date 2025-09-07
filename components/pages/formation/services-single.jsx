@@ -166,52 +166,65 @@ const getFullPhoneNumber = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Validation finale
-    const finalErrors = {};
-    if (!formData.nom) finalErrors.nom = 'Veuillez entrer votre nom';
-    if (!formData.telephone || !/^[0-9]{9,15}$/.test(formData.telephone)) {
-      finalErrors.telephone = 'Veuillez entrer un numéro valide';
-    }
-    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      finalErrors.email = 'Veuillez entrer un email valide';
-    }
-    
-    setErrors(finalErrors);
-    if (Object.keys(finalErrors).length > 0) return;
-    
-    setIsSubmitting(true);
-    
-    try {
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ...formData, formName, telephone: getFullPhoneNumber() }),
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
-        pushToDataLayer('form_submit', { 
-          formName,
-          formationsChoisies: formData.formations,
-          financement: formData.financement,
-          situation: formData.situation
-        });
-        setIsSuccess(true);
-      } else {
-        throw new Error(data.error || 'Une erreur est survenue lors de l’envoi du formulaire');
-      }
-    } catch (error) {
-      console.error('Erreur lors de la soumission:', error);
-      setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
-    } finally {
-      setIsSubmitting(false);
-    }
+  e.preventDefault();
+
+  // Validation finale
+  const finalErrors = {};
+  if (!formData.nom) finalErrors.nom = 'Veuillez entrer votre nom';
+  if (!formData.telephone || !/^[0-9]{9,15}$/.test(formData.telephone)) {
+    finalErrors.telephone = 'Veuillez entrer un numéro valide';
+  }
+  if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    finalErrors.email = 'Veuillez entrer un email valide';
+  }
+
+  setErrors(finalErrors);
+  if (Object.keys(finalErrors).length > 0) return;
+
+  setIsSubmitting(true);
+
+  const payload = {
+    ...formData,
+    formName,
+    telephone: getFullPhoneNumber(),
   };
+
+  try {
+    const [leadRes, mailRes] = await Promise.all([
+      fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }),
+      fetch('/api/leadsmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+    ]);
+
+    const leadData = await leadRes.json();
+    const mailData = await mailRes.json();
+
+    if (leadData.success && mailData.success) {
+      pushToDataLayer('form_submit', {
+        formName,
+        formationsChoisies: formData.formations,
+        financement: formData.financement,
+        situation: formData.situation
+      });
+      setIsSuccess(true);
+    } else {
+      throw new Error('Une erreur est survenue lors de la soumission');
+    }
+  } catch (error) {
+    console.error('Erreur lors de la soumission:', error);
+    setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   // Composant Countdown
   const Countdown = () => (
