@@ -13,7 +13,7 @@ const AssignFormationModal = ({ formationId }) => {
  useEffect(() => {
   const fetchUsers = async () => {
     try {
-      const res = await fetch("/api/users");
+      const res = await fetch("/api/utilisateurs");
       const data = await res.json();
       console.log("Données reçues:", data);
 
