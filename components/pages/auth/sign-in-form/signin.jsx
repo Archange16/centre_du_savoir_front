@@ -129,10 +129,10 @@ const SignInForm = () => {
             <p className="mt-4 mb-3 text-body-secondary">
               Pas encore de compte?{' '}
               <Link 
-                href="/sign-up"
+                href="/"
                 className="text-primary text-decoration-none"
               >
-                Inscrivez-vous
+                Visiter notre site
               </Link>
             </p>
             <p className="mt-5 mb-3 text-body-secondary">&copy; 2024–2025</p>
